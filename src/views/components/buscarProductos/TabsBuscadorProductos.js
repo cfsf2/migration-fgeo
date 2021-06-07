@@ -38,7 +38,7 @@ function Producto(props) {
         src={image_path_server + prod.imagen}
         style={{ height: "200px", maxWidth: 200 }}
       />
-      <p>{prod.nombre}</p>
+      <p style={{height:"39px"}}>{prod.nombre}</p>
       <p>
         <b
           style={{
@@ -122,18 +122,22 @@ class TabsBuscadorProductos extends Component {
   handleProductos = () => {
     const { min, max } = this.state;
     const filtrado = this.handleFiltrado();
-    return filtrado.slice(min, max).map((prod, i) => {
-      return prod.ppropio ? (
-        <Producto
-          prod={prod}
-          key={i}
-          farmacia={prod.ufarmacia}
-          ppropio={true}
-        />
-      ) : (
-        <Producto prod={prod} key={i} ppropio={false} />
-      );
-    });
+    if (filtrado.length > 0) {
+      return filtrado.slice(min, max).map((prod, i) => {
+        return prod.ppropio ? (
+          <Producto
+            prod={prod}
+            key={i}
+            farmacia={prod.ufarmacia}
+            ppropio={true}
+          />
+        ) : (
+          <Producto prod={prod} key={i} ppropio={false} />
+        );
+      });
+    }
+    return <h2>Parece que no encontramos productos con ese nombre</h2>
+
   };
 
   handleFiltrado = () => {
@@ -165,22 +169,28 @@ class TabsBuscadorProductos extends Component {
 
     await fetch(
       "http://admin.farmageo.com.ar:3110/farmacias/productospropios/" +
-        localidad_default.toUpperCase()
+      localidad_default.toUpperCase()
     )
       .then((res) => res.json())
       .then(
         (result) => {
-          result.map((f) => {
-            return f.productos.map((p) => {
-              productosPropios.push({
-                ...p,
-                farmacia: f.nombre,
-                ufarmacia: f.usuario,
-                ppropio: true,
+          if (result.length > 0) {
+            result.map((f) => {
+
+              return f.productos.map((p) => {
+                productosPropios.push({
+                  ...p,
+                  farmacia: f.nombre,
+                  ufarmacia: f.usuario,
+                  ppropio: true,
+                });
+                return { ...p, farmacia: f.nombre, ufarmacia: f.usuario };
               });
-              return { ...p, farmacia: f.nombre, ufarmacia: f.usuario };
             });
-          });
+          } else {
+            return <h2>Parece que no encontramos productos con ese nombre</h2>
+          }
+
         },
         (error) => {
           this.setState({ isLoaded: true, error });
@@ -189,27 +199,30 @@ class TabsBuscadorProductos extends Component {
     this.setState({ productosPropios });
   };
 
-  render() {
-    return (
-      <>
-        <div className="row centrado-2 mt-5 listado-productos">
-          {this.handleProductos()}
-        </div>
+  
+render() {
+  return (
+    <>
+    
+      <div className="row centrado-2 mt-5 listado-productos">
+        {this.handleProductos()}
+      </div>
 
-        <div className="row centrado-2">
-          <div className="col">
-            <Pagination
-              activePage={this.state.activePage}
-              itemsCountPerPage={8}
-              totalItemsCount={this.handleFiltrado().length}
-              pageRangeDisplayed={5}
-              onChange={this.handlePageChange.bind(this)}
-            />
-          </div>
+      <div className="row centrado-2">
+        <div className="col">
+        {this.handleFiltrado().length != 0 ?  <Pagination
+            activePage={this.state.activePage}
+            itemsCountPerPage={8}
+            totalItemsCount={this.handleFiltrado().length}
+            pageRangeDisplayed={5}
+            onChange={this.handlePageChange.bind(this)}
+          />: "" }
+         
         </div>
-      </>
-    );
-  }
+      </div>
+    </>
+  );
+}
 }
 
 const mapStateToProps = (state) => {

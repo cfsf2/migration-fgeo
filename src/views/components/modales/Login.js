@@ -79,7 +79,7 @@ function Login(props) {
               </button>
               <p align="right">
                 ¿Sos nuevo?
-                <a onClick={{}} href="">Registrate acá</a>
+                <span style={{cursor:"pointer",color:'#138496'}} data-toggle="modal" data-dismiss="modal" data-target="#alert-registro" > Registrate acá</span>
               </p>
               <br />
             </div>

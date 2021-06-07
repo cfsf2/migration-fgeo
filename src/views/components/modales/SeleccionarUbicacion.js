@@ -5,98 +5,109 @@ import { localidades } from "../../helpers/FarmaciaHelpers";
 import { ELEGIR_LOCALIDAD } from "../../../redux/actions/UsuarioActions";
 
 function SeleccionarUbicacion(props) {
-  const [modalState, setmodalState] = useState(true);
-  const [localidad, setlocalidad] = useState("ROSARIO");
+    const [localidad, setlocalidad] = useState("ROSARIO");
+    const [currentLoc, setCurrentLoc] = useState(true);
 
-  const handleLocalidad = (event) => {
-    setlocalidad(event.nativeEvent.target.value);
-  };
+    const handleLocalidad = (event) => {
+        setlocalidad(event.nativeEvent.target.value);
+    };
 
-  const handleConfirmar = async () => {
-    await props.ELEGIR_LOCALIDAD(localidad);
-    setmodalState(!modalState);
-  };
+    const handleConfirmar = async (e) => {
+        
+        if (sessionStorage.getItem("ubicacion_default") && !currentLoc) {
+            props.setmodalState(!props.modalState);
+        } else {
+            await props.ELEGIR_LOCALIDAD(localidad)
+            props.setmodalState(!props.modalState);
+        }
+        ;
+    };
 
-  useEffect(() => {
-    getUbicacionDefault();
-  }, []);
+    useEffect(() => {
+        getUbicacionDefault();
+    }, []);
+    useEffect(() => {
+        document.getElementById("alert-seleccionar-ubicacion").focus()
+    }, [props.currentLoc]);
 
-  const getUbicacionDefault = async () => {
-    var data = await sessionStorage.getItem("ubicacion_default");
-    if (data) {
-      setmodalState(false);
-      props.ELEGIR_LOCALIDAD(data);
-    }
-  };
+    const getUbicacionDefault = async () => {
+        var data = await sessionStorage.getItem("ubicacion_default");
+        if (data) {
+            props.setmodalState(false);
+            props.ELEGIR_LOCALIDAD(data);
+        }
+    };
 
-  return (
-    <div
-      className={"modal fade" + (modalState ? " show d-block" : " d-none")}
-      tabIndex="-1"
-      role="dialog"
-      id="alert-seleccionar-ubicacion"
-    >
-      <div className="modal-dialog modal-md">
-        <div className="modal-content">
-          <div style={{ float: "right" }}></div>
-          <div className="modal-body" align="left">
-            <div className="alerta">
-              <h4>
-                <b>Elegí tu localidad para obtener una mejor experiencia</b>
-              </h4>
+    return (
+        <div
+            className={"modal fade" + (props.modalState ? " show d-block" : " d-none")}
+            tabIndex="1"
+            role="dialog"
+            id="alert-seleccionar-ubicacion"
+            tabIndex="0" onKeyDown={e=>e.which === 27 ? props.setmodalState(false) : "" }
+        >
 
-              <div className="form-row mt-3">
-                <div className="col-md-12 mb-3 pr-3">
-                  <label htmlFor="provincia">Provincia</label>
-                  <select className="form-control" disabled>
-                    <option value="ROSARIO">SANTA FE</option>
-                  </select>
-                </div>
-                <div className="col-md-12 mb-3 pr-3">
-                  <label htmlFor="localidad">Localidad</label>
-                  <select
-                    id="localidad"
-                    className="form-control"
-                    value={localidad}
-                    onChange={handleLocalidad}
-                    name="localidad"
-                  >
-                    <option value="ROSARIO">ROSARIO</option>
-                    {localidades.map((localidad, i) => {
-                      return (
-                        <option value={localidad} key={i}>
-                          {localidad}
-                        </option>
-                      );
-                    })}
-                  </select>
-                </div>
-              </div>
-              <div className="form-row mt-3">
-                <div className="col-md-12 mb-3 pr-3">
-                  Utilizar mi ubicación actual
-                  <UbicacionActual />
-                </div>
-              </div>
-              <button
-                type="button"
-                className="btn btn-info"
-                data-dismiss="modal"
-                aria-label="Close"
-                onClick={handleConfirmar}
-              >
-                Confirmar
+            <div className="modal-dialog modal-md">
+                <div className="modal-content">
+                    <div style={{ float: "right" }}></div>
+                    <div className="modal-body" align="left">
+                        <div className="alerta">
+                            <h4>
+                                <b>Elegí tu localidad para obtener una mejor experiencia</b>
+                            </h4>
+
+                            <div className="form-row mt-3">
+                                <div className="col-md-12 mb-3 pr-3">
+                                    <label htmlFor="provincia">Provincia</label>
+                                    <select className="form-control" disabled>
+                                        <option value="ROSARIO">SANTA FE</option>
+                                    </select>
+                                </div>
+                                <div className="col-md-12 mb-3 pr-3">
+                                    <label htmlFor="localidad">Localidad</label>
+                                    <select
+                                        id="localidad"
+                                        className="form-control"
+                                        value={localidad}
+                                        onChange={handleLocalidad}
+                                        name="localidad"
+                                    >
+                                        <option value="ROSARIO">ROSARIO</option>
+                                        {localidades.map((localidad, i) => {
+                                            return (
+                                                <option value={localidad} key={i}>
+                                                    {localidad}
+                                                </option>
+                                            );
+                                        })}
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="form-row mt-3">
+                                <div className="col-md-12 mb-3 pr-3">
+                                    Utilizar mi ubicación actual
+                            <UbicacionActual currentLoc={currentLoc} setCurrentLoc={setCurrentLoc}/>
+                                </div>
+                            </div>
+                            <button
+                                type="button"
+                                className="btn btn-info"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                                onClick={e=>handleConfirmar(e)}
+                            >
+                                Confirmar
               </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 const mapDispatchToProps = {
-  ELEGIR_LOCALIDAD,
+    ELEGIR_LOCALIDAD,
 };
 
 export default connect(null, mapDispatchToProps)(SeleccionarUbicacion);

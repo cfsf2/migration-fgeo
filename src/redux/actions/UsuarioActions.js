@@ -115,12 +115,12 @@ export const ELEGIR_FARMACIA = (farmacia) => {
       type: "ELEGIR_FARMACIA",
       payload: farmacia,
     });
-    console.log(farmacia);
   };
 };
 
-export const OBTENER_POSICION_ACTUAL = () => {
-  console.log("OBTENER_POSICION_ACTUAL...");
+
+export const OBTENER_POSICION_ACTUAL_MAP = () => {
+
   return (dispatch) => {
     if (!navigator.geolocation) {
       alert("<p>Geolocation is not supported by your browser</p>");
@@ -133,12 +133,56 @@ export const OBTENER_POSICION_ACTUAL = () => {
       axios
         .get(
           "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=" +
-            latitude +
-            "&longitude=" +
-            longitude +
-            "&localityLanguage=es"
+          latitude +
+          "&longitude=" +
+          longitude +
+          "&localityLanguage=es"
         )
         .then(async function (response) {
+          if(response.data.city){
+            // localStorage.setItem("ubicacion_maps", response.data);
+          }
+          
+          dispatch({
+            type: "OBTENER_POSICION_ACTUAL",
+            payload: response.data,
+          });
+        });
+    }
+
+    function error() {
+      return false;
+    }
+    navigator.geolocation.getCurrentPosition(success, error);
+  };
+};
+
+
+
+export const OBTENER_POSICION_ACTUAL = () => {
+
+  return (dispatch) => {
+    if (!navigator.geolocation) {
+      alert("<p>Geolocation is not supported by your browser</p>");
+      return;
+    }
+
+    async function success(position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+      axios
+        .get(
+          "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=" +
+          latitude +
+          "&longitude=" +
+          longitude +
+          "&localityLanguage=es"
+        )
+        .then(async function (response) {
+          if(response.data.city){
+            sessionStorage.setItem("ubicacion_default", response.data.city);
+          }
+          console.log("obtener posicion actal ", response.data)
           dispatch({
             type: "OBTENER_POSICION_ACTUAL",
             payload: response.data,

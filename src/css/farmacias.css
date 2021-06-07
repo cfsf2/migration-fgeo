@@ -267,7 +267,7 @@ h3 {
 }
 
 #icon-productos {
-  width: 45%;
+  width: 54%;
   margin-top: 15%;
   margin-bottom: 5%;
 }
@@ -338,7 +338,8 @@ h3 {
 
 .btn-add-to-car {
   background-color: #51a8c4;
-  color: #ffffff;
+  font-weight: 800;
+  color: #ffffff !important;
   font-size: 0.8em !important;
   margin-top: 1em;
   padding: 5px 40px;

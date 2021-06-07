@@ -3,6 +3,7 @@ import forma1 from "../../../assets/images/Forma 1.png";
 import lupa from "../../../assets/images/Lupa.png";
 import { connect } from "react-redux";
 import { SET_CATEGORIA } from "../../../redux/actions/ProductosActions";
+
 class BuscadorCentral extends Component {
   handleCategoria = (event) => {
     const target = event.nativeEvent.target;
@@ -25,7 +26,7 @@ class BuscadorCentral extends Component {
           <select
             value={categoriaFiltro}
             className="categoria-select"
-            style={{ backgroundColor: "#b8cfd3" }}
+            style={{ backgroundColor: "rgba(255,255,255,0.5)" }}
             onChange={this.handleCategoria}
           >
             <option className="categoria-icons-select" value="all">
@@ -44,7 +45,7 @@ class BuscadorCentral extends Component {
             })}
           </select>
         </div>
-        <div className="col-sm-7 ml-0 py-4 buscador-central rounded-right">
+        <div className="col-sm-7 ml-0 py-4 buscador-central d-flex align-items-center justify-content-center rounded-right">
           <div className="buscador-background">
             <div className="d-inline search-input ml-3">
               <input
@@ -52,8 +53,8 @@ class BuscadorCentral extends Component {
                 placeholder="¿Qué producto estás buscando?"
                 className="input-search rounded"
                 value={this.props.textbuscador}
-                onChange={(event) =>
-                  this.props.handleTextBuscador(event.nativeEvent.target.value)
+                onChange={(event) =>{
+                  this.props.handleTextBuscador(event.nativeEvent.target.value)}
                 }
                 name="textbuscador"
               />

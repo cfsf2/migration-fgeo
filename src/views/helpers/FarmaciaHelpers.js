@@ -202,6 +202,8 @@ export const getServicio = (servicio, index) => {
   return x;
 };
 
+
+
 export const localidades = [
   "ACEBAL",
   "ALBARELLOS",
@@ -314,7 +316,6 @@ export const localidades = [
 ];
 
 export const FarmaciaVendeElProducto = (farmacia, producto) => {
-  console.log(producto);
   if (
     farmacia.excepcionesEntidadesFarmageo.includes(producto.entidad_id) ||
     farmacia.excepcionesProdFarmageo.includes(producto._id) ||

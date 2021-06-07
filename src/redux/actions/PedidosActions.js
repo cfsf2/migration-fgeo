@@ -121,7 +121,7 @@ export const CONFIRMAR_PEDIDO = (pedido) => {
           datos_cliente: pedido.datos_cliente,
           origen: "ecommerce",
           // PARA QUE MANDE AL EMAIL DE LA FARMACIA
-          destinatario: emailFarmacia + "; santiagoalarcon2@hotmail.com",
+          destinatario: emailFarmacia ,
           asunto: "Nuevo pedido en Farmageo",
           html: html,
         },

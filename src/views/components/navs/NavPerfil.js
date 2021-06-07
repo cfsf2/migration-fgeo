@@ -7,6 +7,7 @@ import {
 import { connect } from "react-redux";
 import logoFarmageo from "../../../assets/images/Grupo 57.png";
 import iconCarrito from "../../../assets/images/carrito.png";
+import iconCarritoWhite from "../../../assets/images/carritoWhite.png";
 import iconMaps from "../../../assets/images/Icono.png";
 import logo from "../../../assets/images/logo.png";
 
@@ -49,7 +50,6 @@ class NavPerfil extends Component {
   googleAnalytics() {
     ReactGA.initialize("G-6DDCQD6XV5");
     ReactGA.pageview(window.location.href);
-    console.log(window.location.href);
   }
 
   handlequery = () => {
@@ -84,7 +84,7 @@ class NavPerfil extends Component {
     var ubicacion_default = await sessionStorage.getItem("ubicacion_default");
     if (ubicacion_default) {
       this.setState({
-        ubicacion_default: ubicacion_default + ", Santa Fe",
+        ubicacion_default: ubicacion_default,
         farmacia
       });
     }
@@ -138,7 +138,7 @@ class NavPerfil extends Component {
             className="col-md-12"
             style={{
               position: "fixed",
-              zIndex: 10,
+              zIndex: 100,
               backgroundColor: "rgb(43 52 85)"
             }}
           >
@@ -169,7 +169,7 @@ class NavPerfil extends Component {
                     onClick={this.handleCarrito}
                   >
                     <p className="only-desktop">Mi carrito </p>
-                    <img alt="" src={iconCarrito} className="icon" />
+                    <img alt="" src={iconCarritoWhite} className="icon" />
                     <p className="d-inline">{carrito.length}</p>
                   </a>
                 </div>

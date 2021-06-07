@@ -31,13 +31,12 @@ export const SOLICITUD_REGISTRO_FARMACIA = (solicitud) => {
 
     return axios
       .post(apiFarmageo + "/pedidos/email", {
-          destinatario: emailFarmacia + ";santiagoalarcon2@hotmail.com; comercial@farmageo.com.ar",
+          destinatario: emailFarmacia + ";comercial@farmageo.com.ar",
           asunto: "Solicitud de registro Farmageo",
           html: html,
         
       })
       .then(function (response) {
-        console.log(response)
         return true;
       })
       .catch(function (error) {
