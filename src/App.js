@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 //import { HashRouter, Route, Switch } from 'react-router-dom';
 import "./css/farmacias.css";
 import "./css/switch.css";
@@ -61,6 +61,7 @@ const RegistrarFarmacia = React.lazy(() =>
 );
 
 function App() {
+  const [modalState, setmodalState] = useState(true);
   return (
     <HashRouter>
       <React.Suspense fallback={loading()}>
@@ -71,7 +72,7 @@ function App() {
             name="Mutual"
             render={(props) => (
               <>
-                <NavPerfil />
+                <NavPerfil modalState={modalState} setmodalState={setmodalState} />
                 <Mutual {...props} />
               </>
             )}
@@ -81,7 +82,7 @@ function App() {
             name="farmacia"
             render={(props) => (
               <>
-                <NavPerfil />
+                <NavPerfil modalState={modalState} setmodalState={setmodalState} />
                 <FarmaciaPerfil {...props} />
               </>
             )}
@@ -92,7 +93,7 @@ function App() {
             name="farmprodcat"
             render={(props) => (
               <>
-                <NavPerfil />
+                <NavPerfil modalState={modalState} setmodalState={setmodalState} />
                 <FarmaciaProductosCat {...props} />
               </>
             )}
@@ -103,7 +104,7 @@ function App() {
             name="revisarpedido"
             render={(props) => (
               <>
-                <NavHome />
+                <NavHome modalState={modalState} setmodalState={setmodalState} />
                 <RevisarPedido {...props} />
               </>
             )}
@@ -114,7 +115,7 @@ function App() {
             name="detallespago"
             render={(props) => (
               <>
-                <NavHome />
+                <NavHome modalState={modalState} setmodalState={setmodalState} />
                 <DetallesDePago {...props} />
               </>
             )}
@@ -125,7 +126,7 @@ function App() {
             name="recetaObraSocial"
             render={(props) => (
               <>
-                <NavHome />
+                <NavHome modalState={modalState} setmodalState={setmodalState} />
                 <RecetaConObraSocial {...props} />
               </>
             )}
@@ -136,7 +137,7 @@ function App() {
             name="recetaParticular"
             render={(props) => (
               <>
-                <NavHome />
+                <NavHome modalState={modalState} setmodalState={setmodalState} />
                 <RecetaParticular {...props} />
               </>
             )}
@@ -147,7 +148,7 @@ function App() {
             name="recetaPami"
             render={(props) => (
               <>
-                <NavHome />
+                <NavHome modalState={modalState} setmodalState={setmodalState} />
                 <RecetaPami {...props} />
               </>
             )}
@@ -158,7 +159,7 @@ function App() {
             name="confirmacionPedido"
             render={(props) => (
               <>
-                <NavHome />
+                <NavHome modalState={modalState} setmodalState={setmodalState} />
                 <ConfirmacionPedido {...props} />
               </>
             )}
@@ -168,7 +169,7 @@ function App() {
             name="detalleprod"
             render={(props) => (
               <>
-                <NavPerfil />
+                <NavPerfil modalState={modalState} setmodalState={setmodalState} />
                 <DetalleProducto {...props} />
               </>
             )}
@@ -178,7 +179,7 @@ function App() {
             name="seleccionarfarmacia"
             render={(props) => (
               <>
-                <NavHome hideCategorias={true} />
+                <NavHome modalState={modalState} setmodalState={setmodalState} hideCategorias={true} />
                 <FarmaciasCercanas
                   {...props}
                   nextPage="farmprodcat?u="
@@ -194,7 +195,8 @@ function App() {
             name="buscarfarmacia"
             render={(props) => (
               <>
-                <NavHome hideCategorias={true} />
+                <NavHome modalState={modalState} setmodalState={setmodalState} hideCategorias={true} />
+                
                 <FarmaciasCercanas {...props} nextPage="farmaciaperfil?u=" />
                 <br />
                 <FooterHome />
@@ -207,7 +209,7 @@ function App() {
             name="usuarioconfig"
             render={(props) => (
               <>
-                <NavHome />
+                <NavHome modalState={modalState} setmodalState={setmodalState} />
                 <UsuarioConfig {...props} />
               </>
             )}
@@ -219,7 +221,7 @@ function App() {
             render={(props) => (
               <>
                 {/*<NavBuscarProductos />*/}
-                <BuscarProductos {...props} />
+                <BuscarProductos  modalState={modalState} setmodalState={setmodalState}  {...props} />
               </>
             )}
           />
@@ -229,7 +231,7 @@ function App() {
             name="registrarfarmacia"
             render={(props) => (
               <>
-                <NavHome />
+                <NavHome modalState={modalState} setmodalState={setmodalState} />
                 <RegistrarFarmacia {...props} />
               </>
             )}
@@ -240,7 +242,7 @@ function App() {
             name="Home"
             render={(props) => (
               <>
-                <NavHome />
+                <NavHome modalState={modalState} setmodalState={setmodalState} />
                 <Home {...props} />
               </>
             )}

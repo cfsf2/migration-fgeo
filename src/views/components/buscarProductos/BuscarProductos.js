@@ -5,7 +5,7 @@ import Suscribite from "../home/Suscribite";
 import TabsProductosBuscador from "./TabsBuscadorProductos";
 import NavBuscarProductos from "../navs/NavBuscarProductos";
 
-function BuscarProductos() {
+function BuscarProductos(props) {
   const [txtbusqueda, settxtbusqueda] = useState("");
 
   const handlequery = () => {
@@ -18,7 +18,7 @@ function BuscarProductos() {
 
   return (
     <>
-      <NavBuscarProductos txtbusqueda={txtbusqueda.toUpperCase()} />
+      <NavBuscarProductos setmodalState={props.setmodalState} modalState={props.modalState}  txtbusqueda={txtbusqueda.toUpperCase()} />
       <div>
         <div className="container-fluid  centrado my-5 ">
           <TabsProductosBuscador txtbusqueda={txtbusqueda.toUpperCase()} />

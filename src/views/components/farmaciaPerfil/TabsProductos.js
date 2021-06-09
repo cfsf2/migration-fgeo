@@ -41,7 +41,7 @@ function Producto(props) {
         src={image_path_server + prod.imagen}
         style={{ height: "200px", maxWidth: "200px" }}
       />
-      <p>{prod.nombre}</p>
+      <p style={{height:"39px"}}>{prod.nombre}</p>
       <p>
         <b
           style={{

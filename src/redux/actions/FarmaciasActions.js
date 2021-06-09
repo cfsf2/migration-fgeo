@@ -34,6 +34,7 @@ export const SOLICITUD_REGISTRO_FARMACIA = (solicitud) => {
       `;
 
     return axios
+<<<<<<< HEAD
         .post(apiFarmageo + "/pedidos/email", {
             destinatario: emailFarmacia + ";comercial@farmageo.com.ar",
             asunto: "Solicitud de registro Farmageo",
@@ -49,5 +50,21 @@ export const SOLICITUD_REGISTRO_FARMACIA = (solicitud) => {
             alert('Ha ocurrido un error, intente por favor más tarde.')
             return false
         });
+=======
+      .post(apiFarmageo + "/pedidos/email", {
+          destinatario: emailFarmacia + ";comercial@farmageo.com.ar",
+          asunto: "Solicitud de registro Farmageo",
+          html: html,
+        
+      })
+      .then(function (response) {
+        return true;
+      })
+      .catch(function (error) {
+        console.log(error);
+        alert('Ha ocurrido un error, intente por favor más tarde.')
+        return false
+      });
+>>>>>>> a8e6a538192b307ae06eccd87ec0e0301fbae55c
 };
 

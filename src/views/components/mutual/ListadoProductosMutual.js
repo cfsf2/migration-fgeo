@@ -19,7 +19,7 @@ function Producto(props) {
         src={image_path_server + producto.imagen}
         style={{ height: "150px" }}
       />
-      <p>{producto.nombre}</p>
+      <p style={{height:"39px"}}>{producto.nombre}</p>
       <a
         href={
           process.env.PUBLIC_URL +

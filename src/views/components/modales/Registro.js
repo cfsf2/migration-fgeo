@@ -176,7 +176,7 @@ function Registro(props) {
                   Crear cuenta
                 </button>
                 <p align="right">
-                  Si tenes una cuenta <a href="">Ingresá acá</a>
+                  Si tenes una cuenta <span style={{cursor:"pointer",color:'#138496'}} data-toggle="modal" data-dismiss="modal" data-target="#alert-login" > Ingresá acá </span>
                 </p>
               </form>
             </div>

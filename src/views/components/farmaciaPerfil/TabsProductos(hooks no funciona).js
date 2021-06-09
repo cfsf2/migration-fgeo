@@ -41,7 +41,7 @@ function Producto(props) {
         src={image_path_server + prod.imagen}
         style={{ height: "200px", maxWidth: "200px" }}
       />
-      <p>{prod.nombre}</p>
+      <p >{prod.nombre}</p>
       <p>
         <b
           style={{
@@ -101,7 +101,6 @@ function TabsProductos(props) {
 
   const handleProductos = async () => {
     const filtrado = await handleFiltrado();
-    console.log(filtrado);
     return filtrado.slice(min, max).map((prod, i) => {
       return (
         <Producto

@@ -7,6 +7,7 @@ import {
 import { connect } from "react-redux";
 import logoFarmageo from "../../../assets/images/Grupo 57.png";
 import iconCarrito from "../../../assets/images/carrito.png";
+import iconCarritoWhite from "../../../assets/images/carritoWhite.png";
 import iconMaps from "../../../assets/images/Icono.png";
 import logo from "../../../assets/images/logo.png";
 
@@ -14,6 +15,8 @@ import forma1 from "../../../assets/images/Forma 1.png";
 import iconFarmacia from "../../../assets/images/Grupo 79.png";
 import Trazado230 from "../../../assets/images/Trazado 230.png";
 import lupa from "../../../assets/images/Lupa.png";
+
+import { useLocation } from 'react-router-dom'
 
 import Login from "../modales/Login";
 import Registro from "../modales/Registro";
@@ -39,9 +42,20 @@ function NavBuscarProductos(props) {
     props.GET_AUTH();
     googleAnalytics();
     props.GET_CATEGORIAS();
-    getUbicacionDefault();
   }, []);
 
+  useEffect(() => {
+
+    setubicacion_default(sessionStorage.getItem("ubicacion_default"))
+
+  }, [sessionStorage])
+
+
+  useEffect(() => {
+
+    getUbicacionDefault();
+
+  }, [props])
   const googleAnalytics = () => {
     ReactGA.initialize("G-6DDCQD6XV5");
     ReactGA.pageview(window.location.href);
@@ -60,7 +74,7 @@ function NavBuscarProductos(props) {
   const getUbicacionDefault = async () => {
     var _ubicacion_default = await sessionStorage.getItem("ubicacion_default");
     if (_ubicacion_default) {
-      setubicacion_default(_ubicacion_default + ", Santa Fe");
+      setubicacion_default(_ubicacion_default);
     }
   };
 
@@ -87,7 +101,7 @@ function NavBuscarProductos(props) {
           className="col-md-12"
           style={{
             position: "fixed",
-            zIndex: 10,
+            zIndex: 100,
             backgroundColor: "rgb(43 52 85)"
           }}
         >
@@ -112,7 +126,7 @@ function NavBuscarProductos(props) {
                   onClick={handleCarrito}
                 >
                   <p className="only-desktop">Mi carrito </p>
-                  <img alt="" src={iconCarrito} className="icon" />
+                  <img alt="" src={iconCarritoWhite} className="icon" />
                 </a>
               </div>
             </div>
@@ -129,9 +143,10 @@ function NavBuscarProductos(props) {
         >
           <nav className="navbar navbar-expand-lg navbar-dark navbar-fixed-top m-0">
             <div className="container-fluid">
-              <a className="nav-farmageo-back" href="#">
-                <img alt="" src={iconMaps} style={{ width: "1em" }} />{" "}
+              <a onClick={() => props.setmodalState(!props.modalState)}
+                className="nav-farmageo-back" >
                 {ubicacion_default}
+                <img alt="" src={logoFarmageo} style={{ width: "130px" }} />
               </a>
               <button
                 className="navbar-toggler"
@@ -360,6 +375,7 @@ function NavBuscarProductos(props) {
             <div className="d-inline search-input">
               <input
                 type="text"
+                onKeyPress={(e) => e.which === 13 ? handleSearch() : null}
                 placeholder={`¿Qué ${search} estás buscando?`}
                 className="input-search"
                 onChange={e => settxtbusqueda(e.nativeEvent.target.value)}
@@ -382,65 +398,65 @@ function NavBuscarProductos(props) {
       {/*<!-- FIN nav central -->*/}
 
       <div className="row d-flex   py-0 nav-inferior">
-            <div className="col-md-2   hide-mobile" align="center">
-              <select
-                className="categoria-select py-3"
-                value={categoriaFiltro}
-                onChange={handleCategoria}
-              >
-                <option className="categoria-icons-select col-md-2" value="all">
-                  {`Buscá por 
+        <div className="col-md-2   hide-mobile" align="center">
+          <select
+            className="categoria-select py-3"
+            value={categoriaFiltro}
+            onChange={handleCategoria}
+          >
+            <option className="categoria-icons-select col-md-2" value="all">
+              {`Buscá por
                     Categorías`}
-                </option>
-                {categorias
-                  ? categorias.map((cat, i) => {
-                      return (
-                        <option
-                          className="categoria-icons-select"
-                          value={cat._id}
-                          key={i}
-                        >
-                          {cat.nombre}
-                        </option>
-                      );
-                    })
-                  : null}
-              </select>
-            </div>
-            <div style={{borderLeft:"solid 1px #4f9cb5"}} className="col-md-2 px-0 hide-mobile hover-bg-4f9cb5" align="center">
-                <button
-                style={{width:"100%", height:"100%"}}
-                  className="nav-inferior-link"
-                >
-
-                  Pedí tus recetas
-                        </button>
-              </div>
+            </option>
             {categorias
               ? categorias.map((cat, i) => {
-                  let styleMenu={
-                    borderLeft:"solid 1px #4f9cb5",
-                    
-                  }
-                  return cat.destacada ? (
-                    <div style={styleMenu} className="col-md-2 px-0 hide-mobile hover-bg-4f9cb5"  align="center">
-                      <button
-                      style={{width:"100%", height:"100%"}}
-                        className="nav-inferior-link"
-                        onClick={() => handleSeccionCategorias(cat._id)}
-                        key={i}
-                      >
-                        {cat.nombre}
-                      </button>
-                    </div>
-                  ) : null;
-                })
+                return (
+                  <option
+                    className="categoria-icons-select"
+                    value={cat._id}
+                    key={i}
+                  >
+                    {cat.nombre}
+                  </option>
+                );
+              })
               : null}
-          </div>
+          </select>
+        </div>
+        <div style={{ borderLeft: "solid 1px #4f9cb5" }} className="col-md-2 px-0 hide-mobile hover-bg-4f9cb5" align="center">
+          <button
+            style={{ width: "100%", height: "100%" }}
+            className="nav-inferior-link"
+          >
+
+            Pedí tus recetas
+                        </button>
+        </div>
+        {categorias
+          ? categorias.map((cat, i) => {
+            let styleMenu = {
+              borderLeft: "solid 1px #4f9cb5",
+
+            }
+            return cat.destacada ? (
+              <div style={styleMenu} className="col-md-2 px-0 hide-mobile hover-bg-4f9cb5" align="center">
+                <button
+                  style={{ width: "100%", height: "100%" }}
+                  className="nav-inferior-link"
+                  onClick={() => handleSeccionCategorias(cat._id)}
+                  key={i}
+                >
+                  {cat.nombre}
+                </button>
+              </div>
+            ) : null;
+          })
+          : null}
+      </div>
       <Carrito show={showCarrito} />
       <Login />
       <Registro />
-      <SeleccionarUbicacion />
+      <SeleccionarUbicacion setmodalState={props.setmodalState} modalState={props.modalState} />
     </>
   );
 }

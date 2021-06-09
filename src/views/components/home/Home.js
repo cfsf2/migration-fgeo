@@ -10,7 +10,7 @@ function Home() {
     <>
       <BannerSuperior />
       <BannerFarmaciasCercanas />
-      <FarmaciasCercanas nextPage="farmaciaperfil?u=" />
+      <FarmaciasCercanas home nextPage="farmaciaperfil?u=" />
       <BannerInferior />
       <Suscribite />
       <FooterHome />

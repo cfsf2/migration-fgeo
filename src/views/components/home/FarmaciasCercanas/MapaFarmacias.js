@@ -7,6 +7,7 @@ import {
   checkFranjaHoraria,
 } from "../../../helpers/FarmaciaHelpers";
 import { GET_FARMACIAS } from "../../../../redux/actions/FarmaciasActions";
+import { getCurrentCity } from "../../../../DataFetcher/DFUbicationMap";
 
 function ItemMapList({ farmacia, handleCentrarFarmacia, bold, nextPage }) {
 
@@ -79,34 +80,77 @@ function MapaFarmacias(props) {
     lat: -32.949693,
     lng: -60.681875,
   });
+
+  console.log(props)
+
   const [centrarFarmacia, setcentrarFarmacia] = useState("");
   const [farmacias, setfarmacias] = useState([]);
 
-  const handleCentrarFarmacia = (farmacia,centered) => {
+  const removeAccents = (str) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+  const handleCentrarFarmacia = (farmacia, centered) => {
     setcentrarFarmacia(farmacia.usuario);
-    
+
     setcenterMap({
       lat: farmacia.lat,
       lng: farmacia.log,
     });
   };
 
-  const showCurrentLocation = (centered) => {
+  const showCurrentLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        setcurrentLatLng({
-          ...currentLatLng,
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        });
 
-        
+        getCurrentCity(position.coords.latitude, position.coords.longitude,).then(city => {
+          if (city.ubicacion.provincia.id === "82") {
+            if (city.ubicacion.municipio.nombre === null) {
+              props.handleActualPosition("ROSARIO")
+              sessionStorage.setItem("ubicacion_default","ROSARIO")
+            } else {
+              props.handleActualPosition(removeAccents(city.ubicacion.municipio.nombre).toUpperCase())
+              sessionStorage.setItem("ubicacion_default",removeAccents(city.ubicacion.municipio.nombre).toUpperCase())
+            }
+            setcurrentLatLng({
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            });
+            setcenterMap({
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            });
+          } else {
+            
+            setcurrentLatLng({
+              lat: -32.949693,
+              lng: -60.681875,
+            });
+            setcenterMap({
+              lat: -32.949693,
+              lng: -60.681875,
+            });
+            props.handleActualPosition("ROSARIO")
+          }
+
+        })
+
+
+
       });
     } else {
       console.log("error al obtener geolocación");
     }
   };
-
+  const setGettedUbic = ()=>{
+    setcurrentLatLng({
+      lat: props.geo.lat,
+      lng: props.geo.lng,
+    });
+    setcenterMap({
+      lat: props.geo.lat,
+      lng: props.geo.lng,
+    });
+  }
   const handleFiltrosFarmacias = () => {
     const { farmacias } = props.FarmaciasReducer;
     const {
@@ -131,19 +175,37 @@ function MapaFarmacias(props) {
           a.perfil_farmageo > b.perfil_farmageo
             ? -1
             : a.perfil_farmageo < b.perfil_farmageo
-            ? 1
-            : 0
+              ? 1
+              : 0
         )
     );
   };
-
   useEffect(() => {
     props.GET_FARMACIAS();
-  }, []);
+  }, [])
+
+
+
+
+
 
   useEffect(() => {
-    showCurrentLocation();
+    if (props.actualUbication) {
+      showCurrentLocation();
+    }
+
+
+  }, [props.actualUbication]);
+
+  useEffect(() => {
+    setGettedUbic()
+  }, [props.geo]);
+
+
+  useEffect(() => {
+    //showCurrentLocation();
     handleFiltrosFarmacias();
+    
   }, [props]);
 
   return (
@@ -161,21 +223,22 @@ function MapaFarmacias(props) {
           <div className="row">
             {farmacias
               ? farmacias.map((f, index) => {
-                  return (
-                    <ItemMapList
-                      farmacia={f}
-                      key={index}
-                      handleCentrarFarmacia={handleCentrarFarmacia}
-                      bold={f.usuario === centrarFarmacia}
-                      nextPage={props.nextPage}
-                    />
-                  );
-                })
+                return (
+                  <ItemMapList
+                    farmacia={f}
+                    key={index}
+                    handleCentrarFarmacia={handleCentrarFarmacia}
+                    bold={f.usuario === centrarFarmacia}
+                    nextPage={props.nextPage}
+                  />
+                );
+              })
               : null}
           </div>
         </div>
       </div>
       <div className="col-sm p-0" style={{ height: "70vh" }}>
+        {console.log(currentLatLng,farmacias,centrarFarmacia,centerMap)}
         <Map
           myposition={currentLatLng}
           farmacias={farmacias}
