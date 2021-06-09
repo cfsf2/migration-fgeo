@@ -1,20 +1,24 @@
 import axios from "axios";
 import { apiFarmageo } from "../../config";
 
+import '../../helpers/requestParser';
+
+
+
 export const GET_FARMACIAS = (token) => {
-  return (dispatch) => {
-    axios
-      .get(apiFarmageo + "/farmacias", {})
-      .then(function (response) {
-        dispatch({
-          type: "GET_FARMACIAS",
-          payload: response.data,
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+    return (dispatch) => {
+        axios
+            .get(apiFarmageo + "/farmacias", {})
+            .then(function (response) {
+                dispatch({
+                    type: "GET_FARMACIAS",
+                    payload: response.data,
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
 };
 
 export const SOLICITUD_REGISTRO_FARMACIA = (solicitud) => {
@@ -30,20 +34,20 @@ export const SOLICITUD_REGISTRO_FARMACIA = (solicitud) => {
       `;
 
     return axios
-      .post(apiFarmageo + "/pedidos/email", {
-          destinatario: emailFarmacia + ";santiagoalarcon2@hotmail.com; comercial@farmageo.com.ar",
-          asunto: "Solicitud de registro Farmageo",
-          html: html,
-        
-      })
-      .then(function (response) {
-        console.log(response)
-        return true;
-      })
-      .catch(function (error) {
-        console.log(error);
-        alert('Ha ocurrido un error, intente por favor más tarde.')
-        return false
-      });
+        .post(apiFarmageo + "/pedidos/email", {
+            destinatario: emailFarmacia + ";comercial@farmageo.com.ar",
+            asunto: "Solicitud de registro Farmageo",
+            html: html,
+
+        })
+        .then(function (response) {
+            console.log(response)
+            return true;
+        })
+        .catch(function (error) {
+            console.log(error);
+            alert('Ha ocurrido un error, intente por favor más tarde.')
+            return false
+        });
 };
 
