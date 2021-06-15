@@ -48,7 +48,7 @@ function ItemInfoMarker(props) {
                         }
                     >
                         Ver farmacia
-          </a>
+                    </a>
                 </div>
             </div>
         </div>
@@ -141,6 +141,6 @@ export function MapContainer(props) {
 }
 
 export default GoogleApiWrapper({
-    apiKey: "AIzaSyD2Q_tdFCSznHIV32IEuLkUno2bzhy7518" //esta esta a nombre de Tecno.alarcon
-    //AIzaSyD_4xrDbxnc4N3KGZEXvT9ZFZu2cQbmCmU
+    apiKey: "AIzaSyBZ7-k763QmTCxIQR_GiiMD0HmnaYPWvvo"
+
 })(MapContainer);
