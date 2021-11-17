@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { apiFarmageo } from "../../../config";
+
 class ImgUploader extends Component {
   constructor(props) {
+    super(props);
     this.state = {
       imagen: null,
     };
