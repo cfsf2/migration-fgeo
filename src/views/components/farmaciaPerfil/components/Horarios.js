@@ -32,6 +32,7 @@ function Horarios(props) {
     >
       {horarios.length > 0 ? (
         horarios.map((h, i) => {
+          if (!h.habilitado) return null;
           return (
             <div className="row my-1" key={i}>
               <div className="col-5">
