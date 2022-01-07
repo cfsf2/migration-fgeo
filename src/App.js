@@ -2,6 +2,7 @@ import React, { useState } from "react";
 //import { HashRouter, Route, Switch } from 'react-router-dom';
 import "./css/farmacias.css";
 import "./css/switch.css";
+import { base } from "./config";
 
 // import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import { HashRouter, Route, Switch } from "react-router-dom";
@@ -66,7 +67,7 @@ function App() {
   console.log(testing);
   return (
     <HashRouter>
-      {testing !== "https://www.farmageo.com.ar/" ? (
+      {testing !== base ? (
         <div
           className="leyendatesting"
           style={{
