@@ -64,11 +64,10 @@ const RegistrarFarmacia = React.lazy(() =>
 function App() {
   const [modalState, setmodalState] = useState(true);
   const testing = window.location.origin;
-  console.log(base);
-  console.log(testing);
+
   return (
     <HashRouter>
-      {testing === "https://farmageo.testingdev.ml" ? (
+      {testing !== base ? (
         <div
           className="leyendatesting"
           style={{
