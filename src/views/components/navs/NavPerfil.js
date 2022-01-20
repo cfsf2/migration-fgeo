@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {
   GET_CATEGORIAS,
-  SET_CATEGORIA
+  SET_CATEGORIA,
 } from "../../../redux/actions/ProductosActions";
 
 import { connect } from "react-redux";
@@ -21,6 +21,7 @@ import Login from "../modales/Login";
 import Registro from "../modales/Registro";
 import { GET_AUTH } from "../../../redux/actions/UsuarioActions";
 import Carrito from "../compras/Carrito";
+import { InputBuscador } from "./components/InputBuscador";
 
 import axios from "axios";
 import { apiFarmageo } from "../../../config";
@@ -35,7 +36,7 @@ class NavPerfil extends Component {
       ubicacion_default: "",
       showCarrito: false,
       search: "producto",
-      txtbusqueda: this.props.txtbusqueda
+      txtbusqueda: this.props.txtbusqueda,
     };
     this.handleCategoria = this.handleCategoria.bind(this);
     this.handleSeccionCategorias = this.handleSeccionCategorias.bind(this);
@@ -72,7 +73,7 @@ class NavPerfil extends Component {
     const value = target.value;
     const name = target.name;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   }
 
@@ -85,7 +86,7 @@ class NavPerfil extends Component {
     if (ubicacion_default) {
       this.setState({
         ubicacion_default: ubicacion_default,
-        farmacia
+        farmacia,
       });
     }
     var farmacia = this.handlequery().get("u");
@@ -105,7 +106,7 @@ class NavPerfil extends Component {
     const target = event.nativeEvent.target;
     const value = target.value;
     this.setState({
-      categoria: value
+      categoria: value,
     });
     this.handleSeccionCategorias(value);
   }
@@ -119,8 +120,8 @@ class NavPerfil extends Component {
   }
 
   handleCarrito() {
-    this.setState(prevState => ({
-      showCarrito: !prevState.showCarrito
+    this.setState((prevState) => ({
+      showCarrito: !prevState.showCarrito,
     }));
   }
 
@@ -139,7 +140,7 @@ class NavPerfil extends Component {
             style={{
               position: "fixed",
               zIndex: 100,
-              backgroundColor: "rgb(43 52 85)"
+              backgroundColor: "rgb(43 52 85)",
             }}
           >
             <div className="container-fluid">
@@ -156,10 +157,10 @@ class NavPerfil extends Component {
                   >
                     {farmaciaSelected
                       ? "Farmacia " +
-                      farmaciaSelected.nombre +
-                      ", " +
-                      farmaciaSelected.localidad +
-                      ", Santa Fe"
+                        farmaciaSelected.nombre +
+                        ", " +
+                        farmaciaSelected.localidad +
+                        ", Santa Fe"
                       : ""}
                   </a>
                 </div>
@@ -207,32 +208,32 @@ class NavPerfil extends Component {
                   <ul className="navbar-nav ml-auto">
                     {farmaciaSelected ? (
                       farmaciaSelected.perfil_farmageo !==
-                        "vender_online" ? null : this.state.showcategorias ? (
-                          <>
-                            <li
-                              className="nav-item hide-desktop"
-                              style={{ fontSize: 11 }}
+                      "vender_online" ? null : this.state.showcategorias ? (
+                        <>
+                          <li
+                            className="nav-item hide-desktop"
+                            style={{ fontSize: 11 }}
+                          >
+                            <select
+                              value={categoriaFiltro}
+                              onChange={this.handleCategoria}
+                              style={{
+                                backgroundColor: "transparent",
+                                color: "#ababa1",
+                              }}
                             >
-                              <select
-                                value={categoriaFiltro}
-                                onChange={this.handleCategoria}
+                              <option
+                                value="all"
                                 style={{
                                   backgroundColor: "transparent",
-                                  color: "#ababa1"
+                                  color: "#ababa1",
+                                  fontSize: 11,
                                 }}
                               >
-                                <option
-                                  value="all"
-                                  style={{
-                                    backgroundColor: "transparent",
-                                    color: "#ababa1",
-                                    fontSize: 11
-                                  }}
-                                >
-                                  Todas las categorías
+                                Todas las categorías
                               </option>
-                                {categorias
-                                  ? categorias.map((cat, i) => {
+                              {categorias
+                                ? categorias.map((cat, i) => {
                                     return (
                                       <option
                                         value={cat._id}
@@ -240,18 +241,18 @@ class NavPerfil extends Component {
                                         style={{
                                           backgroundColor: "transparent",
                                           color: "#ababa1",
-                                          fontSize: 11
+                                          fontSize: 11,
                                         }}
                                       >
                                         {cat.nombre}
                                       </option>
                                     );
                                   })
-                                  : null}
-                              </select>
-                            </li>
-                            {categorias
-                              ? categorias.map((cat, i) => {
+                                : null}
+                            </select>
+                          </li>
+                          {categorias
+                            ? categorias.map((cat, i) => {
                                 return cat.destacada ? (
                                   <li className="nav-item hide-desktop" key={i}>
                                     <a
@@ -267,9 +268,9 @@ class NavPerfil extends Component {
                                   </li>
                                 ) : null;
                               })
-                              : null}
-                          </>
-                        ) : null
+                            : null}
+                        </>
+                      ) : null
                     ) : null}
 
                     {auth && user_farmageo ? (
@@ -357,79 +358,8 @@ class NavPerfil extends Component {
             </a>
           </div>
           <div className="col-md-5">
-            <div className="buscador-background">
-              <div className="d-inline">
-                <div className="dropdown d-inline">
-                  <a href="#" id="imageDropdown" data-toggle="dropdown">
-                    <img
-                      alt=""
-                      src={search === "farmacia" ? iconFarmacia : forma1}
-                      className="search-select-icons mr-1"
-                    />
-                    <img alt="" src={Trazado230} style={{ width: "10px" }} />
-                  </a>
-                  <ul
-                    className="dropdown-menu mt-3"
-                    role="menu"
-                    aria-labelledby="imageDropdown"
-                    style={{ border: "solid 1px #bab8b8", borderRadius: 13 }}
-                    align="center"
-                  >
-                    <li role="presentation" align="left">
-                      <button
-                        role="menuitem"
-                        tabIndex="-1"
-                        onClick={() =>
-                          this.setState({ search: "farmacia", txtbusqueda: "" })
-                        }
-                        style={{ border: "none", background: "none" }}
-                      >
-                        <img
-                          alt=""
-                          src={iconFarmacia}
-                          className="search-select-icons mr-3"
-                        />
-                        Farmacia
-                      </button>
-                    </li>
-                    <li
-                      style={{ borderBottom: "solid 0.8px #bab8b8" }}
-                      className="mx-2 my-2"
-                    ></li>
-                    <li role="presentation" align="left">
-                      <button
-                        role="menuitem"
-                        tabIndex="-1"
-                        onClick={() =>
-                          this.setState({ search: "producto", txtbusqueda: "" })
-                        }
-                        style={{ border: "none", background: "none" }}
-                      >
-                        <img
-                          alt=""
-                          src={forma1}
-                          className="search-select-icons mr-3"
-                        />
-                        Producto
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="d-inline search-input">
-                <input
-                  type="text"
-                  placeholder={`¿Qué ${search} estás buscando?`}
-                  className="input-search"
-                  onChange={this.handleInputChange}
-                  name="txtbusqueda"
-                  value={this.state.txtbusqueda}
-                />
-              </div>
-              <div className="d-inline search-lupa" onClick={this.handleSearch}>
-                <img alt="" src={lupa} alt="" id="icono-lupa" />
-              </div>
-            </div>
+            <InputBuscador {...this.props} />
+            <InputBuscador {...this.props} />
           </div>
           <div className="col-md-3 hide-mobile" align="center">
             <button className="carrito" onClick={this.handleCarrito}>
@@ -442,61 +372,70 @@ class NavPerfil extends Component {
         {farmaciaSelected ? (
           farmaciaSelected.perfil_farmageo !== "vender_online" ? null : (
             <div className="row d-flex   py-0 nav-inferior">
-            <div className="col-md-2   hide-mobile" align="center">
-              <select
-                className="categoria-select py-3"
-                value={categoriaFiltro}
-                onChange={this.handleCategoria}
-              >
-                <option className="categoria-icons-select col-md-2" value="all">
-                  {`Buscá por 
+              <div className="col-md-2   hide-mobile" align="center">
+                <select
+                  className="categoria-select py-3"
+                  value={categoriaFiltro}
+                  onChange={this.handleCategoria}
+                >
+                  <option
+                    className="categoria-icons-select col-md-2"
+                    value="all"
+                  >
+                    {`Buscá por 
                     Categorías`}
-                </option>
-                {categorias
-                  ? categorias.map((cat, i) => {
-                      return (
-                        <option
-                          className="categoria-icons-select"
-                          value={cat._id}
+                  </option>
+                  {categorias
+                    ? categorias.map((cat, i) => {
+                        return (
+                          <option
+                            className="categoria-icons-select"
+                            value={cat._id}
+                            key={i}
+                          >
+                            {cat.nombre}
+                          </option>
+                        );
+                      })
+                    : null}
+                </select>
+              </div>
+              <div
+                style={{ borderLeft: "solid 1px #4f9cb5" }}
+                className="col-md-2 px-0 hide-mobile hover-bg-4f9cb5"
+                align="center"
+              >
+                <button
+                  style={{ width: "100%", height: "100%" }}
+                  className="nav-inferior-link"
+                >
+                  Pedí tus recetas
+                </button>
+              </div>
+              {categorias
+                ? categorias.map((cat, i) => {
+                    let styleMenu = {
+                      borderLeft: "solid 1px #4f9cb5",
+                    };
+                    return cat.destacada ? (
+                      <div
+                        style={styleMenu}
+                        className="col-md-2 px-0 hide-mobile hover-bg-4f9cb5"
+                        align="center"
+                      >
+                        <button
+                          style={{ width: "100%", height: "100%" }}
+                          className="nav-inferior-link"
+                          onClick={() => this.handleSeccionCategorias(cat._id)}
                           key={i}
                         >
                           {cat.nombre}
-                        </option>
-                      );
-                    })
-                  : null}
-              </select>
-            </div>
-            <div style={{borderLeft:"solid 1px #4f9cb5"}} className="col-md-2 px-0 hide-mobile hover-bg-4f9cb5" align="center">
-                <button
-                style={{width:"100%", height:"100%"}}
-                  className="nav-inferior-link"
-                >
-
-                  Pedí tus recetas
                         </button>
-              </div>
-            {categorias
-              ? categorias.map((cat, i) => {
-                  let styleMenu={
-                    borderLeft:"solid 1px #4f9cb5",
-                    
-                  }
-                  return cat.destacada ? (
-                    <div style={styleMenu} className="col-md-2 px-0 hide-mobile hover-bg-4f9cb5"  align="center">
-                      <button
-                      style={{width:"100%", height:"100%"}}
-                        className="nav-inferior-link"
-                        onClick={() => this.handleSeccionCategorias(cat._id)}
-                        key={i}
-                      >
-                        {cat.nombre}
-                      </button>
-                    </div>
-                  ) : null;
-                })
-              : null}
-          </div>
+                      </div>
+                    ) : null;
+                  })
+                : null}
+            </div>
           )
         ) : null}
         <Carrito show={showCarrito} />
@@ -508,18 +447,18 @@ class NavPerfil extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     ProductosReducer: state.ProductosReducer,
     UsuarioReducer: state.UsuarioReducer,
-    PedidosReducer: state.PedidosReducer
+    PedidosReducer: state.PedidosReducer,
   };
 };
 
 const mapDispatchToProps = {
   GET_CATEGORIAS,
   SET_CATEGORIA,
-  GET_AUTH
+  GET_AUTH,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavPerfil);
