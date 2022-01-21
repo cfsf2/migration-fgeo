@@ -10,7 +10,6 @@ import { GET_FARMACIAS } from "../../../../redux/actions/FarmaciasActions";
 import { getCurrentCity } from "../../../../DataFetcher/DFUbicationMap";
 
 function ItemMapList({ farmacia, handleCentrarFarmacia, bold, nextPage }) {
-
   return (
     <div className="col-sm-12 itemMapList py-2">
       <button
@@ -81,14 +80,14 @@ function MapaFarmacias(props) {
     lng: -60.681875,
   });
 
-  console.log(props)
+  console.log(props);
 
   const [centrarFarmacia, setcentrarFarmacia] = useState("");
   const [farmacias, setfarmacias] = useState([]);
 
   const removeAccents = (str) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-  }
+  };
   const handleCentrarFarmacia = (farmacia, centered) => {
     setcentrarFarmacia(farmacia.usuario);
 
@@ -101,15 +100,22 @@ function MapaFarmacias(props) {
   const showCurrentLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-
-        getCurrentCity(position.coords.latitude, position.coords.longitude,).then(city => {
+        getCurrentCity(
+          position.coords.latitude,
+          position.coords.longitude
+        ).then((city) => {
           if (city.ubicacion.provincia.id === "82") {
             if (city.ubicacion.municipio.nombre === null) {
-              props.handleActualPosition("ROSARIO")
-              sessionStorage.setItem("ubicacion_default","ROSARIO")
+              props.handleActualPosition("ROSARIO");
+              sessionStorage.setItem("ubicacion_default", "ROSARIO");
             } else {
-              props.handleActualPosition(removeAccents(city.ubicacion.municipio.nombre).toUpperCase())
-              sessionStorage.setItem("ubicacion_default",removeAccents(city.ubicacion.municipio.nombre).toUpperCase())
+              props.handleActualPosition(
+                removeAccents(city.ubicacion.municipio.nombre).toUpperCase()
+              );
+              sessionStorage.setItem(
+                "ubicacion_default",
+                removeAccents(city.ubicacion.municipio.nombre).toUpperCase()
+              );
             }
             setcurrentLatLng({
               lat: position.coords.latitude,
@@ -120,7 +126,6 @@ function MapaFarmacias(props) {
               lng: position.coords.longitude,
             });
           } else {
-            
             setcurrentLatLng({
               lat: -32.949693,
               lng: -60.681875,
@@ -129,19 +134,15 @@ function MapaFarmacias(props) {
               lat: -32.949693,
               lng: -60.681875,
             });
-            props.handleActualPosition("ROSARIO")
+            props.handleActualPosition("ROSARIO");
           }
-
-        })
-
-
-
+        });
       });
     } else {
       console.log("error al obtener geolocación");
     }
   };
-  const setGettedUbic = ()=>{
+  const setGettedUbic = () => {
     setcurrentLatLng({
       lat: props.geo.lat,
       lng: props.geo.lng,
@@ -150,7 +151,7 @@ function MapaFarmacias(props) {
       lat: props.geo.lat,
       lng: props.geo.lng,
     });
-  }
+  };
   const handleFiltrosFarmacias = () => {
     const { farmacias } = props.FarmaciasReducer;
     const {
@@ -175,41 +176,34 @@ function MapaFarmacias(props) {
           a.perfil_farmageo > b.perfil_farmageo
             ? -1
             : a.perfil_farmageo < b.perfil_farmageo
-              ? 1
-              : 0
+            ? 1
+            : 0
         )
     );
   };
   useEffect(() => {
     props.GET_FARMACIAS();
-  }, [])
-
-
-
-
-
+  }, []);
 
   useEffect(() => {
     if (props.actualUbication) {
       showCurrentLocation();
     }
-
-
   }, [props.actualUbication]);
 
   useEffect(() => {
-    setGettedUbic()
+    setGettedUbic();
   }, [props.geo]);
-
 
   useEffect(() => {
     //showCurrentLocation();
     handleFiltrosFarmacias();
-    
   }, [props]);
 
   return (
     <div className="row centrado-2">
+      {/* 
+      // Listado Lateral de Farmacias
       <div
         className="col-sm-4 p-0 mb-3"
         style={{
@@ -236,9 +230,9 @@ function MapaFarmacias(props) {
               : null}
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="col-sm p-0" style={{ height: "70vh" }}>
-        {console.log(currentLatLng,farmacias,centrarFarmacia,centerMap)}
+        {console.log(currentLatLng, farmacias, centrarFarmacia, centerMap)}
         <Map
           myposition={currentLatLng}
           farmacias={farmacias}
