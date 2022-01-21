@@ -2,6 +2,7 @@ import React, { useState } from "react";
 //import { HashRouter, Route, Switch } from 'react-router-dom';
 import "./css/farmacias.css";
 import "./css/switch.css";
+import { base } from "./config";
 
 // import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import { HashRouter, Route, Switch } from "react-router-dom";
@@ -63,10 +64,10 @@ const RegistrarFarmacia = React.lazy(() =>
 function App() {
   const [modalState, setmodalState] = useState(true);
   const testing = window.location.origin;
-  console.log(testing);
+
   return (
     <HashRouter>
-      {testing !== "https://www.farmageo.com.ar/" ? (
+      {testing !== base ? (
         <div
           className="leyendatesting"
           style={{
