@@ -3,6 +3,7 @@ import presion from "../../assets/images/presion.png";
 import inyeccion from "../../assets/images/inyeccion.png";
 import amarillos from "../../assets/images/amarillos.png";
 import whatsapp from "../../assets/images/whatsapp.png";
+import testcovid from "../../assets/images/covidtest.png";
 
 export const checkServicio = (serv, servicios) => {
   if (serv === "all") {
@@ -195,14 +196,18 @@ export const getServicio = (servicio, index) => {
         </div>
       );
       break;
-    /*default:
-        x =  servicio.tipo
-        break;*/
+    case "testcovid":
+      x = (
+        <div className="col-sm pt-4" key={index}>
+          <img src={testcovid} className="icons-md" alt="" />
+        </div>
+      );
+      break;
+    default:
+      return;
   }
   return x;
 };
-
-
 
 export const localidades = [
   "ACEBAL",
