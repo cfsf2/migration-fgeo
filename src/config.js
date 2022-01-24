@@ -3,5 +3,5 @@ module.exports = {
   apiFarmageo: "https://api.testingdev.ml",
   authFarmageo: "https://admin.farmageo.com.ar:8000",
   base: "https://app.farmageo.com.ar",
-  //apiFarmageo: "http://localhost:3110",
+  apiFarmageo: "http://localhost:3110",
 };

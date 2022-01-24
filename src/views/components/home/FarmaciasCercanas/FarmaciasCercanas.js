@@ -82,7 +82,6 @@ class FarmaciasCercanas extends Component {
   async componentDidUpdate(prevProps, prevState) {
     const { localidad_default } = this.props.UsuarioReducer;
     var search_farmacia = await this.handlequery().get("f");
-    console.log("SEARCH FARMACIAAAA ", typeof search_farmacia);
 
     if (search_farmacia === "") {
       if (prevState.search_farmacia !== search_farmacia) {
