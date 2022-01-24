@@ -14,6 +14,13 @@ export const InputBuscador = (props) => {
     setSearch("producto");
     return;
   });
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSearch(search, txtbusqueda);
+    }
+    return;
+  };
   return (
     <div className="buscador-background">
       <div className="d-inline">
@@ -33,10 +40,12 @@ export const InputBuscador = (props) => {
           onChange={(e) => setTexto(e.target.value)}
           name="txtbusqueda"
           value={txtbusqueda}
+          onKeyDown={(e) => handleKeyDown(e)}
         />
       </div>
       <div
         className="d-inline search-lupa"
+        style={{ cursor: "pointer" }}
         onClick={() => handleSearch(search, txtbusqueda)}
       >
         <img src={lupa} alt="lupa" id="icono-lupa" />
