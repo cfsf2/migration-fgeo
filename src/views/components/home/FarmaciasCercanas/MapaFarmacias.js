@@ -80,10 +80,9 @@ function MapaFarmacias(props) {
     lng: -60.681875,
   });
 
-  console.log(props);
-
   const [centrarFarmacia, setcentrarFarmacia] = useState("");
   const [farmacias, setfarmacias] = useState([]);
+  const [listado, setListado] = useState(true);
 
   const removeAccents = (str) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -201,34 +200,42 @@ function MapaFarmacias(props) {
   }, [props]);
 
   return (
-    <div className="row centrado-2">
-      <div
-        className="col-sm-4 p-0 mb-3"
-        style={{
-          height: "70vh",
-          overflowY: "scroll",
-          border: "solid 1px #bbb4b4",
-          borderRadius: "13px",
-        }}
+    <div className="row centrado-2" style={{ position: "relative" }}>
+      <button
+        style={{ position: "absolute", top: "-50px", left: "100px" }}
+        onClick={() => setListado((state) => !state)}
       >
-        <div className="container">
-          <div className="row">
-            {farmacias
-              ? farmacias.map((f, index) => {
-                  return (
-                    <ItemMapList
-                      farmacia={f}
-                      key={index}
-                      handleCentrarFarmacia={handleCentrarFarmacia}
-                      bold={f.usuario === centrarFarmacia}
-                      nextPage={props.nextPage}
-                    />
-                  );
-                })
-              : null}
+        LISTADO
+      </button>
+      {listado ? (
+        <div
+          className="col-sm-4 p-0 mb-3"
+          style={{
+            height: "70vh",
+            overflowY: "scroll",
+            border: "solid 1px #bbb4b4",
+            borderRadius: "13px",
+          }}
+        >
+          <div className="container">
+            <div className="row">
+              {farmacias
+                ? farmacias.map((f, index) => {
+                    return (
+                      <ItemMapList
+                        farmacia={f}
+                        key={index}
+                        handleCentrarFarmacia={handleCentrarFarmacia}
+                        bold={f.usuario === centrarFarmacia}
+                        nextPage={props.nextPage}
+                      />
+                    );
+                  })
+                : null}
+            </div>
           </div>
         </div>
-      </div>
+      ) : null}
       <div className="col-sm p-0" style={{ height: "70vh" }}>
         {console.log(currentLatLng, farmacias, centrarFarmacia, centerMap)}
         <Map
