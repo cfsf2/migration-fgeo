@@ -71,6 +71,7 @@ function ItemMapList({ farmacia, handleCentrarFarmacia, bold, nextPage }) {
 }
 
 function MapaFarmacias(props) {
+  const { listado } = props;
   const [currentLatLng, setcurrentLatLng] = useState({
     lat: -32.949693,
     lng: -60.681875,
@@ -82,7 +83,6 @@ function MapaFarmacias(props) {
 
   const [centrarFarmacia, setcentrarFarmacia] = useState("");
   const [farmacias, setfarmacias] = useState([]);
-  const [listado, setListado] = useState(true);
 
   const removeAccents = (str) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -202,12 +202,6 @@ function MapaFarmacias(props) {
 
   return (
     <div className="row centrado-2" style={{ position: "relative" }}>
-      <button
-        style={{ position: "absolute", top: "-50px", left: "100px" }}
-        onClick={() => setListado((state) => !state)}
-      >
-        LISTADO
-      </button>
       {listado ? (
         <div
           className="col-sm-4 p-0 mb-3"
