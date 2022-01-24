@@ -21,7 +21,7 @@ import Login from "../modales/Login";
 import Registro from "../modales/Registro";
 import { GET_AUTH } from "../../../redux/actions/UsuarioActions";
 import Carrito from "../compras/Carrito";
-import { InputBuscador } from "./components/InputBuscador";
+import { NavCentral } from "./components/NavCentral";
 
 import axios from "axios";
 import { apiFarmageo } from "../../../config";
@@ -351,22 +351,15 @@ class NavPerfil extends Component {
         {/*<!-- FIN nav parte superior -->*/}
 
         {/*<!-- nav parte central -->*/}
-        <div className="row pt-4 pb-2 nav-central">
-          <div className="col-md-4 hide-mobile">
-            <a href={process.env.PUBLIC_URL + "/#/"}>
-              <img alt="" src={logo} className="logo-farmageo" />
-            </a>
-          </div>
-          <div className="col-md-5">
-            <InputBuscador {...this.props} />
-            <InputBuscador {...this.props} />
-          </div>
-          <div className="col-md-3 hide-mobile" align="center">
-            <button className="carrito" onClick={this.handleCarrito}>
-              Mi carrito <img alt="" src={iconCarrito} id="icon-carrito" />
-            </button>
-          </div>
-        </div>
+        <NavCentral
+          iconFarmacia={iconFarmacia}
+          forma1={forma1}
+          lupa={lupa}
+          iconCarrito={iconCarrito}
+          handleCarrito={this.handleCarrito}
+          carrito={carrito}
+          logo={logo}
+        />
         {/*<!-- FIN nav central -->*/}
 
         {farmaciaSelected ? (

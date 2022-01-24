@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   GET_CATEGORIAS,
-  SET_CATEGORIA
+  SET_CATEGORIA,
 } from "../../../redux/actions/ProductosActions";
 
 import { connect } from "react-redux";
@@ -16,11 +16,12 @@ import iconFarmacia from "../../../assets/images/Grupo 79.png";
 import Trazado230 from "../../../assets/images/Trazado 230.png";
 import lupa from "../../../assets/images/Lupa.png";
 
-import { useLocation } from 'react-router-dom'
+import { useLocation } from "react-router-dom";
 
 import Login from "../modales/Login";
 import Registro from "../modales/Registro";
 import SeleccionarUbicacion from "../modales/SeleccionarUbicacion";
+import { NavCentral } from "./components/NavCentral";
 import { GET_AUTH } from "../../../redux/actions/UsuarioActions";
 import Carrito from "../compras/Carrito";
 
@@ -45,17 +46,12 @@ function NavBuscarProductos(props) {
   }, []);
 
   useEffect(() => {
-
-    setubicacion_default(sessionStorage.getItem("ubicacion_default"))
-
-  }, [sessionStorage])
-
+    setubicacion_default(sessionStorage.getItem("ubicacion_default"));
+  }, [sessionStorage]);
 
   useEffect(() => {
-
     getUbicacionDefault();
-
-  }, [props])
+  }, [props]);
   const googleAnalytics = () => {
     ReactGA.initialize("G-6DDCQD6XV5");
     ReactGA.pageview(window.location.href);
@@ -78,13 +74,13 @@ function NavBuscarProductos(props) {
     }
   };
 
-  const handleCategoria = event => {
+  const handleCategoria = (event) => {
     const value = event.nativeEvent.target.value;
     setcategoria(value);
     SET_CATEGORIA(value);
   };
 
-  const handleSeccionCategorias = async categoria => {
+  const handleSeccionCategorias = async (categoria) => {
     await props.SET_CATEGORIA(categoria);
     window.location.href = `${process.env.PUBLIC_URL}/#/seleccionarfarmacia`;
   };
@@ -102,7 +98,7 @@ function NavBuscarProductos(props) {
           style={{
             position: "fixed",
             zIndex: 100,
-            backgroundColor: "rgb(43 52 85)"
+            backgroundColor: "rgb(43 52 85)",
           }}
         >
           <div className="container-fluid">
@@ -143,8 +139,10 @@ function NavBuscarProductos(props) {
         >
           <nav className="navbar navbar-expand-lg navbar-dark navbar-fixed-top m-0">
             <div className="container-fluid">
-              <a onClick={() => props.setmodalState(!props.modalState)}
-                className="nav-farmageo-back" >
+              <a
+                onClick={() => props.setmodalState(!props.modalState)}
+                className="nav-farmageo-back"
+              >
                 {ubicacion_default}
                 <img alt="" src={logoFarmageo} style={{ width: "130px" }} />
               </a>
@@ -173,7 +171,7 @@ function NavBuscarProductos(props) {
                           onChange={handleCategoria}
                           style={{
                             backgroundColor: "transparent",
-                            color: "#ababa1"
+                            color: "#ababa1",
                           }}
                         >
                           <option
@@ -181,47 +179,47 @@ function NavBuscarProductos(props) {
                             style={{
                               backgroundColor: "transparent",
                               color: "#ababa1",
-                              fontSize: 11
+                              fontSize: 11,
                             }}
                           >
                             Todas las categorías
                           </option>
                           {categorias
                             ? categorias.map((cat, i) => {
-                              return (
-                                <option
-                                  value={cat._id}
-                                  key={i}
-                                  style={{
-                                    backgroundColor: "transparent",
-                                    color: "#ababa1",
-                                    fontSize: 11
-                                  }}
-                                >
-                                  {cat.nombre}
-                                </option>
-                              );
-                            })
+                                return (
+                                  <option
+                                    value={cat._id}
+                                    key={i}
+                                    style={{
+                                      backgroundColor: "transparent",
+                                      color: "#ababa1",
+                                      fontSize: 11,
+                                    }}
+                                  >
+                                    {cat.nombre}
+                                  </option>
+                                );
+                              })
                             : null}
                         </select>
                       </li>
                       {categorias
                         ? categorias.map((cat, i) => {
-                          return cat.destacada ? (
-                            <li className="nav-item hide-desktop" key={i}>
-                              <a
-                                className="nav-link"
-                                onClick={() =>
-                                  handleSeccionCategorias(cat._id)
-                                }
-                                key={i}
-                                style={{ color: "#ababa1", fontSize: 11 }}
-                              >
-                                {cat.nombre}
-                              </a>
-                            </li>
-                          ) : null;
-                        })
+                            return cat.destacada ? (
+                              <li className="nav-item hide-desktop" key={i}>
+                                <a
+                                  className="nav-link"
+                                  onClick={() =>
+                                    handleSeccionCategorias(cat._id)
+                                  }
+                                  key={i}
+                                  style={{ color: "#ababa1", fontSize: 11 }}
+                                >
+                                  {cat.nombre}
+                                </a>
+                              </li>
+                            ) : null;
+                          })
                         : null}
                     </>
                   ) : null}
@@ -304,97 +302,15 @@ function NavBuscarProductos(props) {
       {/*<!-- FIN nav parte superior -->*/}
 
       {/*<!-- nav parte central -->*/}
-      <div className="row pt-4 pb-2 nav-central">
-        <div className="col-md-4">
-          <a href={process.env.PUBLIC_URL + "/#/"}>
-            <img alt="" src={logo} className="logo-farmageo" />
-          </a>
-        </div>
-        <div className="col-md-5">
-          <div className="buscador-background">
-            <div className="d-inline">
-              <div className="dropdown d-inline">
-                <a href="#" id="imageDropdown" data-toggle="dropdown">
-                  <img
-                    alt=""
-                    src={search === "farmacia" ? iconFarmacia : forma1}
-                    className="search-select-icons mr-1"
-                  />
-                  <img alt="" src={Trazado230} style={{ width: "10px" }} />
-                </a>
-                <ul
-                  className="dropdown-menu mt-3"
-                  role="menu"
-                  aria-labelledby="imageDropdown"
-                  style={{ border: "solid 1px #bab8b8", borderRadius: 13 }}
-                  align="center"
-                >
-                  <li role="presentation" align="left">
-                    <button
-                      role="menuitem"
-                      tabIndex="-1"
-                      onClick={() => {
-                        setsearch("farmacia");
-                        settxtbusqueda("");
-                      }}
-                      style={{ border: "none", background: "none" }}
-                    >
-                      <img
-                        alt=""
-                        src={iconFarmacia}
-                        className="search-select-icons mr-3"
-                      />
-                      Farmacia
-                    </button>
-                  </li>
-                  <li
-                    style={{ borderBottom: "solid 0.8px #bab8b8" }}
-                    className="mx-2 my-2"
-                  ></li>
-                  <li role="presentation" align="left">
-                    <button
-                      role="menuitem"
-                      tabIndex="-1"
-                      onClick={() => {
-                        setsearch("producto");
-                        settxtbusqueda("");
-                      }}
-                      style={{ border: "none", background: "none" }}
-                    >
-                      <img
-                        alt=""
-                        src={forma1}
-                        className="search-select-icons mr-3"
-                      />
-                      Producto
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="d-inline search-input">
-              <input
-                type="text"
-                onKeyPress={(e) => e.which === 13 ? handleSearch() : null}
-                placeholder={`¿Qué ${search} estás buscando?`}
-                className="input-search"
-                onChange={e => settxtbusqueda(e.nativeEvent.target.value)}
-                name="txtbusqueda"
-                value={txtbusqueda}
-                style={{ backgroundColor: "transparent" }}
-              />
-            </div>
-            <div className="d-inline search-lupa" onClick={handleSearch}>
-              <img alt="" src={lupa} alt="" id="icono-lupa" />
-            </div>
-          </div>
-        </div>
-        <div className="col-md-3 hide-mobile" align="center">
-          <button className="carrito" onClick={handleCarrito}>
-            Mi carrito <img alt="" src={iconCarrito} id="icon-carrito" />
-          </button>
-        </div>
-      </div>
+      <NavCentral
+        iconFarmacia={iconFarmacia}
+        forma1={forma1}
+        lupa={lupa}
+        iconCarrito={iconCarrito}
+        handleCarrito={handleCarrito}
+        carrito={carrito}
+        logo={logo}
+      />
       {/*<!-- FIN nav central -->*/}
 
       <div className="row d-flex   py-0 nav-inferior">
@@ -410,70 +326,79 @@ function NavBuscarProductos(props) {
             </option>
             {categorias
               ? categorias.map((cat, i) => {
-                return (
-                  <option
-                    className="categoria-icons-select"
-                    value={cat._id}
-                    key={i}
-                  >
-                    {cat.nombre}
-                  </option>
-                );
-              })
+                  return (
+                    <option
+                      className="categoria-icons-select"
+                      value={cat._id}
+                      key={i}
+                    >
+                      {cat.nombre}
+                    </option>
+                  );
+                })
               : null}
           </select>
         </div>
-        <div style={{ borderLeft: "solid 1px #4f9cb5" }} className="col-md-2 px-0 hide-mobile hover-bg-4f9cb5" align="center">
+        <div
+          style={{ borderLeft: "solid 1px #4f9cb5" }}
+          className="col-md-2 px-0 hide-mobile hover-bg-4f9cb5"
+          align="center"
+        >
           <button
             style={{ width: "100%", height: "100%" }}
             className="nav-inferior-link"
           >
-
             Pedí tus recetas
-                        </button>
+          </button>
         </div>
         {categorias
           ? categorias.map((cat, i) => {
-            let styleMenu = {
-              borderLeft: "solid 1px #4f9cb5",
-
-            }
-            return cat.destacada ? (
-              <div style={styleMenu} className="col-md-2 px-0 hide-mobile hover-bg-4f9cb5" align="center">
-                <button
-                  style={{ width: "100%", height: "100%" }}
-                  className="nav-inferior-link"
-                  onClick={() => handleSeccionCategorias(cat._id)}
-                  key={i}
+              let styleMenu = {
+                borderLeft: "solid 1px #4f9cb5",
+              };
+              return cat.destacada ? (
+                <div
+                  style={styleMenu}
+                  className="col-md-2 px-0 hide-mobile hover-bg-4f9cb5"
+                  align="center"
                 >
-                  {cat.nombre}
-                </button>
-              </div>
-            ) : null;
-          })
+                  <button
+                    style={{ width: "100%", height: "100%" }}
+                    className="nav-inferior-link"
+                    onClick={() => handleSeccionCategorias(cat._id)}
+                    key={i}
+                  >
+                    {cat.nombre}
+                  </button>
+                </div>
+              ) : null;
+            })
           : null}
       </div>
       <Carrito show={showCarrito} />
       <Login />
       <Registro />
-      <SeleccionarUbicacion setmodalState={props.setmodalState} modalState={props.modalState} />
+      <SeleccionarUbicacion
+        setmodalState={props.setmodalState}
+        modalState={props.modalState}
+      />
     </>
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     ProductosReducer: state.ProductosReducer,
     UsuarioReducer: state.UsuarioReducer,
     farms_cerca_cant: state.FarmaciasReducer.farms_cerca_cant,
-    PedidosReducer: state.PedidosReducer
+    PedidosReducer: state.PedidosReducer,
   };
 };
 
 const mapDispatchToProps = {
   GET_CATEGORIAS,
   SET_CATEGORIA,
-  GET_AUTH
+  GET_AUTH,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBuscarProductos);

@@ -16,7 +16,7 @@ import iconFarmacia from "../../../assets/images/Grupo 79.png";
 import Trazado230 from "../../../assets/images/Trazado 230.png";
 import lupa from "../../../assets/images/Lupa.png";
 
-import { Buscador } from "./components/Buscador";
+import { NavCentral } from "./components/NavCentral";
 
 import Login from "../modales/Login";
 import Registro from "../modales/Registro";
@@ -353,25 +353,15 @@ class NavHome extends Component {
         {/*<!-- FIN nav parte superior -->*/}
 
         {/*<!-- nav parte central -->*/}
-        <div className="row pt-4 pb-2 nav-central">
-          <div className="col-md-3 hide-mobile">
-            <a href={process.env.PUBLIC_URL + "/#/"}>
-              <img alt="" src={logo} className="logo-farmageo" />
-            </a>
-          </div>
-          <Buscador
-            iconFarmacia={iconFarmacia}
-            forma1={forma1}
-            lupa={lupa}
-            className="d-flex col-md-6"
-          />
-          <div className="col-md-3 hide-mobile" align="center">
-            <button className="carrito" onClick={this.handleCarrito}>
-              Mi carrito <img alt="" src={iconCarrito} id="icon-carrito" />{" "}
-              {carrito.length}
-            </button>
-          </div>
-        </div>
+        <NavCentral
+          iconFarmacia={iconFarmacia}
+          forma1={forma1}
+          lupa={lupa}
+          iconCarrito={iconCarrito}
+          handleCarrito={this.handleCarrito}
+          carrito={carrito}
+          logo={logo}
+        />
         {/*<!-- FIN nav central -->*/}
 
         {this.props.hideCategorias ? null : (
