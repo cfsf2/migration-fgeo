@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import grupo2 from "../../../../assets/images/Grupo 2.png";
 import grupo1 from "../../../../assets/images/Grupo 1.png";
 import grupo3 from "../../../../assets/images/Grupo 3.png";
+import pharmacy from "../../../../assets/images/pharmacy.png";
 //import forma1 from "../../../../assets/images/Forma 1.png";
 import iconFarmacia from "../../../../assets/images/Grupo 79.png";
 
@@ -35,6 +36,7 @@ class FarmaciasCercanas extends Component {
       servicio: "all",
       horario: "all",
       search_farmacia: "",
+      listado: true,
     };
     this.handleFiltros = this.handleFiltros.bind(this);
     this.handlequery = this.handlequery.bind(this);
@@ -161,6 +163,13 @@ class FarmaciasCercanas extends Component {
             >
               <img
                 alt=""
+                src={pharmacy}
+                className="border-right px-2 btn"
+                onClick={() => this.setState({ listado: !this.state.listado })}
+                style={{ opacity: this.state.listado ? 1 : 0.4, width: "50px" }}
+              />
+              <img
+                alt=""
                 src={grupo3}
                 className="p-1 border-right px-2 btn"
                 onClick={() => this.setState({ ver: "listado" })}
@@ -208,6 +217,7 @@ class FarmaciasCercanas extends Component {
             nextPage={this.props.nextPage}
             search_farmacia={this.state.search_farmacia}
             filtroPerfilFarmageo={this.props.filtroPerfilFarmageo}
+            listado={this.state.listado}
           />
         )}
       </>
