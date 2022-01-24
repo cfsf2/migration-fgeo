@@ -2,7 +2,7 @@ import React from "react";
 import { InputBuscador } from "./InputBuscador";
 
 export const Buscador = (props) => {
-  const { iconFarmacia, forma1, lupa } = props;
+  const { iconFarmacia, forma1, lupa, className } = props;
   const handleSearch = (search, txtbusqueda) => {
     // const { search, txtbusqueda } = this.state;
     if (search === "farmacia") {
@@ -15,7 +15,7 @@ export const Buscador = (props) => {
     }
   };
   return (
-    <div>
+    <div className={className}>
       <InputBuscador
         iconFarmacia={iconFarmacia}
         forma1={forma1}

@@ -354,12 +354,17 @@ class NavHome extends Component {
 
         {/*<!-- nav parte central -->*/}
         <div className="row pt-4 pb-2 nav-central">
-          <div className="col-md-4 hide-mobile">
+          <div className="col-md-3 hide-mobile">
             <a href={process.env.PUBLIC_URL + "/#/"}>
               <img alt="" src={logo} className="logo-farmageo" />
             </a>
           </div>
-          <Buscador iconFarmacia={iconFarmacia} forma1={forma1} lupa={lupa} />
+          <Buscador
+            iconFarmacia={iconFarmacia}
+            forma1={forma1}
+            lupa={lupa}
+            className="d-flex col-md-6"
+          />
           <div className="col-md-3 hide-mobile" align="center">
             <button className="carrito" onClick={this.handleCarrito}>
               Mi carrito <img alt="" src={iconCarrito} id="icon-carrito" />{" "}
