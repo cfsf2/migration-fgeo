@@ -32,15 +32,18 @@ export const InputBuscador = (props) => {
         />
       </div>
       <div className=" input_container_center">
-        <input
-          type="text"
-          placeholder={`Busca tu ${farmacia ? "farmacia" : "producto"} aqui`}
-          className="input_container_center_input"
-          onChange={(e) => setTexto(e.target.value)}
-          name="txtbusqueda"
-          value={txtbusqueda}
-          onKeyDown={(e) => handleKeyDown(e)}
-        />
+        <form className="input_container_center_input">
+          <input
+            type="text"
+            placeholder={`Busca tu ${farmacia ? "farmacia" : "producto"} aqui`}
+            className="input_container_center_input"
+            onChange={(e) => setTexto(e.target.value)}
+            name="txtbusqueda"
+            value={txtbusqueda}
+            autocomplete="off"
+            onKeyDown={(e) => handleKeyDown(e)}
+          />
+        </form>
       </div>
       <div
         className="input_container_right"
