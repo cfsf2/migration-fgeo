@@ -9,7 +9,13 @@ import {
 import { GET_FARMACIAS } from "../../../../redux/actions/FarmaciasActions";
 import { getCurrentCity } from "../../../../DataFetcher/DFUbicationMap";
 
-function ItemMapList({ farmacia, handleCentrarFarmacia, bold, nextPage }) {
+function ItemMapList({
+  farmacia,
+  handleCentrarFarmacia,
+  bold,
+  nextPage,
+  distancia,
+}) {
   return (
     <div className="col-sm-12 itemMapList py-2">
       <button
@@ -45,7 +51,7 @@ function ItemMapList({ farmacia, handleCentrarFarmacia, bold, nextPage }) {
       <div className="row mt-4">
         <div className="col-3">
           <p>
-            <b>x m</b>
+            <b>{distancia}x m</b>
           </p>
           <p style={{ fontWeight: "lighter" }}>distancia</p>
         </div>
@@ -71,10 +77,30 @@ function ItemMapList({ farmacia, handleCentrarFarmacia, bold, nextPage }) {
 }
 
 const calcularDistancia = (punto, farmacia) => {
-  const diflat2 = Math.pow(farmacia.lat - punto.lat, 2);
-  const diflat1 = Math.pow(farmacia.log - punto.lng, 2);
-  const distancia = Math.sqrt(diflat2 + diflat1);
-  return distancia;
+  const lat1 = Number(farmacia.lat);
+  const lat2 = Number(punto.lat);
+  const lon1 = Number(farmacia.log);
+  const lon2 = Number(punto.lng);
+
+  const R = 6371; //km
+
+  const toRad = (deg) => {
+    return deg * (Math.PI / 180);
+  };
+
+  var x1 = lat2 - lat1;
+  var dLat = toRad(x1);
+  var x2 = lon2 - lon1;
+  var dLon = toRad(x2);
+  var a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(toRad(lat1)) *
+      Math.cos(toRad(lat2)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = R * c;
+  return Math.trunc(d * 1000); //m
 };
 
 function MapaFarmacias(props) {
@@ -199,8 +225,6 @@ function MapaFarmacias(props) {
   useEffect(() => {
     setGettedUbic();
   }, [props.geo]);
-  console.log("ubicacion actual");
-  console.log(currentLatLng);
 
   useEffect(() => {
     setfarmacias(() =>
@@ -230,6 +254,7 @@ function MapaFarmacias(props) {
             <div className="row">
               {farmacias
                 ? farmacias.map((f, index) => {
+                    const distancia = calcularDistancia(currentLatLng, f);
                     return (
                       <ItemMapList
                         farmacia={f}
@@ -237,6 +262,7 @@ function MapaFarmacias(props) {
                         handleCentrarFarmacia={handleCentrarFarmacia}
                         bold={f.usuario === centrarFarmacia}
                         nextPage={props.nextPage}
+                        distancia={distancia}
                       />
                     );
                   })
