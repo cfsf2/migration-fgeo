@@ -1,4 +1,5 @@
 import React from "react";
+import "./inputbuscador.css";
 
 export const InputBuscador = (props) => {
   const { iconFarmacia, forma1, lupa, handleSearch, farmacia } = props;
@@ -22,21 +23,19 @@ export const InputBuscador = (props) => {
     return;
   };
   return (
-    <div className="buscador-background">
-      <div className="d-inline">
-        <div className="d-inline">
-          <img
-            alt=""
-            src={farmacia ? iconFarmacia : forma1}
-            className="search-select-icons mr-2"
-          />
-        </div>
+    <div className="home_input_container">
+      <div className=" input_container_left">
+        <img
+          alt=""
+          src={farmacia ? iconFarmacia : forma1}
+          className="input_container_left_icon"
+        />
       </div>
-      <div className="d-inline search-input">
+      <div className=" input_container_center">
         <input
           type="text"
           placeholder={`Busca tu ${farmacia ? "farmacia" : "producto"} aqui`}
-          className="input-search"
+          className="input_container_center_input"
           onChange={(e) => setTexto(e.target.value)}
           name="txtbusqueda"
           value={txtbusqueda}
@@ -44,11 +43,11 @@ export const InputBuscador = (props) => {
         />
       </div>
       <div
-        className="d-inline search-lupa"
+        className="input_container_right"
         style={{ cursor: "pointer" }}
         onClick={() => handleSearch(search, txtbusqueda)}
       >
-        <img src={lupa} alt="lupa" id="icono-lupa" />
+        <img src={lupa} alt="lupa" className="input_container_right_lupa" />
       </div>
     </div>
   );

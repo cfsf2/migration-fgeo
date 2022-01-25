@@ -29,6 +29,8 @@
   background-repeat: no-repeat;
   height: 40px;
   width: 480px;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
 }
 
 #icono-lupa {
@@ -44,12 +46,18 @@
   border: none;
   outline-style: none;
   margin-top: 8px;
+  background-color: #00000000;
 }
 
 .select-search {
   border: none;
-  margin-left: 2px;
+
   outline-style: none;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
 .carrito {
@@ -101,12 +109,11 @@
   margin-right: 2rem;
   padding: 1rem;
   padding-right: 2rem;
-  width:99%
+  width: 99%;
 }
 
 .categoria-icons-select {
   border-bottom: solid 1px;
-
 }
 
 .nav-inferior-link {
@@ -590,10 +597,10 @@ div.descarga-app {
   display: none;
 }
 
-.hide-desktop{
+.hide-desktop {
   display: none;
 }
-.btn-carrito-mob{
+.btn-carrito-mob {
   display: none;
 }
 
@@ -601,7 +608,7 @@ div.descarga-app {
   .hide-mobile {
     display: none;
   }
-  .hide-desktop{
+  .hide-desktop {
     display: block;
   }
   #info-proceso img {
@@ -667,16 +674,16 @@ div.descarga-app {
     margin-left: 30%;
     display: block;
   }
-  #info-header-farmacia{
+  #info-header-farmacia {
     font-size: 10px;
   }
-  #info-header-farmacia img{
+  #info-header-farmacia img {
     display: block;
   }
-  .header-farmacia h1{
+  .header-farmacia h1 {
     font-size: 30px;
   }
-  .header-farmacia{
+  .header-farmacia {
     padding: 0;
   }
   .que-necesitas #precio {
@@ -696,7 +703,7 @@ div.descarga-app {
   .titular-farmacia {
     font-size: 1em;
   }
-  .icons-que-necesitas button{
+  .icons-que-necesitas button {
     font-size: 10px;
   }
   .que-necesitas h2 {
@@ -719,15 +726,15 @@ div.descarga-app {
     font-size: 9px;
   }
   .titles-compras-mob h3,
-  .titles-compras-mob h4{
+  .titles-compras-mob h4 {
     font-size: 10px;
   }
-  .btn-carrito-mob{
+  .btn-carrito-mob {
     position: absolute;
     right: 15vw;
-    top:5px;
+    top: 5px;
     background-color: transparent;
-    border:none;
+    border: none;
     display: inline;
   }
 }
@@ -884,6 +891,6 @@ div.descarga-app {
 .hover-bold:hover {
   font-weight: bold !important;
 }
-.hover-bg-4f9cb5 :hover{
+.hover-bg-4f9cb5 :hover {
   background-color: #4f9cb5;
 }

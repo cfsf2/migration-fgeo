@@ -1,5 +1,6 @@
 import React from "react";
 import { InputBuscador } from "./InputBuscador";
+import "./inputbuscador.css";
 
 export const Buscador = (props) => {
   const { iconFarmacia, forma1, lupa, className } = props;
@@ -15,7 +16,7 @@ export const Buscador = (props) => {
     }
   };
   return (
-    <div className={className}>
+    <div className={className + " " + "home_buscador"}>
       <InputBuscador
         iconFarmacia={iconFarmacia}
         forma1={forma1}
