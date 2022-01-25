@@ -70,6 +70,13 @@ function ItemMapList({ farmacia, handleCentrarFarmacia, bold, nextPage }) {
   );
 }
 
+const calcularDistancia = (punto, farmacia) => {
+  const diflat2 = Math.pow(farmacia.lat - punto.lat, 2);
+  const diflat1 = Math.pow(farmacia.log - punto.lng, 2);
+  const distancia = Math.sqrt(diflat2 + diflat1);
+  return distancia;
+};
+
 function MapaFarmacias(props) {
   const { listado } = props;
   const [currentLatLng, setcurrentLatLng] = useState({
@@ -161,7 +168,7 @@ function MapaFarmacias(props) {
       search_farmacia,
       filtroPerfilFarmageo,
     } = props;
-    setfarmacias(
+    setfarmacias(() =>
       farmacias
         .filter((f) => {
           return (
@@ -172,13 +179,12 @@ function MapaFarmacias(props) {
             f.perfil_farmageo.includes(filtroPerfilFarmageo)
           );
         })
-        .sort((a, b) =>
-          a.perfil_farmageo > b.perfil_farmageo
-            ? -1
-            : a.perfil_farmageo < b.perfil_farmageo
-            ? 1
-            : 0
-        )
+        .sort((a, b) => {
+          const distA = calcularDistancia(currentLatLng, a);
+          const distB = calcularDistancia(currentLatLng, b);
+
+          return distA - distB;
+        })
     );
   };
   useEffect(() => {
@@ -194,11 +200,20 @@ function MapaFarmacias(props) {
   useEffect(() => {
     setGettedUbic();
   }, [props.geo]);
+  console.log("ubicacion actual");
+  console.log(currentLatLng);
 
   useEffect(() => {
-    //showCurrentLocation();
+    setfarmacias(() =>
+      farmacias.sort((a, b) => {
+        const distA = calcularDistancia(currentLatLng, a);
+        const distB = calcularDistancia(currentLatLng, b);
+
+        return distA - distB;
+      })
+    );
     handleFiltrosFarmacias();
-  }, [props]);
+  }, [props, currentLatLng.lat, currentLatLng.lng]);
 
   return (
     <div className="row centrado-2" style={{ position: "relative" }}>
@@ -232,7 +247,6 @@ function MapaFarmacias(props) {
         </div>
       ) : null}
       <div className="col-sm p-0" style={{ height: "70vh" }}>
-        {console.log(currentLatLng, farmacias, centrarFarmacia, centerMap)}
         <Map
           myposition={currentLatLng}
           farmacias={farmacias}
