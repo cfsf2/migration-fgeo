@@ -217,6 +217,15 @@ function MapaFarmacias(props) {
   }, []);
 
   useEffect(() => {
+    const f = window.location.hash.split("?")[1];
+
+    if (f && farmacias.length > 0) {
+      console.log("entre");
+      handleCentrarFarmacia(farmacias[0]);
+    }
+  }, [farmacias]);
+
+  useEffect(() => {
     if (props.actualUbication) {
       showCurrentLocation();
     }
