@@ -18,6 +18,7 @@ export const InputBuscador = (props) => {
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
+      e.preventDefault();
       handleSearch(search, txtbusqueda);
     }
     return;
@@ -41,7 +42,9 @@ export const InputBuscador = (props) => {
             //name="txtbusqueda"
             value={txtbusqueda}
             autocomplete="off"
-            onKeyPress={(e) => handleKeyDown(e)}
+            onKeyPress={(e) => {
+              return handleKeyDown(e);
+            }}
           />
         </form>
       </div>
