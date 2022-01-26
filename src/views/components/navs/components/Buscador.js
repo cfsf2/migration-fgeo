@@ -1,18 +1,17 @@
 import React from "react";
 import { InputBuscador } from "./InputBuscador";
+import { useHistory } from "react-router-dom";
 import "./inputbuscador.css";
 
 export const Buscador = (props) => {
   const { iconFarmacia, forma1, lupa, className } = props;
+  const history = useHistory();
   const handleSearch = (search, txtbusqueda) => {
     // const { search, txtbusqueda } = this.state;
     if (search === "farmacia") {
-      window.location.href =
-        `${process.env.PUBLIC_URL}/#/buscarfarmacia?f=` +
-        txtbusqueda.toLowerCase();
+      history.push(`/buscarfarmacia?f=` + txtbusqueda.toLowerCase());
     } else if (search === "producto") {
-      window.location.href =
-        `${process.env.PUBLIC_URL}/#/buscarproductos?p=` + txtbusqueda;
+      history.push(`/buscarproductos?p=` + txtbusqueda);
     }
   };
   return (

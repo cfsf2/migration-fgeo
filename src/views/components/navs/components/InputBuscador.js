@@ -38,10 +38,10 @@ export const InputBuscador = (props) => {
             placeholder={`Busca tu ${farmacia ? "farmacia" : "producto"} aqui`}
             className="input_container_center_input"
             onChange={(e) => setTexto(e.target.value)}
-            name="txtbusqueda"
+            //name="txtbusqueda"
             value={txtbusqueda}
             autocomplete="off"
-            onKeyDown={(e) => handleKeyDown(e)}
+            onKeyPress={(e) => handleKeyDown(e)}
           />
         </form>
       </div>
