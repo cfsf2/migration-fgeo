@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import grupo2 from "../../../../assets/images/Grupo 2.png";
 import grupo1 from "../../../../assets/images/Grupo 1.png";
 import grupo3 from "../../../../assets/images/Grupo 3.png";
-import pharmacy from "../../../../assets/images/pharmacy.png";
+import pharmacy from "../../../../assets/images/mas-icon.png";
 //import forma1 from "../../../../assets/images/Forma 1.png";
 import iconFarmacia from "../../../../assets/images/Grupo 79.png";
 
@@ -166,7 +166,7 @@ class FarmaciasCercanas extends Component {
                 src={pharmacy}
                 className="border-right px-2 btn"
                 onClick={() => this.setState({ listado: !this.state.listado })}
-                style={{ opacity: this.state.listado ? 1 : 0.4, width: "50px" }}
+                style={{ opacity: this.state.listado ? 1 : 0.4, width: "40px" }}
               />
               <img
                 alt=""
