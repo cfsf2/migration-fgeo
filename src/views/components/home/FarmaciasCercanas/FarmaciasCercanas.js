@@ -143,12 +143,17 @@ class FarmaciasCercanas extends Component {
                 Servicios...
               </option>
               <option value="deturno">De turno</option>
-              <option value="presion">Toma de presión</option>
-              <option value="inyectables">Inyectables</option>
               <option value="violeta">Farmacia Violeta</option>
+              <option value="inyectables">Inyectables</option>
               <option value="amarillos">Puntos Amarillos</option>
+              <option
+                value="testcovid"
+                style={{ color: "#CD0A0A", fontWeight: "bold" }}
+              >
+                Test de Covid
+              </option>
+              <option value="presion">Toma de presión</option>
               <option value="whatsapp">Whatsapp</option>
-              <option value="testcovid">Test de Covid</option>
             </select>
           </div>
 
