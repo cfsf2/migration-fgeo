@@ -114,7 +114,7 @@ class FarmaciasCercanas extends Component {
             <SelectFarm state={this.state} handleSelect={this.handleSelect} />
           </div>
 
-          <div className="form-group col-md-2 pl-0" align="left">
+          {/* <div className="form-group col-md-2 pl-0" align="left">
             <select
               id="inputState"
               className="form-control"
@@ -130,7 +130,7 @@ class FarmaciasCercanas extends Component {
               <option value="tarde">Tarde</option>
               <option value="noche">Noche</option>
             </select>
-          </div>
+          </div> */}
 
           <div className="form-group col-md-2 pl-0" align="left">
             <select
