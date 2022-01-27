@@ -3,7 +3,7 @@
   border: 1px solid rgb(187, 187, 187);
   border-radius: 5px;
   display: grid;
-  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-columns: 1fr 7fr 1fr;
   align-self: center;
   padding: 0;
   width: calc(50% - 1rem);
@@ -36,7 +36,7 @@
 .input_container_center_input {
   border: none;
   margin: 0;
-
+  width: 100%;
   overflow: hidden;
 }
 .input_container_center_input:focus {

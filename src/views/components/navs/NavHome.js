@@ -307,16 +307,7 @@ class NavHome extends Component {
                         </li>
                       </>
                     )}
-                    <li className="nav-item">
-                      <a
-                        className="nav-link nav-farmageo-item"
-                        href="https://play.google.com/store/apps/details?id=com.santiagoalarcon.farmageo"
-                        target="_blank"
-                        rel="noopener"
-                      >
-                        Descargar App
-                      </a>
-                    </li>
+
                     <li className="nav-item">
                       <a
                         className="nav-link nav-farmageo-item"
