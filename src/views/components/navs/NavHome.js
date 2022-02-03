@@ -13,7 +13,6 @@ import logo from "../../../assets/images/logo.png";
 
 import forma1 from "../../../assets/images/Forma 1.png";
 import iconFarmacia from "../../../assets/images/Grupo 79.png";
-import Trazado230 from "../../../assets/images/Trazado 230.png";
 import lupa from "../../../assets/images/Lupa.png";
 
 import { NavCentral } from "./components/NavCentral";
@@ -25,7 +24,6 @@ import { GET_AUTH } from "../../../redux/actions/UsuarioActions";
 import Carrito from "../compras/Carrito";
 //import { apiFarmageo } from "../../../config";
 //import axios from "axios";
-import ReactGA from "react-ga";
 
 class NavHome extends Component {
   constructor(props) {
@@ -46,12 +44,6 @@ class NavHome extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
 
     this.props.GET_AUTH();
-    this.googleAnalytics = this.googleAnalytics.bind(this);
-  }
-
-  googleAnalytics() {
-    ReactGA.initialize("UA-192519730-2");
-    ReactGA.pageview(window.location.pathname + window.location.search);
   }
 
   handleInputChange(event) {
@@ -64,7 +56,6 @@ class NavHome extends Component {
   }
 
   async componentDidMount() {
-    this.googleAnalytics();
     this.props.GET_CATEGORIAS();
     window.addEventListener("scroll", () => {
       if (window.scrollY > 0) {

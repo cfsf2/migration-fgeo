@@ -25,8 +25,6 @@ import { NavCentral } from "./components/NavCentral";
 import { GET_AUTH } from "../../../redux/actions/UsuarioActions";
 import Carrito from "../compras/Carrito";
 
-import ReactGA from "react-ga";
-
 function NavBuscarProductos(props) {
   const [categoria, setcategoria] = useState("all");
   const [farmacia, setfarmacia] = useState(null);
@@ -41,7 +39,7 @@ function NavBuscarProductos(props) {
 
   useEffect(() => {
     props.GET_AUTH();
-    googleAnalytics();
+
     props.GET_CATEGORIAS();
   }, []);
 
@@ -52,10 +50,6 @@ function NavBuscarProductos(props) {
   useEffect(() => {
     getUbicacionDefault();
   }, [props]);
-  const googleAnalytics = () => {
-    ReactGA.initialize("UA-192519730-2");
-    ReactGA.pageview(window.location.href);
-  };
 
   const handleSearch = () => {
     if (search === "farmacia") {
