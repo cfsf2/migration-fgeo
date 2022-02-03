@@ -53,7 +53,7 @@ function NavBuscarProductos(props) {
     getUbicacionDefault();
   }, [props]);
   const googleAnalytics = () => {
-    ReactGA.initialize("G-BHVZ52H1RE");
+    ReactGA.initialize("UA-192519730-2");
     ReactGA.pageview(window.location.href);
   };
 
