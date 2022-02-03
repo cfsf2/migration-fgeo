@@ -50,7 +50,7 @@ class NavHome extends Component {
   }
 
   googleAnalytics() {
-    ReactGA.initialize("G-6DDCQD6XV5");
+    ReactGA.initialize("G-BHVZ52H1RE");
     ReactGA.pageview(window.location.href);
   }
 
