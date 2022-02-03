@@ -51,7 +51,7 @@ class NavHome extends Component {
 
   googleAnalytics() {
     ReactGA.initialize("G-BHVZ52H1RE");
-    ReactGA.pageview(window.location.href);
+    ReactGA.pageview(window.location.pathname + window.location.search);
   }
 
   handleInputChange(event) {
