@@ -68,7 +68,6 @@ function App() {
 
   React.useEffect(() => {
     ReactGA.initialize(process.env.REACT_APP_GA);
-    console.log(process.env.REACT_APP_GA);
     ReactGA.pageview(window.location.pathname + window.location.search);
   }, []);
 
