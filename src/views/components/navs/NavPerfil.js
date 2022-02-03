@@ -71,8 +71,6 @@ class NavPerfil extends Component {
   }
 
   async componentDidMount() {
-    this.googleAnalytics();
-
     var farmacia = this.handlequery().get("u");
     this.props.GET_CATEGORIAS();
     var ubicacion_default = await sessionStorage.getItem("ubicacion_default");
