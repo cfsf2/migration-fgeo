@@ -67,7 +67,8 @@ function App() {
   const testing = window.location.origin;
 
   React.useEffect(() => {
-    ReactGA.initialize("UA-192519730-1");
+    ReactGA.initialize(process.env.REACT_APP_GA);
+    console.log(process.env.REACT_APP_GA);
     ReactGA.pageview(window.location.pathname + window.location.search);
   }, []);
 
