@@ -33,7 +33,9 @@ export const SOLICITUD_REGISTRO_FARMACIA = (solicitud) => {
 
   return axios
     .post(apiFarmageo + "/pedidos/email", {
-      destinatario: emailFarmacia + ";coordinador@farmageo.com.ar",
+      destinatario:
+        emailFarmacia +
+        ";comercial@farmageo.com.ar;coordinador@farmageo.com.ar",
       asunto: "Solicitud de registro Farmageo",
       html: html,
     })
