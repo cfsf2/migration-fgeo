@@ -6,7 +6,7 @@ import "./css/switch.css";
 import { base } from "./config";
 
 // import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch, useLocation } from "react-router-dom";
 import FooterHome from "./views/components/footers/FooterHome";
 
 const loading = () => (
@@ -62,17 +62,23 @@ const RegistrarFarmacia = React.lazy(() =>
   import("./views/components/RegistrarFarmacia")
 );
 
+function usePageViews() {
+  let location = useLocation();
+  React.useEffect(() => {
+    if (!window.GA_INITIALIZED) {
+      ReactGA.initialize(process.env.REACT_APP_GA);
+      window.GA_INITIALIZED = true;
+    }
+    ReactGA.set({ page: location.pathname });
+    ReactGA.pageview(location.pathname + location.search);
+  });
+}
 function App() {
   const [modalState, setmodalState] = useState(true);
   const testing = window.location.origin;
-
-  React.useEffect(() => {
-    ReactGA.initialize(process.env.REACT_APP_GA);
-    ReactGA.pageview(window.location.pathname + window.location.search);
-  }, []);
-
+  usePageViews();
   return (
-    <HashRouter>
+    <>
       {testing !== base ? (
         <div
           className="leyendatesting"
@@ -334,7 +340,7 @@ function App() {
           />
         </Switch>
       </React.Suspense>
-    </HashRouter>
+    </>
   );
 }
 
