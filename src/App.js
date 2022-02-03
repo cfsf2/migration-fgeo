@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ReactGA from "react-ga";
 //import { HashRouter, Route, Switch } from 'react-router-dom';
 import "./css/farmacias.css";
 import "./css/switch.css";
@@ -64,6 +65,11 @@ const RegistrarFarmacia = React.lazy(() =>
 function App() {
   const [modalState, setmodalState] = useState(true);
   const testing = window.location.origin;
+
+  React.useEffect(() => {
+    ReactGA.initialize("UA-192519730-1");
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
 
   return (
     <HashRouter>
