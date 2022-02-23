@@ -30,15 +30,19 @@ function Registro(props) {
     setSubmitted(true);
 
     if (validarCampos()) {
-      await props.ALTA_USUARIO_SUBMIT({ ...user, newsletter: newsletter });
-
-      document.getElementById("alert-registro").classList.add("fadeout");
-      setTimeout(() => {
-        setUser(userInit);
-        setSubmitted(false);
-        setError([]);
-        document.getElementById("alert-registro").classList.remove("fadeout");
-      }, [3000]);
+      props
+        .ALTA_USUARIO_SUBMIT({ ...user, newsletter: newsletter })
+        .then(() => {
+          document.getElementById("alert-registro").classList.add("fadeout");
+          setTimeout(() => {
+            setUser(userInit);
+            setSubmitted(false);
+            setError([]);
+            document
+              .getElementById("alert-registro")
+              .classList.remove("fadeout");
+          }, [3000]);
+        });
     } else {
       // setError("La contraseña no coincide");
     }
