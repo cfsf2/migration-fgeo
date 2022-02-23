@@ -25,7 +25,6 @@ import { NavCentral } from "./components/NavCentral";
 
 import axios from "axios";
 import { apiFarmageo } from "../../../config";
-import ReactGA from "react-ga";
 
 class NavPerfil extends Component {
   constructor(props) {
@@ -45,12 +44,6 @@ class NavPerfil extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.props.GET_AUTH();
-    this.googleAnalytics = this.googleAnalytics.bind(this);
-  }
-
-  googleAnalytics() {
-    ReactGA.initialize("G-6DDCQD6XV5");
-    ReactGA.pageview(window.location.href);
   }
 
   handlequery = () => {
@@ -78,8 +71,6 @@ class NavPerfil extends Component {
   }
 
   async componentDidMount() {
-    this.googleAnalytics();
-
     var farmacia = this.handlequery().get("u");
     this.props.GET_CATEGORIAS();
     var ubicacion_default = await sessionStorage.getItem("ubicacion_default");
