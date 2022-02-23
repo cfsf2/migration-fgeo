@@ -15,6 +15,25 @@
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
+<<<<<<< HEAD
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-163734464-1"
+    ></script>
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-163734464-1');
+    </script>
+
+=======
+>>>>>>> 14bee510ed611fe0fe4cebe9075ee16c5873e408
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -40,6 +59,7 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root" class="container-fluid"></div>
+    <div id="modal-root"></div>
 
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -58,12 +78,21 @@
     ></script>
 
     <script>
+<<<<<<< HEAD
+      $('.selectpicker').on('shown.bs.select', function () {
+        $('.bootstrap-select .dropdown-header').each(function () {
+          if ((this.dataset.unescaped || '1') == '1') {
+            let element = $(this);
+            element.html(element.text());
+            element.attr('data-unescaped', '0');
+=======
       $(".selectpicker").on("shown.bs.select", function () {
         $(".bootstrap-select .dropdown-header").each(function () {
           if ((this.dataset.unescaped || "1") == "1") {
             let element = $(this);
             element.html(element.text());
             element.attr("data-unescaped", "0");
+>>>>>>> 14bee510ed611fe0fe4cebe9075ee16c5873e408
           }
         });
       });
