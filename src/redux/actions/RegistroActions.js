@@ -23,70 +23,50 @@ export const ALTA_USUARIO = (user) => {
   };
 };
 
-export const ALTA_USUARIO_SUBMIT = (token, user) => {
+export const ALTA_USUARIO_SUBMIT = (user) => {
   return (dispatch) => {
     axios
-      .post(
-        apiFarmageo + "/users/altawp",
-        {
-          username: user.email.toLowerCase(),
-          password: user.password,
-          name: user.first_name,
-          first_name: user.first_name,
-          last_name: user.last_name,
-          email: user.email,
-          roles: ["usuario"],
-          token: token
-        }
-        /*,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-            "Content-Type": "application/json",
-            // "Access-Control-Allow-Origin": "*"
-          },
-        }*/
-      )
+      .post(apiFarmageo + "/users/alta-usuario-web", {
+        username: user.email.toLowerCase(),
+        password: user.password,
+        name: user.first_name,
+        apellido: user.last_name,
+        email: user.email,
+        usuario: user.email,
+      })
       .then((response) => {
-        // console.log(response)
-        if (response.status == "201") {
+        if (response.status === 201) {
           dispatch({
             type: "USER_LOGIN_SUCCESS",
             payload: {
-              token,
               user: {
                 email: response.data.email,
                 first_name: response.data.first_name,
                 last_name: response.data.last_name,
-                id_wp: response.data.id,
                 roles: response.data.roles,
                 username: response.data.username,
                 password: user.password,
+                token: response.data.token,
               },
             },
           });
-          dispatch(
-            ALTA_USER_API_FARMAGEO({
-              ...user,
-              password: user.password,
-              id_wp: response.data.id,
-            })
-          );
+          dispatch(LOGIN(response.data.email, user.password));
+
+          document.querySelector("#cerrar-registro").click();
+
+          //window.location.href = `${process.env.PUBLIC_URL}`;
           //alert("Se ha registrado con éxito");
-        } else {
-          dispatch({
-            type: "ALTA_USUARIO_ERROR",
-          });
-          alert("Ha ocurrido un error");
         }
       })
       .catch((error) => {
-        if (error.message) {
+        if (error.response?.status === 409) {
           dispatch({
             type: "ALTA_USUARIO_ERROR",
           });
-          alert("Ha ocurrido un error");
+          return alert(error.response.data);
         }
+        console.log(error);
+        alert("Ha ocurrido un error");
       });
   };
 };
@@ -114,10 +94,9 @@ export const ALTA_USER_API_FARMAGEO = (_user) => {
       .then((response) => {
         if (response.status == "200") {
           dispatch(LOGIN(_user.email, _user.password));
-          console.log("se dió de alta en api farmageo");
+
           window.location.href = `${process.env.PUBLIC_URL}`;
         } else {
-          console.log("No se dió de alta en api farmageo");
         }
       })
       .catch((error) => {

@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import { connect } from "react-redux";
 import NumberFormat from "react-number-format";
-import { ALTA_USUARIO } from "../../../redux/actions/RegistroActions";
+import { ALTA_USUARIO_SUBMIT } from "../../../redux/actions/RegistroActions";
 
 function Registro(props) {
   const [newsletter, setnewsletter] = useState(false);
@@ -12,7 +12,7 @@ function Registro(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (user.password === user.password_repeat) {
-      await props.ALTA_USUARIO({ ...user, newsletter: newsletter });
+      await props.ALTA_USUARIO_SUBMIT({ ...user, newsletter: newsletter });
     } else {
       seterror("La contraseña no coincide");
     }
@@ -52,6 +52,7 @@ function Registro(props) {
               className="close"
               data-dismiss="modal"
               aria-label="Close"
+              id="cerrar-registro"
             >
               <span aria-hidden="true">&times;</span>
             </button>
@@ -176,7 +177,16 @@ function Registro(props) {
                   Crear cuenta
                 </button>
                 <p align="right">
-                  Si tenes una cuenta <span style={{cursor:"pointer",color:'#138496'}} data-toggle="modal" data-dismiss="modal" data-target="#alert-login" > Ingresá acá </span>
+                  Si tenes una cuenta{" "}
+                  <span
+                    style={{ cursor: "pointer", color: "#138496" }}
+                    data-toggle="modal"
+                    data-dismiss="modal"
+                    data-target="#alert-login"
+                  >
+                    {" "}
+                    Ingresá acá{" "}
+                  </span>
                 </p>
               </form>
             </div>
@@ -187,6 +197,6 @@ function Registro(props) {
   );
 }
 
-const mapDispatchToProps = { ALTA_USUARIO };
+const mapDispatchToProps = { ALTA_USUARIO_SUBMIT };
 
 export default connect(null, mapDispatchToProps)(Registro);
