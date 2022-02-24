@@ -55,7 +55,7 @@ export const ALTA_USUARIO_SUBMIT = (user) => {
             });
             dispatch(LOGIN(response.data.email, user.password));
 
-            resolve(document.querySelector("#cerrar-registro").click());
+            resolve();
 
             //window.location.href = `${process.env.PUBLIC_URL}`;
             //alert("Se ha registrado con éxito");

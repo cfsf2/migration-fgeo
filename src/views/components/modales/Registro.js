@@ -41,7 +41,8 @@ function Registro(props) {
             document
               .getElementById("alert-registro")
               .classList.remove("fadeout");
-          }, [3000]);
+            document.querySelector("#cerrar-registro").click();
+          }, [800]);
         });
     } else {
       // setError("La contraseña no coincide");
