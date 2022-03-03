@@ -1,10 +1,18 @@
 import axios from 'axios';
 import { apiFarmageo } from '../../config';
 
-export const GET_CAMPANAS = () => {
+export const GET_CAMPANAS = (idUsuario) => {
   return (dispatch) => {
-    axios
-      .get(apiFarmageo + '/campana/activas')
+    dispatch({
+      type: 'SET_LOADING',
+      payload: true,
+    });
+    return axios
+      .get(apiFarmageo + '/campana/activas', {
+        params: {
+          idUsuario: idUsuario,
+        },
+      })
       .then((response) => {
         dispatch({
           type: 'CAMPANAS_ACTIVAS',
