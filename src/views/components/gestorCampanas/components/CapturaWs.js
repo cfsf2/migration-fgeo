@@ -1,19 +1,19 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import Modal from '../../modales/Modal';
-import './capturaws.css';
+import React from "react";
+import { connect } from "react-redux";
+import Modal from "../../modales/Modal";
+import "./capturaws.css";
 
-import { NUEVO_REQUERIMIENTO } from '../../../../redux/actions/CampanaActions';
+import { NUEVO_REQUERIMIENTO } from "../../../../redux/actions/CampanaActions";
 import {
   UPDATE_USER,
   UPDATE_LOCAL_USER,
-} from '../../../../redux/actions/UsuarioActions';
+} from "../../../../redux/actions/UsuarioActions";
 
 const CapturaWs = (props) => {
   const [mostrar, setMostrar] = React.useState(false);
   const [state, setState] = React.useState({
-    caracteristica: '',
-    telefono: '',
+    caracteristica: "",
+    telefono: "",
   });
 
   const [error, setError] = React.useState(false);
@@ -37,8 +37,8 @@ const CapturaWs = (props) => {
 
   const validacion = () => {
     if (
-      state.caracteristica.trim() === '' ||
-      state.telefono.trim() === '' ||
+      state.caracteristica.trim() === "" ||
+      state.telefono.trim() === "" ||
       state.caracteristica.length + state.telefono.length !== 10
     ) {
       setError(true);
@@ -76,21 +76,21 @@ const CapturaWs = (props) => {
           }
         })
         .catch((err) => {
-          alert('Ha ocurrido un error viejo, proba de nuevo cuando te pinte');
+          alert("Ha ocurrido un error viejo, proba de nuevo cuando te pinte");
         });
     }
   };
 
   const unirTelefono = () => {
     const inputSeparado = [state.caracteristica, state.telefono];
-    const inputUnico = inputSeparado.join('');
+    const inputUnico = inputSeparado.join("");
 
     return inputUnico;
   };
 
   React.useEffect(() => {
-    props.UsuarioReducer.auth && setMostrar(true);
-  }, [props.UsuarioReducer.auth]);
+    setMostrar(true);
+  }, []);
 
   React.useEffect(() => {
     if (
@@ -112,17 +112,17 @@ const CapturaWs = (props) => {
     <Modal
       open={mostrar}
       handleClose={setMostrar}
-      style={{ left: '50%', width: '34vw' }}
+      style={{ left: "50%", width: "34vw" }}
     >
       <div className="modal-dialog modal-md">
         <div className="modal-content">
-          <div style={{ float: 'right' }}></div>
+          <div style={{ float: "right" }}></div>
           <div className="modal-body" align="left">
             {capturaExitosa ? (
               <div> En Breve nos comunicaremos con usted</div>
             ) : (
               <div className="alerta">
-                <h2 style={{ textAlign: 'center' }}>
+                <h2 style={{ textAlign: "center" }}>
                   <b>Obtené un descuento para tu próxima compra!</b>
                 </h2>
                 <div className="div-imagen">
@@ -133,7 +133,7 @@ const CapturaWs = (props) => {
                 </div>
                 <div className="form-row mt-1 pr-3 pl-3">
                   <div className="col-md-12 mb-1 pr-3">
-                    <p style={{ textAlign: 'center' }}>
+                    <p style={{ textAlign: "center" }}>
                       Registra tu número para obtener un descuento del 40% en tu
                       próxima compra en tu farmacia
                     </p>

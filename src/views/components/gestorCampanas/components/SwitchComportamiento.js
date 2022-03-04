@@ -1,18 +1,43 @@
-import { render } from '@testing-library/react';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import CapturaWs from './CapturaWs';
+import React from "react";
+import { connect } from "react-redux";
+import CapturaWs from "./CapturaWs";
 
-export default function SwitchComportamiento({ codigo, campana }, props) {
-  switch (codigo) {
-    case 'captura_ws':
+export function SwitchComportamiento(
+  { codigo, campana, UsuarioReducer, CampanaReducer },
+  props
+) {
+  const orientados = campana.orientados.map((orientado) => orientado.nombre);
+  switch (true) {
+    case CampanaReducer.loading:
+      return null;
+
+    case codigo === "captura_ws" && orientados.includes("usuario_farmageo_web"):
+      if (UsuarioReducer.auth) {
+        return <CapturaWs campana={campana} />;
+      }
+      return null;
+
+    case codigo === "captura_ws" && orientados.includes("usuario_farmageo"):
       return <CapturaWs campana={campana} />;
 
-    case 'nada':
+    case "nada":
       return null;
-    default:
-      break;
-  }
 
-  return;
+    default:
+      return null;
+  }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    UsuarioReducer: state.UsuarioReducer,
+    CampanaReducer: state.CampanaReducer,
+  };
+};
+
+const mapDispatchToProps = {};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SwitchComportamiento);
