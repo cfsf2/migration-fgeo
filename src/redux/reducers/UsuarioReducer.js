@@ -17,7 +17,7 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         auth: null,
-        user_farmageo: null,
+        user_farmageo: {},
       };
     case 'ELEGIR_LOCALIDAD':
       return {
@@ -42,6 +42,14 @@ export default (state = defaultState, action) => {
         reverseGeo: action.payload,
         localidad_default: action.payload.city.toUpperCase(),
       };
+
+    case 'UPDATE_LOCAL_USER':
+      console.log('UPDATE_LOCAL_USER del REDUCER', action.payload);
+      return {
+        ...state,
+        user_farmageo: action.payload,
+      };
+
     default:
       return state;
   }

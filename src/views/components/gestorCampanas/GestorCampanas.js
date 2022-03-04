@@ -5,8 +5,10 @@ import { CampanasPage } from './CampanasPage';
 
 const GestorCampanas = (props) => {
   React.useEffect(() => {
-    if (props.UsuarioReducer && props.UsuarioReducer.user_farmageo) {
-      props.GET_CAMPANAS(props.UsuarioReducer.user_farmageo._id);
+    if (props.UsuarioReducer) {
+      if (props.UsuarioReducer.user_farmageo) {
+        props.GET_CAMPANAS(props.UsuarioReducer.user_farmageo._id);
+      }
     }
   }, [props.UsuarioReducer.user_farmageo._id]);
 

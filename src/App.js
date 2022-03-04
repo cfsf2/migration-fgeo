@@ -8,6 +8,7 @@ import { base } from './config';
 // import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import { HashRouter, Route, Switch, useLocation } from 'react-router-dom';
 import FooterHome from './views/components/footers/FooterHome';
+import axios from 'axios';
 
 const loading = () => (
   <div className="animated fadeIn pt-3 text-center">Cargando...</div>
@@ -77,6 +78,14 @@ function usePageViews() {
     ReactGA.pageview(location.pathname + location.search);
   });
 }
+
+axios.interceptors.request.use((request) => {
+  request.headers.authorization = `Bearer ${window.localStorage.getItem(
+    'token'
+  )}`;
+  return request;
+});
+
 function App() {
   const [modalState, setmodalState] = useState(true);
   const testing = window.location.origin;

@@ -62,9 +62,7 @@ export const GET_USER_API_FARMAGEO = (username, token) => {
   return (dispatch) => {
     var _username = username.toLowerCase();
     axios
-      .get(apiFarmageo + '/users/' + _username, {
-        headers: { Authorization: 'Bearer ' + token },
-      })
+      .get(apiFarmageo + '/users/' + _username)
       .then(async function (response) {
         if (response.data.habilitado) {
           dispatch({
@@ -209,5 +207,31 @@ export const LOGOUT = () => {
       type: 'LOGOUT',
     });
     window.location.href = `${process.env.PUBLIC_URL}/#/`;
+  };
+};
+
+export const UPDATE_USER = (user) => {
+  return (dispatch) => {
+    return axios
+      .put(apiFarmageo + '/users/updateWebUser', {
+        user,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
+};
+
+export const UPDATE_LOCAL_USER = (nuevosDatos) => {
+  return (dispatch, getState) => {
+    const { user_farmageo } = getState().UsuarioReducer;
+
+    const datos = Object.assign(user_farmageo, nuevosDatos);
+
+    dispatch({
+      type: 'UPDATE_LOCAL_USER',
+      payload: datos,
+    });
   };
 };

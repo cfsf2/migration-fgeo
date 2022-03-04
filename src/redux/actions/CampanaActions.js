@@ -7,6 +7,7 @@ export const GET_CAMPANAS = (idUsuario) => {
       type: 'SET_LOADING',
       payload: true,
     });
+
     return axios
       .get(apiFarmageo + '/campana/activas', {
         params: {
@@ -22,5 +23,24 @@ export const GET_CAMPANAS = (idUsuario) => {
       .catch(function (error) {
         console.log(error);
       });
+  };
+};
+
+export const NUEVO_REQUERIMIENTO = ({
+  id_campana,
+  id_usuario,
+  id_farmacia,
+  celular,
+}) => {
+  return (dispatch) => {
+    return axios
+      .post(apiFarmageo + '/campana/nuevoRequerimiento', {
+        id_campana,
+        id_usuario,
+        id_farmacia,
+        celular,
+      })
+      .then((res) => null)
+      .catch((err) => console.log(err));
   };
 };
