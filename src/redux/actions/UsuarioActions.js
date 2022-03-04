@@ -1,13 +1,13 @@
-import axios from 'axios';
-import { apiFarmageo, authFarmageo } from '../../config';
-import { RECUPERAR_PEDIDO } from './PedidosActions';
-var geocoder = require('geocoder-fr');
+import axios from "axios";
+import { apiFarmageo, authFarmageo } from "../../config";
+import { RECUPERAR_PEDIDO } from "./PedidosActions";
+var geocoder = require("geocoder-fr");
 
 export const LOGIN = (username, password) => {
   return (dispatch) => {
     axios
       .post(
-        apiFarmageo + '/users/loginwp',
+        apiFarmageo + "/users/loginwp",
         {
           username: username.toLowerCase(),
           password,
@@ -25,17 +25,17 @@ export const LOGIN = (username, password) => {
             )
           );
         } else {
-          alert('Ha ocurrido un error');
+          alert("Ha ocurrido un error");
           dispatch({
-            type: 'TOKEN_INVALID',
+            type: "TOKEN_INVALID",
           });
         }
       })
       .catch((error) => {
         if (error.message) {
-          alert('Usuario o password incorrectos');
+          alert("Usuario o password incorrectos");
           dispatch({
-            type: 'TOKEN_INVALID',
+            type: "TOKEN_INVALID",
           });
         }
       });
@@ -44,7 +44,7 @@ export const LOGIN = (username, password) => {
 
 export const VALIDATE_TOKEN = (token, usuario, username, password) => {
   return (dispatch) => {
-    var nombreCompleto = usuario.user_display_name.split(' ');
+    var nombreCompleto = usuario.user_display_name.split(" ");
     var _user = {
       email: usuario.user_email,
       first_name: nombreCompleto[0],
@@ -62,15 +62,15 @@ export const GET_USER_API_FARMAGEO = (username, token) => {
   return (dispatch) => {
     var _username = username.toLowerCase();
     axios
-      .get(apiFarmageo + '/users/' + _username)
+      .get(apiFarmageo + "/users/" + _username)
       .then(async function (response) {
         if (response.data.habilitado) {
           dispatch({
-            type: 'GET_USER_API_FARMAGEO',
+            type: "GET_USER_API_FARMAGEO",
             payload: { user: response.data, token },
           });
         } else {
-          alert('La cuenta ha sido suspendida');
+          alert("La cuenta ha sido suspendida");
           //dispatch(LOGOUT(navigation));
         }
       });
@@ -80,7 +80,7 @@ export const GET_USER_API_FARMAGEO = (username, token) => {
 export const GET_AUTH = () => {
   return async (dispatch) => {
     try {
-      var _login = await localStorage.getItem('storeLogin');
+      var _login = await localStorage.getItem("storeLogin");
       var data = JSON.parse(_login);
 
       if (data !== null) {
@@ -100,17 +100,17 @@ export const GET_AUTH = () => {
 export const ELEGIR_LOCALIDAD = (localidad) => {
   return async (dispatch) => {
     dispatch({
-      type: 'ELEGIR_LOCALIDAD',
+      type: "ELEGIR_LOCALIDAD",
       payload: localidad,
     });
-    await sessionStorage.setItem('ubicacion_default', localidad);
+    await sessionStorage.setItem("ubicacion_default", localidad);
   };
 };
 
 export const ELEGIR_FARMACIA = (farmacia) => {
   return (dispatch) => {
     dispatch({
-      type: 'ELEGIR_FARMACIA',
+      type: "ELEGIR_FARMACIA",
       payload: farmacia,
     });
   };
@@ -119,7 +119,7 @@ export const ELEGIR_FARMACIA = (farmacia) => {
 export const OBTENER_POSICION_ACTUAL_MAP = () => {
   return (dispatch) => {
     if (!navigator.geolocation) {
-      alert('<p>Geolocation is not supported by your browser</p>');
+      alert("<p>Geolocation is not supported by your browser</p>");
       return;
     }
 
@@ -128,11 +128,11 @@ export const OBTENER_POSICION_ACTUAL_MAP = () => {
       var longitude = position.coords.longitude;
       axios
         .get(
-          'https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=' +
+          "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=" +
             latitude +
-            '&longitude=' +
+            "&longitude=" +
             longitude +
-            '&localityLanguage=es'
+            "&localityLanguage=es"
         )
         .then(async function (response) {
           if (response.data.city) {
@@ -140,7 +140,7 @@ export const OBTENER_POSICION_ACTUAL_MAP = () => {
           }
 
           dispatch({
-            type: 'OBTENER_POSICION_ACTUAL',
+            type: "OBTENER_POSICION_ACTUAL",
             payload: response.data,
           });
         });
@@ -156,7 +156,7 @@ export const OBTENER_POSICION_ACTUAL_MAP = () => {
 export const OBTENER_POSICION_ACTUAL = () => {
   return (dispatch) => {
     if (!navigator.geolocation) {
-      alert('<p>Geolocation is not supported by your browser</p>');
+      alert("<p>Geolocation is not supported by your browser</p>");
       return;
     }
 
@@ -165,19 +165,19 @@ export const OBTENER_POSICION_ACTUAL = () => {
       var longitude = position.coords.longitude;
       axios
         .get(
-          'https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=' +
+          "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=" +
             latitude +
-            '&longitude=' +
+            "&longitude=" +
             longitude +
-            '&localityLanguage=es'
+            "&localityLanguage=es"
         )
         .then(async function (response) {
           if (response.data.city) {
-            sessionStorage.setItem('ubicacion_default', response.data.city);
+            sessionStorage.setItem("ubicacion_default", response.data.city);
           }
-          console.log('obtener posicion actal ', response.data);
+          console.log("obtener posicion actal ", response.data);
           dispatch({
-            type: 'OBTENER_POSICION_ACTUAL',
+            type: "OBTENER_POSICION_ACTUAL",
             payload: response.data,
           });
         });
@@ -192,8 +192,8 @@ export const OBTENER_POSICION_ACTUAL = () => {
 
 const storeLogin = async (data, token) => {
   try {
-    await localStorage.setItem('storeLogin', JSON.stringify(data));
-    await localStorage.setItem('token', token);
+    await localStorage.setItem("storeLogin", JSON.stringify(data));
+    await localStorage.setItem("token", token);
   } catch (error) {
     console.log(error);
   }
@@ -201,20 +201,20 @@ const storeLogin = async (data, token) => {
 
 export const LOGOUT = () => {
   return async (dispatch) => {
-    await localStorage.removeItem('storeLogin');
-    await localStorage.removeItem('token');
+    await localStorage.removeItem("storeLogin");
+    await localStorage.removeItem("token");
     dispatch({
-      type: 'LOGOUT',
+      type: "LOGOUT",
     });
     window.location.href = `${process.env.PUBLIC_URL}/#/`;
   };
 };
 
-export const UPDATE_USER = (user) => {
-  return (dispatch) => {
+export const UPDATE_USER = () => {
+  return (dispatch, getState) => {
     return axios
-      .put(apiFarmageo + '/users/updateWebUser', {
-        user,
+      .put(apiFarmageo + "/users/updateWebUser", {
+        data: getState().UsuarioReducer.user_farmageo,
       })
       .then((res) => {
         console.log(res);
@@ -230,7 +230,7 @@ export const UPDATE_LOCAL_USER = (nuevosDatos) => {
     const datos = Object.assign(user_farmageo, nuevosDatos);
 
     dispatch({
-      type: 'UPDATE_LOCAL_USER',
+      type: "UPDATE_LOCAL_USER",
       payload: datos,
     });
   };
