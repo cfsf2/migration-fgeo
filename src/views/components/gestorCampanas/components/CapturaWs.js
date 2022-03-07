@@ -26,16 +26,14 @@ const CapturaWs = (props) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-     if (
-       name !== 'caracteristica'
-     ) {
-       console.log(state.caracteristica.length + value.length);
-       return;
-     }
-     if (state.telefono.length + value.length > 10 && name !== 'telefono') {
-       console.log(state.telefono.length + value.length);
-       return;
-     }
+    if (name !== 'caracteristica') {
+      console.log(state.caracteristica.length + value.length);
+      return;
+    }
+    if (state.telefono.length + value.length > 10 && name !== 'telefono') {
+      console.log(state.telefono.length + value.length);
+      return;
+    }
 
     setState({
       ...state,
@@ -96,8 +94,7 @@ const CapturaWs = (props) => {
     return inputUnico;
   };
 
-
-  React.useEffect(() => 
+  React.useEffect(() => {
     props.UsuarioReducer.auth && setMostrar(true);
   }, [props.UsuarioReducer.auth]);
 

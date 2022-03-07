@@ -17,7 +17,8 @@ export function SwitchComportamiento(
       }
       return null;
 
-    case codigo === "captura_ws" && orientados.includes("usuario_farmageo"):
+    case codigo === "captura_ws" &&
+      orientados.includes("usuario_farmageo_noreg"):
       return <CapturaWs campana={campana} />;
 
     case "nada":
