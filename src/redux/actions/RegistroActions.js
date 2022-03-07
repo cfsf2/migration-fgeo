@@ -50,7 +50,7 @@ export const ALTA_USUARIO_SUBMIT = (user) => {
                   username: response.data.username,
                   password: user.password,
                   token: response.data.token,
-                  telefono:
+                  telephone:
                     user.telefono.toString() + user.caracteristica.toString(),
                 },
               },
