@@ -171,7 +171,8 @@ const CapturaWs = (props) => {
                         onChange={handleChange}
                       />
                     </div>
-                    {error || usuario.telephone.trim() != '' ? (
+                    {error ||
+                    (usuario.telephone && usuario.telephone !== '') ? (
                       <p className="registro-alert">
                         Revise los datos ingresados &#128070;
                       </p>
