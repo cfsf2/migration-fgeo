@@ -42,6 +42,11 @@ export default (state = defaultState, action) => {
         reverseGeo: action.payload,
         localidad_default: action.payload.city.toUpperCase(),
       };
+    case "USER_LOGIN_SUCCESS":
+      return {
+        ...state,
+        user_farmageo: action.payload.user,
+      };
     default:
       return state;
   }
