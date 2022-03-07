@@ -123,20 +123,17 @@ const CapturaWs = (props) => {
             ) : (
               <div className="alerta">
                 <h2 style={{ textAlign: "center" }}>
-                  <b>Obtené un descuento para tu próxima compra!</b>
+                  <b>{campana.titulo}</b>
                 </h2>
                 <div className="div-imagen">
                   <img
                     className="style-imagen"
-                    src="https://clasebcn.com/wp-content/uploads/2020/04/harold-03.jpg"
+                    src={campana.url_imagen_principal}
                   />
                 </div>
                 <div className="form-row mt-1 pr-3 pl-3">
                   <div className="col-md-12 mb-1 pr-3">
-                    <p style={{ textAlign: "center" }}>
-                      Registra tu número para obtener un descuento del 40% en tu
-                      próxima compra en tu farmacia
-                    </p>
+                    <p style={{ textAlign: "center" }}>{campana.descripcion}</p>
                   </div>
                   <form onSubmit={handleSubmit}>
                     <div className="form-row col-md-12 mb-1 pr-3 justify-content-center">
