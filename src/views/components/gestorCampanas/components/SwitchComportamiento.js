@@ -1,6 +1,6 @@
-import React from "react";
-import { connect } from "react-redux";
-import CapturaWs from "./CapturaWs";
+import React from 'react';
+import { connect } from 'react-redux';
+import CapturaWs from './CapturaWs';
 
 export function SwitchComportamiento(
   { codigo, campana, UsuarioReducer, CampanaReducer },
@@ -11,17 +11,17 @@ export function SwitchComportamiento(
     case CampanaReducer.loading:
       return null;
 
-    case codigo === "captura_ws" && orientados.includes("usuario_farmageo_web"):
+    case codigo === 'captura_ws' && orientados.includes('usuario_farmageo_web'):
       if (UsuarioReducer.auth) {
         return <CapturaWs campana={campana} />;
       }
       return null;
 
-    case codigo === "captura_ws" &&
-      orientados.includes("usuario_farmageo_noreg"):
+    case codigo === 'captura_ws' &&
+      orientados.includes('usuario_farmageo_noreg'):
       return <CapturaWs campana={campana} />;
 
-    case "nada":
+    case 'nada':
       return null;
 
     default:
