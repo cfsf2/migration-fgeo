@@ -26,14 +26,23 @@ const CapturaWs = (props) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    if (name !== 'caracteristica') {
-      console.log(state.caracteristica.length + value.length);
+    const rexExp = new RegExp(
+      /[a-z]|\s|\.|\+|\*|\?|\^|\$|\(|\)|\[|\]|\{|\}|\|\\|,|=|;|'|:|-|\/|\\|\||!|@|#|%|&|_|"/,
+      'gi'
+    );
+    const esNumero = rexExp.test(value);
+    if (esNumero) {
       return;
     }
-    if (state.telefono.length + value.length > 10 && name !== 'telefono') {
-      console.log(state.telefono.length + value.length);
+
+    if (
+      state.caracteristica.length + value.length > 10 &&
+      name !== 'caracteristica'
+    )
       return;
-    }
+
+    if (state.telefono.length + value.length > 10 && name !== 'telefono')
+      return;
 
     setState({
       ...state,
@@ -129,47 +138,44 @@ const CapturaWs = (props) => {
             ) : (
               <div className="alerta">
                 <h2 style={{ textAlign: 'center' }}>
-                  <b>Obtené un descuento para tu próxima compra!</b>
+                  <b>{campana.titulo}</b>
                 </h2>
                 <div className="div-imagen">
-                  <img
-                    className="style-imagen"
-                    src="https://clasebcn.com/wp-content/uploads/2020/04/harold-03.jpg"
-                  />
+                  {campana.url_imagen_principal && (
+                    <img
+                      className="style-imagen"
+                      src={campana.url_imagen_principal}
+                    />
+                  )}
                 </div>
                 <div className="form-row mt-1 pr-3 pl-3">
                   <div className="col-md-12 mb-1 pr-3">
-                    <p style={{ textAlign: 'center' }}>
-                      Registra tu número para obtener un descuento del 40% en tu
-                      próxima compra en tu farmacia
-                    </p>
+                    <p style={{ textAlign: 'center' }}>{campana.descripcion}</p>
                   </div>
                   <form onSubmit={handleSubmit}>
                     <div className="form-row col-md-12 mb-1 pr-3 justify-content-center">
                       <input
                         className="col-4 h-100 registro"
-                        type="number"
+                        // type="number"
                         name="caracteristica"
                         placeholder="Sin 0"
                         value={state.caracteristica}
                         onChange={handleChange}
-                        pattern={/[0-9]/g}
                       />
                       <input
                         className="col-7 h-100 registro"
-                        type="number"
+                        // type="number"
                         name="telefono"
                         placeholder="Celular (sin 15)"
                         value={state.telefono}
                         onChange={handleChange}
-                        pattern={/[0-9]/g}
                       />
                     </div>
-                    {error && (
+                    {error || usuario.telephone.trim() != '' ? (
                       <p className="registro-alert">
                         Revise los datos ingresados &#128070;
                       </p>
-                    )}
+                    ) : null}
                     <div className="form-row justify-content-center pt-3">
                       <button
                         type="submit"
