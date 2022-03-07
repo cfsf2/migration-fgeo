@@ -166,7 +166,7 @@ const CapturaWs = (props) => {
                       />
                     </div>
                     {error && (
-                      <p className="registro">
+                      <p className="registro-alert">
                         Revise los datos ingresados &#128070;
                       </p>
                     )}

@@ -35,10 +35,21 @@ input[type='number'] {
   margin: 2px auto;
 }
 
+.registro-alert {
+  background-color: rgba(240, 240, 240, 1);
+  border: 1px solid rgba(180, 180, 180, 1);
+  padding: 4px;
+  margin: 10px auto;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 2rem;
+  width: 75%;
+}
+/* 
 @media (max-width: 1300px) {
   .inputs-flex {
     display: flex;
     flex-direction: column;
     width: 100%;
   }
-}
+} */
