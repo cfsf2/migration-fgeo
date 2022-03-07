@@ -127,7 +127,7 @@ const CapturaWs = (props) => {
     <Modal
       open={mostrar}
       handleClose={setMostrar}
-      style={{ left: '50%', width: '34vw' }}
+      style={{ position: 'fixed', left: '50%', width: '34vw' }}
     >
       <div className="modal-dialog modal-md">
         <div className="modal-content">
