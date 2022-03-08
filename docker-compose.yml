@@ -6,5 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.prod
-    ports:
-      - '80:80'
+networks:
+  default:
+    # Use a custom driver
+    driver: farmageotest_default
