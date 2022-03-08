@@ -52,6 +52,31 @@ function Registro(props) {
   const handleInputChange = async (event) => {
     const target = event.nativeEvent.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
+    const { name } = event.target;
+
+    if (name === "telefono" || name === "caracteristica") {
+      const rexExp = new RegExp(
+        /[a-z]|\s|\.|\+|\*|\?|\^|\$|\(|\)|\[|\]|\{|\}|\|\\|,|=|;|'|:|-|\/|\\|\||!|@|#|%|&|_|"/,
+        "gi"
+      );
+      const esNumero = rexExp.test(value);
+      if (esNumero) {
+        return;
+      }
+
+      if (
+        name === "caracteristica" &&
+        (user.telefono.length + value.length > 10 || value.length > 4)
+      )
+        return;
+
+      if (
+        name === "telefono" &&
+        (user.caracteristica.length + value.length > 10 || value.length > 7)
+      )
+        return;
+    }
+
     setUser({ ...user, [target.name]: value });
   };
 
@@ -66,7 +91,10 @@ function Registro(props) {
       if (typeof user[campo] === "string" && user[campo].trim() !== "") {
         errores.splice(errores.indexOf(campo), 1);
 
-        if (user.caracteristica.length + user.telefono.length !== 10) {
+        if (
+          user.caracteristica.length + user.telefono.length !== 10 ||
+          user.caracteristica.startsWith(0)
+        ) {
           if (errores.indexOf("telefono") === -1) {
             errores.push("telefono");
           }
