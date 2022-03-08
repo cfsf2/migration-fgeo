@@ -1,7 +1,7 @@
 # build environment
 FROM node:13.12.0-alpine as build
 
-USER farmageotest
+USER root
 
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
