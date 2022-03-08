@@ -17,15 +17,15 @@ jobs:
         ftp-server: ${{ secrets.FTP_SERVER }}
         ftp-username: ${{ secrets.FTP_USERNAME }}
         ftp-password: ${{ secrets.FTP_PASSWORD }}
-    - name: docker build
+    - name: INSTALL DEPENDENCIAS
       run: |
-        docker build -f Dockerfile.prod -t farmageoweb .
-    - name: docker tag
+        npm ci --silent
+    - name: REACT SCRIPTS
       run: |
-        docker tag farmageoweb:latest farmageoweb:latest
-    - name: docker down
+        npm install react-scripts@3.4.1 -g --silent
+    - name: BUILD
       run: |
-        docker-compose down
-    - name: docker up
+        npm run build
+    - name: RESTART
       run: |
-        docker-compose up -d --build
+        pm2 restart public_html
