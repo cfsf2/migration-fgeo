@@ -18,7 +18,7 @@ jobs:
         ftp-username: ${{ secrets.FTP_USERNAME }}
         ftp-password: ${{ secrets.FTP_PASSWORD }}
     - name: docker
-      run: 
+      run: |
         docker build -f Dockerfile.prod -t farmageoweb .
         docker tag farmageoweb:latest farmageoweb:latest
         docker-compose down
