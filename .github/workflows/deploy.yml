@@ -28,4 +28,4 @@ jobs:
         docker-compose down
     - name: docker up
       run: |
-        docker-compose up -d
+        docker-compose up -d --build
