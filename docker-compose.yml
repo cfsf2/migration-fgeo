@@ -6,7 +6,3 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.prod
-networks:
-  default:
-    # Use a custom driver
-    driver: farmageotest_default
