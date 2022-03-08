@@ -6,3 +6,5 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.prod
+    ports:
+      - '80:80'
