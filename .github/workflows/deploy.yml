@@ -26,6 +26,3 @@ jobs:
     - name: BUILD
       run: |
         npm run build
-    - name: RESTART
-      run: |
-        pm2 restart public_html
