@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  web:
+    container_name: farmageo-web
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - '3200:80'

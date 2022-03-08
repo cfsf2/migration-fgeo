@@ -1,0 +1,71 @@
+.home_input_container {
+  margin: 0 0.5rem;
+  border: 1px solid rgb(187, 187, 187);
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1fr 7fr 1fr;
+  align-self: center;
+  padding: 0;
+  width: calc(50% - 1rem);
+}
+@media (max-width: 720px) {
+  .home_input_container {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+.input_container_left {
+  border-radius: 5px 5px 5px 5px;
+  overflow: hidden;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  min-width: 30px;
+}
+.input_container_left_icon {
+  height: 30px;
+  margin-top: 0.2rem;
+}
+.input_container_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+.input_container_center_input {
+  border: none;
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+}
+.input_container_center_input:focus {
+  border: none;
+  outline: none;
+  margin: 0;
+}
+.input_container_right {
+  border-radius: 5px 5px 5px 5px;
+  background-color: #4f9cb5;
+  overflow: hidden;
+  padding: 0.5rem;
+  display: flex;
+  min-width: 30px;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+.input_container_right_lupa {
+  height: 20px;
+}
+
+.home_buscador {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1010px) {
+  .navcentral_logo {
+    max-width: 33% !important;
+  }
+}
