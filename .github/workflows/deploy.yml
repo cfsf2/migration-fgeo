@@ -19,7 +19,8 @@ jobs:
         ftp-password: ${{ secrets.FTP_PASSWORD }}
     - name: docker
       uses: actions/github-script@v6
-      with: |
+      with: 
+        script: |
           git pull
           docker build -f Dockerfile.prod -t farmageoweb .
           docker tag farmageoweb:latest farmageoweb:latest
