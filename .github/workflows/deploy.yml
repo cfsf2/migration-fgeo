@@ -17,9 +17,9 @@ jobs:
         ftp-server: ${{ secrets.FTP_SERVER }}
         ftp-username: ${{ secrets.FTP_USERNAME }}
         ftp-password: ${{ secrets.FTP_PASSWORD }}
-        script: |
-          cd farmageo
-          cd web
+    - name: docker
+      uses: actions/github-script@v6
+      with: |
           git pull
           docker build -f Dockerfile.prod -t farmageoweb .
           docker tag farmageoweb:latest farmageoweb:latest
