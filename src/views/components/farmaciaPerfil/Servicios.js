@@ -5,6 +5,7 @@ import amarillos from "../../../assets/images/amarillos.png";
 import whatsapp from "../../../assets/images/whatsapp.png";
 import magistrales from "../../../assets/images/recetas-magistrales.png";
 import testcovid from "../../../assets/images/covidtest.png";
+import antigripal from "../../../assets/images/vacuna.jpg";
 
 import _ from "lodash";
 import { checkServicio } from "../../helpers/FarmaciaHelpers";
@@ -24,6 +25,17 @@ function Servicios(props) {
                 return getServicio(s, i);
               })
             :null*/}
+            <div
+              className="col-sm col-6 pt-4"
+              style={
+                checkServicio("campanaantigripal", servicios)
+                  ? { filter: "none", opacity: 1 }
+                  : { filter: "grayscale(100%)", opacity: 0.3 }
+              }
+            >
+              <img src={antigripal} className="icons-md" alt="" />{" "}
+              <p>AntiGripal 2022</p>
+            </div>
             <div
               className="col-sm col-6 pt-4"
               style={
