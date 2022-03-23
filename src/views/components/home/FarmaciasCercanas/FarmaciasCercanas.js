@@ -148,8 +148,11 @@ class FarmaciasCercanas extends Component {
               <option value="all" selected>
                 Servicios...
               </option>
-              <option value="campanaantigripal">
-                Campaña Antigripal 2022 💉
+              <option
+                style={{ color: "#CD0A0A", fontWeight: "bold" }}
+                value="campanaantigripal"
+              >
+                Campaña Antigripal 2022
               </option>
               <option value="deturno">De turno</option>
               <option value="violeta">Farmacia Violeta</option>
