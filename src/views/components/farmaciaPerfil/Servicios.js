@@ -34,7 +34,7 @@ function Servicios(props) {
               }
             >
               <img src={antigripal} className="icons-md" alt="" />{" "}
-              <p>AntiGripal 2022</p>
+              <p>Campaña Antigripal 2022</p>
             </div>
             <div
               className="col-sm col-6 pt-4"
