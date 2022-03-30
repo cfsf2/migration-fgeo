@@ -127,7 +127,7 @@ const CapturaWs = (props) => {
     <Modal
       open={mostrar}
       handleClose={setMostrar}
-      style={{ position: 'fixed', left: '50%', width: '34vw' }}
+      style={{ position: 'fixed', left: '50%', minwidth: '500px' }}
     >
       <div className="modal-dialog modal-md">
         <div className="modal-content">
@@ -137,9 +137,9 @@ const CapturaWs = (props) => {
               <div> En Breve nos comunicaremos con usted</div>
             ) : (
               <div className="alerta">
-                <h2 style={{ textAlign: 'center' }}>
+                <h3 style={{ textAlign: 'center' }}>
                   <b>{campana.titulo}</b>
-                </h2>
+                </h3>
                 <div className="div-imagen">
                   {campana.url_imagen_principal && (
                     <img
@@ -148,12 +148,12 @@ const CapturaWs = (props) => {
                     />
                   )}
                 </div>
-                <div className="form-row mt-1 pr-3 pl-3">
+                <div className="form-row mt-1 pr-3 pl-3 form-position">
                   <div className="col-md-12 mb-1 pr-3">
                     <p style={{ textAlign: 'center' }}>{campana.descripcion}</p>
                   </div>
                   <form onSubmit={handleSubmit}>
-                    <div className="form-row col-md-12 mb-1 pr-3 justify-content-center">
+                    <div className="form-row col-md-12 mb-1 pr-3 input-position">
                       <input
                         className="col-4 h-100 registro"
                         // type="number"
