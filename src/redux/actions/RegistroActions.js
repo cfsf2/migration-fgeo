@@ -36,6 +36,9 @@ export const ALTA_USUARIO_SUBMIT = (user) => {
           usuario: user.email,
           telefono: user.telefono,
           caracteristica: user.caracteristica,
+          fechaNac: user.fechaNac,
+          fechaNac_f: user.fechaNac,
+          dni: user.dni,
         })
         .then((response) => {
           if (response.status === 201) {
