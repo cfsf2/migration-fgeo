@@ -4,6 +4,7 @@ import inyeccion from "../../assets/images/inyeccion.png";
 import amarillos from "../../assets/images/amarillos.png";
 import whatsapp from "../../assets/images/whatsapp.png";
 import testcovid from "../../assets/images/covidtest.png";
+import antigripal from "../../assets/images/vacuna.jpg";
 
 export const checkServicio = (serv, servicios) => {
   if (serv === "all") {
@@ -78,7 +79,6 @@ const validarFranjaHoraria = (franjahoraria, horariosDelDia) => {
 
 export const checkIsOpen = async (horarios) => {
   var open = { msg: "Cerrado", status: false };
-
   if (horarios.length > 0) {
     var date = new Date();
     var dia = date.getDay();
@@ -200,6 +200,13 @@ export const getServicio = (servicio, index) => {
       x = (
         <div className="col-sm pt-4" key={index}>
           <img src={testcovid} className="icons-md" alt="" />
+        </div>
+      );
+      break;
+    case "campanaantigripal":
+      x = (
+        <div className="col-sm pt-4" key={index}>
+          <img src={antigripal} className="icons-md" alt="" />
         </div>
       );
       break;

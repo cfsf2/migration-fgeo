@@ -7,6 +7,7 @@ import grupo3 from "../../../../assets/images/Grupo 3.png";
 import pharmacy from "../../../../assets/images/mas-icon.png";
 //import forma1 from "../../../../assets/images/Forma 1.png";
 import iconFarmacia from "../../../../assets/images/Grupo 79.png";
+import covid from "../../../../assets/images/covidtest.png";
 
 //import Trazado230 from "../../../../assets/images/Trazado 230.png";
 import lupa from "../../../../assets/images/Lupa.png";
@@ -146,6 +147,12 @@ class FarmaciasCercanas extends Component {
             >
               <option value="all" selected>
                 Servicios...
+              </option>
+              <option
+                style={{ color: "#CD0A0A", fontWeight: "bold" }}
+                value="campanaantigripal"
+              >
+                Campaña Antigripal 2022
               </option>
               <option value="deturno">De turno</option>
               <option value="violeta">Farmacia Violeta</option>
