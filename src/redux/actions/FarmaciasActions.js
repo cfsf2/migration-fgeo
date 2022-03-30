@@ -1,5 +1,6 @@
 import axios from "axios";
-import { apiFarmageo } from "../../config";
+import { apiFarmageo, apiFarmageoSql } from "../../config";
+
 
 import "../../helpers/requestParser";
 
@@ -32,7 +33,7 @@ export const SOLICITUD_REGISTRO_FARMACIA = (solicitud) => {
       `;
 
   return axios
-    .post(apiFarmageo + "/pedidos/email", {
+    .post(apiFarmageoSql + "/pedidos/email", {
       destinatario:
         emailFarmacia +
         ";comercial@farmageo.com.ar;coordinador@farmageo.com.ar",

@@ -21,7 +21,7 @@ class RegisrarFarmacia extends Component {
     event.preventDefault()
     var result = await SOLICITUD_REGISTRO_FARMACIA(this.state)
     if(result){
-        this.setState({finalizado:true})
+        // this.setState({finalizado:true})
     }
   }
 
