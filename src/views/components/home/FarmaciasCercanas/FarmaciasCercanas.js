@@ -99,12 +99,24 @@ class FarmaciasCercanas extends Component {
     if (search_farmacia && search_farmacia !== this.state.search_farmacia) {
       this.setState({ search_farmacia });
     }
+    const search = this.handlequery().get("s");
+    if (search) {
+      document.getElementById("cercanas-y-de-turno-banner").scrollIntoView();
+      if (prevState.servicio !== search) {
+        this.setState({ servicio: search });
+      }
+    }
   }
 
   async componentDidMount() {
     var search_farmacia = await this.handlequery().get("f");
     if (search_farmacia) {
       this.setState({ search_farmacia });
+    }
+    const search = this.handlequery().get("s");
+    if (search) {
+      document.getElementById("cercanas-y-de-turno-banner").scrollIntoView();
+      this.setState({ servicio: search });
     }
   }
 
@@ -117,24 +129,6 @@ class FarmaciasCercanas extends Component {
           <div className="form-group col-md-3 pl-0" align="left">
             <SelectFarm state={this.state} handleSelect={this.handleSelect} />
           </div>
-
-          {/* <div className="form-group col-md-2 pl-0" align="left">
-            <select
-              id="inputState"
-              className="form-control"
-              onChange={this.handleFiltros}
-              value={this.state.horario}
-              defaultValue={this.state.horario}
-              name="horario"
-            >
-              <option value="all" selected>
-                Horario...
-              </option>
-              <option value="manana">Mañana</option>
-              <option value="tarde">Tarde</option>
-              <option value="noche">Noche</option>
-            </select>
-          </div> */}
 
           <div className="form-group col-md-2 pl-0" align="left">
             <select
