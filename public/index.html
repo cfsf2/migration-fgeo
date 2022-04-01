@@ -9,6 +9,11 @@
       name="description"
       content="Somos la tienda online que reúne todas las farmacias y servicios en un solo lugar. Sin comisiones ni intermediarios. ¡Tu farmacia digital al alcance de tu mano!"
     />
+    <meta
+      property="og:image"
+      content="https://sync-farmageo2.s3.amazonaws.com/imagenes/logo-farmageo-2.0.jpeg"
+    />
+
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <!-- Required meta tags -->
@@ -59,12 +64,12 @@
     ></script>
 
     <script>
-      $(".selectpicker").on("shown.bs.select", function () {
-        $(".bootstrap-select .dropdown-header").each(function () {
-          if ((this.dataset.unescaped || "1") == "1") {
+      $('.selectpicker').on('shown.bs.select', function () {
+        $('.bootstrap-select .dropdown-header').each(function () {
+          if ((this.dataset.unescaped || '1') == '1') {
             let element = $(this);
             element.html(element.text());
-            element.attr("data-unescaped", "0");
+            element.attr('data-unescaped', '0');
           }
         });
       });
