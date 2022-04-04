@@ -5,12 +5,25 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+    <meta property="og:title" content="Farmageo" />
+    <meta property="og:type" content="website" />
     <meta
-      name="description"
+      property="og:image"
+      content="https://sync-farmageo2.s3.amazonaws.com/imagenes/logo-farmageo-2.0.jpeg"
+    />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="300" />
+    <meta property="og:image:height" content="300" />
+    <meta property="og:url" content="app.farmageo.com.ar" />
+    <meta
+      property="og:description"
       content="Somos la tienda online que reúne todas las farmacias y servicios en un solo lugar. Sin comisiones ni intermediarios. ¡Tu farmacia digital al alcance de tu mano!"
     />
+    <meta property="og:image:alt" content="Farmageo-Logo" />
+
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
     <!-- Required meta tags -->
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -59,12 +72,12 @@
     ></script>
 
     <script>
-      $(".selectpicker").on("shown.bs.select", function () {
-        $(".bootstrap-select .dropdown-header").each(function () {
-          if ((this.dataset.unescaped || "1") == "1") {
+      $('.selectpicker').on('shown.bs.select', function () {
+        $('.bootstrap-select .dropdown-header').each(function () {
+          if ((this.dataset.unescaped || '1') == '1') {
             let element = $(this);
             element.html(element.text());
-            element.attr("data-unescaped", "0");
+            element.attr('data-unescaped', '0');
           }
         });
       });

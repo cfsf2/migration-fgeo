@@ -8,8 +8,16 @@ input[type='number'] {
   -moz-appearance: textfield;
 }
 
+.modal-dialog {
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.modal-content {
+  padding: 10px;
+}
+
 .div-imagen {
-  width: 28vw;
   padding: 1rem;
   display: flex;
   justify-content: center;
@@ -40,6 +48,14 @@ input[type='number'] {
   text-align: center;
   line-height: 2rem;
   width: 75%;
+}
+
+.form-position {
+  justify-content: center;
+}
+
+.input-position {
+  margin: 0 auto;
 }
 
 /* 
