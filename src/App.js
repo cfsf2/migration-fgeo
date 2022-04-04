@@ -85,7 +85,7 @@ axios.interceptors.request.use((request) => {
   )}`;
   return request;
 });
-axios.defaults.withCredentials = true;
+//axios.defaults.withCredentials = true;
 
 function App() {
   const [modalState, setmodalState] = useState(true);
