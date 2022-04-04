@@ -129,7 +129,7 @@ const CapturaWs = (props) => {
       handleClose={setMostrar}
       style={{ position: 'fixed', left: '50%', minwidth: '500px' }}
     >
-      <div className="modal-dialog modal-md">
+      <div className="modal-dialog modal-md ">
         <div className="modal-content">
           <div style={{ float: 'right' }}></div>
           <div className="modal-body" align="left">
