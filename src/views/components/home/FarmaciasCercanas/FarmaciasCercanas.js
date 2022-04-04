@@ -101,7 +101,10 @@ class FarmaciasCercanas extends Component {
     }
     const search = this.handlequery().get("s");
     if (search) {
-      document.getElementById("cercanas-y-de-turno-banner").scrollIntoView();
+      setTimeout(() => {
+        document.getElementById("cercanas-y-de-turno-banner").scrollIntoView();
+      }, 3000);
+
       if (prevState.servicio !== search) {
         this.setState({ servicio: search });
       }
@@ -115,7 +118,9 @@ class FarmaciasCercanas extends Component {
     }
     const search = this.handlequery().get("s");
     if (search) {
-      document.getElementById("cercanas-y-de-turno-banner").scrollIntoView();
+      setTimeout(() => {
+        document.getElementById("cercanas-y-de-turno-banner").scrollIntoView();
+      }, 3000);
       this.setState({ servicio: search });
     }
   }
