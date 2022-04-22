@@ -37,7 +37,7 @@ class FarmaciasCercanas extends Component {
       servicio: "all",
       horario: "all",
       search_farmacia: "",
-      listado: true,
+      listado: false,
     };
     this.handleFiltros = this.handleFiltros.bind(this);
     this.handlequery = this.handlequery.bind(this);
@@ -79,6 +79,7 @@ class FarmaciasCercanas extends Component {
   handleActualUbication = (value) => {
     this.setState({
       statusActualUbication: value,
+      listado: value,
     });
   };
 
@@ -90,6 +91,12 @@ class FarmaciasCercanas extends Component {
       if (prevState.search_farmacia !== search_farmacia) {
         this.setState({ search_farmacia });
       }
+    }
+
+    if (
+      prevProps.UsuarioReducer.usar_mapa !== this.props.UsuarioReducer.usar_mapa
+    ) {
+      this.handleActualUbication(this.props.UsuarioReducer.usar_mapa);
     }
 
     if (prevProps.UsuarioReducer.localidad_default !== localidad_default) {

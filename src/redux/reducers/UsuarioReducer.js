@@ -3,6 +3,7 @@ const defaultState = {
   localidad_default: "",
   farmacia_selected: null,
   user_farmageo: {},
+  usar_mapa: false,
   reverseGeo: null,
 };
 
@@ -28,6 +29,11 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         farmacia_selected: action.payload,
+      };
+    case "USAR_MAPA":
+      return {
+        ...state,
+        usar_mapa: action.payload,
       };
     case "GET_USER_API_FARMAGEO":
       return {

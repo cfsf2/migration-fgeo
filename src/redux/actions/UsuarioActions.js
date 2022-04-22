@@ -116,7 +116,17 @@ export const ELEGIR_FARMACIA = (farmacia) => {
   };
 };
 
+export const USAR_MAPA = (value) => {
+  return (dispatch) => {
+    dispatch({
+      type: "USAR_MAPA",
+      payload: value,
+    });
+  };
+};
+
 export const OBTENER_POSICION_ACTUAL_MAP = () => {
+  console.log("obtener posicion actual maps");
   return (dispatch) => {
     if (!navigator.geolocation) {
       alert("<p>Geolocation is not supported by your browser</p>");
