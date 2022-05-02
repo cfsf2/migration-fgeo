@@ -15,7 +15,7 @@ function BannerFarmaciasCercanas() {
         align="center"
       >
         <h1>
-          Farmacias <b>cercanas</b>
+          SOY UN TITULO <b>CERCANO</b>
         </h1>
         <p>Elegí tu farmacia para acceder a su tienda online</p>
       </div>
