@@ -113,7 +113,7 @@ function App() {
               letterSpacing: '10px',
             }}
           >
-            ENTORNO DE TESTING
+            ENTORNO DE MIGRATION TESTING
           </h1>
         </div>
       ) : null}
