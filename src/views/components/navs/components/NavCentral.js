@@ -29,7 +29,7 @@ export function NavCentral(props) {
       <div classNAme="col-md-1"></div>
       <div className="col-md-2 hide-mobile" align="center">
         <button className="carrito" onClick={handleCarrito}>
-          Mi carrito <img alt="" src={iconCarrito} id="icon-carrito" />{" "}
+          Mi Carrito <img alt="" src={iconCarrito} id="icon-carrito" />{" "}
           {carrito.length}
         </button>
       </div>
