@@ -5,7 +5,7 @@ import amarillos from '../../../assets/images/amarillos.png';
 import whatsapp from '../../../assets/images/whatsapp.png';
 import magistrales from '../../../assets/images/recetas-magistrales.png';
 import testcovid from '../../../assets/images/covidtest.png';
-import panales_pami from '../../../assets/images/panales_pami.jpeg';
+import panales_pami from '../../../assets/images/panales_pami.png';
 
 import _ from 'lodash';
 import { checkServicio } from '../../helpers/FarmaciaHelpers';
@@ -98,7 +98,12 @@ function Servicios(props) {
                   : { filter: 'grayscale(100%)', opacity: 0.3 }
               }
             >
-              <img src={panales_pami} className="icons-md" alt="" />
+              <img
+                src={panales_pami}
+                className="icons-md"
+                alt=""
+                style={{ width: '60px', height: '30px' }}
+              />
               <p>Pañales PAMI</p>
             </div>
             <div
