@@ -7,6 +7,7 @@ import grupo3 from "../../../../assets/images/Grupo 3.png";
 import pharmacy from "../../../../assets/images/mas-icon.png";
 //import forma1 from "../../../../assets/images/Forma 1.png";
 import iconFarmacia from "../../../../assets/images/Grupo 79.png";
+import covid from "../../../../assets/images/covidtest.png";
 
 //import Trazado230 from "../../../../assets/images/Trazado 230.png";
 import lupa from "../../../../assets/images/Lupa.png";
@@ -36,7 +37,7 @@ class FarmaciasCercanas extends Component {
       servicio: "all",
       horario: "all",
       search_farmacia: "",
-      listado: true,
+      listado: false,
     };
     this.handleFiltros = this.handleFiltros.bind(this);
     this.handlequery = this.handlequery.bind(this);
@@ -78,6 +79,7 @@ class FarmaciasCercanas extends Component {
   handleActualUbication = (value) => {
     this.setState({
       statusActualUbication: value,
+      listado: value,
     });
   };
 
@@ -91,6 +93,12 @@ class FarmaciasCercanas extends Component {
       }
     }
 
+    if (
+      prevProps.UsuarioReducer.usar_mapa !== this.props.UsuarioReducer.usar_mapa
+    ) {
+      this.handleActualUbication(this.props.UsuarioReducer.usar_mapa);
+    }
+
     if (prevProps.UsuarioReducer.localidad_default !== localidad_default) {
       this.setState({ localidad: localidad_default });
     }
@@ -98,12 +106,29 @@ class FarmaciasCercanas extends Component {
     if (search_farmacia && search_farmacia !== this.state.search_farmacia) {
       this.setState({ search_farmacia });
     }
+    const search = this.handlequery().get("s");
+    if (search) {
+      setTimeout(() => {
+        document.getElementById("cercanas-y-de-turno-banner").scrollIntoView();
+      }, 3000);
+
+      if (prevState.servicio !== search) {
+        this.setState({ servicio: search });
+      }
+    }
   }
 
   async componentDidMount() {
     var search_farmacia = await this.handlequery().get("f");
     if (search_farmacia) {
       this.setState({ search_farmacia });
+    }
+    const search = this.handlequery().get("s");
+    if (search) {
+      setTimeout(() => {
+        document.getElementById("cercanas-y-de-turno-banner").scrollIntoView();
+      }, 3000);
+      this.setState({ servicio: search });
     }
   }
 
@@ -117,24 +142,6 @@ class FarmaciasCercanas extends Component {
             <SelectFarm state={this.state} handleSelect={this.handleSelect} />
           </div>
 
-          {/* <div className="form-group col-md-2 pl-0" align="left">
-            <select
-              id="inputState"
-              className="form-control"
-              onChange={this.handleFiltros}
-              value={this.state.horario}
-              defaultValue={this.state.horario}
-              name="horario"
-            >
-              <option value="all" selected>
-                Horario...
-              </option>
-              <option value="manana">Mañana</option>
-              <option value="tarde">Tarde</option>
-              <option value="noche">Noche</option>
-            </select>
-          </div> */}
-
           <div className="form-group col-md-2 pl-0" align="left">
             <select
               id="inputState"
@@ -146,6 +153,12 @@ class FarmaciasCercanas extends Component {
             >
               <option value="all" selected>
                 Servicios...
+              </option>
+              <option
+                style={{ color: "#CD0A0A", fontWeight: "bold" }}
+                value="campanaantigripal"
+              >
+                Campaña Antigripal 2022
               </option>
               <option value="deturno">De turno</option>
               <option value="violeta">Farmacia Violeta</option>

@@ -1,0 +1,33 @@
+.registro_error {
+  border: 1px solid red;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.registro_error_alert {
+  background-color: rgba(240, 240, 240, 1);
+  border: 1px solid rgba(180, 180, 180, 1);
+  padding: 10px;
+  left: 5rem;
+  top: 1rem;
+  border-radius: 5px;
+  color: rgba(55, 55, 55, 1);
+  line-height: 2rem;
+}
+
+.fadeout {
+  animation-name: fadeout;
+  animation-duration: 1.8s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

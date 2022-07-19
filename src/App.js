@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import ReactGA from "react-ga";
 //import { HashRouter, Route, Switch } from 'react-router-dom';
 import "./css/farmacias.css";
 import "./css/switch.css";
 import { base } from "./config";
 
 // import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch, useLocation } from "react-router-dom";
 import FooterHome from "./views/components/footers/FooterHome";
+import axios from "axios";
 
 const loading = () => (
   <div className="animated fadeIn pt-3 text-center">Cargando...</div>
@@ -61,12 +63,36 @@ const RegistrarFarmacia = React.lazy(() =>
   import("./views/components/RegistrarFarmacia")
 );
 
+const GestorCampanas = React.lazy(() =>
+  import("./views/components/gestorCampanas/GestorCampanas")
+);
+
+function usePageViews() {
+  let location = useLocation();
+  React.useEffect(() => {
+    if (!window.GA_INITIALIZED) {
+      ReactGA.initialize(process.env.REACT_APP_GA);
+      window.GA_INITIALIZED = true;
+    }
+    ReactGA.set({ page: location.pathname });
+    ReactGA.pageview(location.pathname + location.search);
+  });
+}
+
+axios.interceptors.request.use((request) => {
+  request.headers.authorization = `Bearer ${window.localStorage.getItem(
+    "token"
+  )}`;
+  return request;
+});
+//axios.defaults.withCredentials = true;
+
 function App() {
   const [modalState, setmodalState] = useState(true);
   const testing = window.location.origin;
-
+  usePageViews();
   return (
-    <HashRouter>
+    <>
       {testing !== base ? (
         <div
           className="leyendatesting"
@@ -93,6 +119,7 @@ function App() {
         </div>
       ) : null}
       <React.Suspense fallback={loading()}>
+        <GestorCampanas />
         <Switch>
           <Route
             exact
@@ -328,7 +355,7 @@ function App() {
           />
         </Switch>
       </React.Suspense>
-    </HashRouter>
+    </>
   );
 }
 
