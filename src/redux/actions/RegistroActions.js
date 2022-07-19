@@ -36,6 +36,9 @@ export const ALTA_USUARIO_SUBMIT = (user) => {
           usuario: user.email,
           telefono: user.telefono,
           caracteristica: user.caracteristica,
+          fechaNac: user.fechaNac,
+          fechaNac_f: user.fechaNac,
+          dni: user.dni,
         })
         .then((response) => {
           if (response.status === 201) {
@@ -50,6 +53,8 @@ export const ALTA_USUARIO_SUBMIT = (user) => {
                   username: response.data.username,
                   password: user.password,
                   token: response.data.token,
+                  telephone:
+                    user.telefono.toString() + user.caracteristica.toString(),
                 },
               },
             });

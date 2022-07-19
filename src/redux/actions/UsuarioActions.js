@@ -62,9 +62,7 @@ export const GET_USER_API_FARMAGEO = (username, token) => {
   return (dispatch) => {
     var _username = username.toLowerCase();
     axios
-      .get(apiFarmageo + "/users/" + _username, {
-        headers: { Authorization: "Bearer " + token },
-      })
+      .get(apiFarmageo + "/users/" + _username)
       .then(async function (response) {
         if (response.data.habilitado) {
           dispatch({
@@ -118,9 +116,17 @@ export const ELEGIR_FARMACIA = (farmacia) => {
   };
 };
 
+export const USAR_MAPA = (value) => {
+  return (dispatch) => {
+    dispatch({
+      type: "USAR_MAPA",
+      payload: value,
+    });
+  };
+};
 
 export const OBTENER_POSICION_ACTUAL_MAP = () => {
-
+  console.log("obtener posicion actual maps");
   return (dispatch) => {
     if (!navigator.geolocation) {
       alert("<p>Geolocation is not supported by your browser</p>");
@@ -133,16 +139,16 @@ export const OBTENER_POSICION_ACTUAL_MAP = () => {
       axios
         .get(
           "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=" +
-          latitude +
-          "&longitude=" +
-          longitude +
-          "&localityLanguage=es"
+            latitude +
+            "&longitude=" +
+            longitude +
+            "&localityLanguage=es"
         )
         .then(async function (response) {
-          if(response.data.city){
+          if (response.data.city) {
             // localStorage.setItem("ubicacion_maps", response.data);
           }
-          
+
           dispatch({
             type: "OBTENER_POSICION_ACTUAL",
             payload: response.data,
@@ -157,10 +163,7 @@ export const OBTENER_POSICION_ACTUAL_MAP = () => {
   };
 };
 
-
-
 export const OBTENER_POSICION_ACTUAL = () => {
-
   return (dispatch) => {
     if (!navigator.geolocation) {
       alert("<p>Geolocation is not supported by your browser</p>");
@@ -173,16 +176,16 @@ export const OBTENER_POSICION_ACTUAL = () => {
       axios
         .get(
           "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=" +
-          latitude +
-          "&longitude=" +
-          longitude +
-          "&localityLanguage=es"
+            latitude +
+            "&longitude=" +
+            longitude +
+            "&localityLanguage=es"
         )
         .then(async function (response) {
-          if(response.data.city){
+          if (response.data.city) {
             sessionStorage.setItem("ubicacion_default", response.data.city);
           }
-          console.log("obtener posicion actal ", response.data)
+          console.log("obtener posicion actal ", response.data);
           dispatch({
             type: "OBTENER_POSICION_ACTUAL",
             payload: response.data,
@@ -214,5 +217,31 @@ export const LOGOUT = () => {
       type: "LOGOUT",
     });
     window.location.href = `${process.env.PUBLIC_URL}/#/`;
+  };
+};
+
+export const UPDATE_USER = () => {
+  return (dispatch, getState) => {
+    return axios
+      .put(apiFarmageo + "/users/updateWebUser", {
+        data: getState().UsuarioReducer.user_farmageo,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
+};
+
+export const UPDATE_LOCAL_USER = (nuevosDatos) => {
+  return (dispatch, getState) => {
+    const { user_farmageo } = getState().UsuarioReducer;
+
+    const datos = Object.assign(user_farmageo, nuevosDatos);
+
+    dispatch({
+      type: "UPDATE_LOCAL_USER",
+      payload: datos,
+    });
   };
 };
