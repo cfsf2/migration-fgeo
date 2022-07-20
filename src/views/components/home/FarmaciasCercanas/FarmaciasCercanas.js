@@ -1,33 +1,33 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import grupo2 from "../../../../assets/images/Grupo 2.png";
-import grupo1 from "../../../../assets/images/Grupo 1.png";
-import grupo3 from "../../../../assets/images/Grupo 3.png";
-import pharmacy from "../../../../assets/images/mas-icon.png";
+import grupo2 from '../../../../assets/images/Grupo 2.png';
+import grupo1 from '../../../../assets/images/Grupo 1.png';
+import grupo3 from '../../../../assets/images/Grupo 3.png';
+import pharmacy from '../../../../assets/images/mas-icon.png';
 //import forma1 from "../../../../assets/images/Forma 1.png";
 import iconFarmacia from "../../../../assets/images/Grupo 79.png";
 import covid from "../../../../assets/images/covidtest.png";
 
 //import Trazado230 from "../../../../assets/images/Trazado 230.png";
-import lupa from "../../../../assets/images/Lupa.png";
+import lupa from '../../../../assets/images/Lupa.png';
 
-import ListadoFarmacias from "./ListadoFarmacias";
-import MapaFarmacias from "./MapaFarmacias";
-import { localidades } from "../../../helpers/FarmaciaHelpers";
-import UbicacionActualFarmacias from "../../../helpers/UbicacionActualFarmacias";
+import ListadoFarmacias from './ListadoFarmacias';
+import MapaFarmacias from './MapaFarmacias';
+import { localidades } from '../../../helpers/FarmaciaHelpers';
+import UbicacionActualFarmacias from '../../../helpers/UbicacionActualFarmacias';
 import {
   ELEGIR_LOCALIDAD,
   OBTENER_POSICION_ACTUAL,
-} from "../../../../redux/actions/UsuarioActions";
-import SelectFarm from "./SelectFarm";
-import { getLatLong } from "../../../../DataFetcher/DFUbicationMap";
+} from '../../../../redux/actions/UsuarioActions';
+import SelectFarm from './SelectFarm';
+import { getLatLong } from '../../../../DataFetcher/DFUbicationMap';
 
 class FarmaciasCercanas extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ver: "mapa",
+      ver: 'mapa',
       localidad: this.props.UsuarioReducer.localidad_default,
       geo: {
         lat: -32.949693,
@@ -44,7 +44,7 @@ class FarmaciasCercanas extends Component {
   }
 
   handlequery = () => {
-    return new URLSearchParams(window.location.hash.split("?")[1]);
+    return new URLSearchParams(window.location.hash.split('?')[1]);
   };
 
   handleFiltros(event) {
@@ -54,7 +54,7 @@ class FarmaciasCercanas extends Component {
     this.setState({
       [name]: value,
     });
-    if (name == "localidad") {
+    if (name == 'localidad') {
       this.props.ELEGIR_LOCALIDAD(value);
     }
   }
@@ -85,9 +85,9 @@ class FarmaciasCercanas extends Component {
 
   async componentDidUpdate(prevProps, prevState) {
     const { localidad_default } = this.props.UsuarioReducer;
-    var search_farmacia = await this.handlequery().get("f");
+    var search_farmacia = await this.handlequery().get('f');
 
-    if (search_farmacia === "") {
+    if (search_farmacia === '') {
       if (prevState.search_farmacia !== search_farmacia) {
         this.setState({ search_farmacia });
       }
@@ -119,7 +119,7 @@ class FarmaciasCercanas extends Component {
   }
 
   async componentDidMount() {
-    var search_farmacia = await this.handlequery().get("f");
+    var search_farmacia = await this.handlequery().get('f');
     if (search_farmacia) {
       this.setState({ search_farmacia });
     }
@@ -166,11 +166,12 @@ class FarmaciasCercanas extends Component {
               <option value="amarillos">Puntos Amarillos</option>
               <option
                 value="testcovid"
-                style={{ color: "#CD0A0A", fontWeight: "bold" }}
+                style={{ color: '#CD0A0A', fontWeight: 'bold' }}
               >
                 Test de Covid
               </option>
               <option value="presion">Toma de presión</option>
+              <option value="pañalespami">Pañales PAMI</option>
               <option value="whatsapp">Whatsapp</option>
             </select>
           </div>
@@ -178,39 +179,39 @@ class FarmaciasCercanas extends Component {
           <div className="col pt-4 pr-0" align="right"></div>
 
           <div className="form-group col-md-3 pl-0" align="right">
-            Ver{" "}
+            Ver{' '}
             <div
               className="d-inline p-2 rounded ml-3"
-              style={{ border: "solid 0.5px #5c5959" }}
+              style={{ border: 'solid 0.5px #5c5959' }}
             >
               <img
                 alt=""
                 src={pharmacy}
                 className="border-right px-2 btn"
                 onClick={() => this.setState({ listado: !this.state.listado })}
-                style={{ opacity: this.state.listado ? 1 : 0.4, width: "40px" }}
+                style={{ opacity: this.state.listado ? 1 : 0.4, width: '40px' }}
               />
               <img
                 alt=""
                 src={grupo3}
                 className="p-1 border-right px-2 btn"
-                onClick={() => this.setState({ ver: "listado" })}
-                style={{ opacity: ver === "listado" ? 1 : 0.4 }}
+                onClick={() => this.setState({ ver: 'listado' })}
+                style={{ opacity: ver === 'listado' ? 1 : 0.4 }}
               />
               <img
                 alt=""
                 src={grupo2}
                 className="pb-2 pt-1 px-2 btn"
-                onClick={() => this.setState({ ver: "mapa" })}
-                style={{ opacity: ver === "mapa" ? 1 : 0.4 }}
+                onClick={() => this.setState({ ver: 'mapa' })}
+                style={{ opacity: ver === 'mapa' ? 1 : 0.4 }}
               />
             </div>
           </div>
 
           <div className="col-12 pt-4 pr-0" align="right">
-            {ver === "mapa" ? (
+            {ver === 'mapa' ? (
               <>
-                "Utilizar mi ubicación actual"{" "}
+                "Utilizar mi ubicación actual"{' '}
                 <UbicacionActualFarmacias
                   actualValue={this.state.statusActualUbication}
                   handleActualUbication={this.handleActualUbication}
@@ -219,7 +220,7 @@ class FarmaciasCercanas extends Component {
             ) : null}
           </div>
         </div>
-        {ver === "listado" ? (
+        {ver === 'listado' ? (
           <ListadoFarmacias
             filtroServicio={servicio}
             filtroHorario={horario}
@@ -248,7 +249,7 @@ class FarmaciasCercanas extends Component {
 }
 
 FarmaciasCercanas.defaultProps = {
-  filtroPerfilFarmageo: "",
+  filtroPerfilFarmageo: '',
 };
 
 const mapStateToProps = (state) => {
