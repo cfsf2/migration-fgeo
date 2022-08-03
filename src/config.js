@@ -1,5 +1,5 @@
 module.exports = {
-  image_path_server: "https://sync-farmageo2.s3.amazonaws.com/", //incluir "/"
+  image_path_server: process.env.REACT_APP_FARMAGEO_BUCKET, //incluir "/"
   apiFarmageo: process.env.REACT_APP_FARMAGEO_API,
   authFarmageo: "https://admin.farmageo.com.ar:8000",
   base: "https://app.farmageo.com.ar",
