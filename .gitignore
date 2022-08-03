@@ -3,3 +3,4 @@ build
 .eslintcache
 config.js
 .env
+.env.local
