@@ -106,7 +106,7 @@ function App() {
         >
           <h1
             style={{
-              fontSize: "2rem",
+              fontSize: "1rem",
               textAlign: "center",
               color: "yellow",
               backgroundColor: "blue",
@@ -114,7 +114,7 @@ function App() {
               letterSpacing: "10px",
             }}
           >
-            ENTORNO DE TESTING
+            ENTORNO DE TESTING SQL
           </h1>
         </div>
       ) : null}
