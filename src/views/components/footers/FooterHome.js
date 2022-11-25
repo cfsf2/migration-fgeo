@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function FooterHome() {
   const fecha = new Date();
   const ano = fecha.getFullYear();
@@ -30,9 +32,15 @@ function FooterHome() {
             <a href="https://www.farmageo.com.ar/novedades/cambios-y-devoluciones/">
               Cambios y devoluciones
             </a>
-            <a href="https://www.farmageo.com.ar/novedades/terminos-y-condiciones/">
+            <Link
+              to={{
+                pathname: '/novedades/terminos-y-condiciones/',
+              }}
+              style={{ fontSize: "1rem" }}
+              target="_blank"
+            >
               Términos y condiciones
-            </a>
+            </Link>
           </div>
           <div className="col-md-3 col-6 pt-5">
             <b>Contacto</b>
@@ -47,7 +55,7 @@ function FooterHome() {
         <div className="row centrado-2" align="left">
           <div
             className="col-sm-12 py-4 mt-5"
-            style={{ borderTop: "solid 1px #0000000f", fontWeight: 600 }}
+            style={{ borderTop: 'solid 1px #0000000f', fontWeight: 600 }}
           >
             &copy; Copyright {ano} - Desarrollo por Departamento de desarrollo y
             tecnología / Cfsf2
