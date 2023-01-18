@@ -1,27 +1,27 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   GET_CATEGORIAS,
   SET_CATEGORIA,
-} from "../../../redux/actions/ProductosActions";
+} from '../../../redux/actions/ProductosActions';
 
-import { connect } from "react-redux";
-import logoFarmageo from "../../../assets/images/Grupo 57.png";
-import iconCarrito from "../../../assets/images/carrito.png";
-import iconCarritoWhite from "../../../assets/images/carritoWhite.png";
-import iconMaps from "../../../assets/images/Icono.png";
-import logo from "../../../assets/images/logo.png";
+import { connect } from 'react-redux';
+import logoFarmageo from '../../../assets/images/Grupo 57.png';
+import iconCarrito from '../../../assets/images/carrito.png';
+import iconCarritoWhite from '../../../assets/images/carritoWhite.png';
+import iconMaps from '../../../assets/images/Icono.png';
+import logo from '../../../assets/images/Nuevo-Logo-Positivo.png';
 
-import forma1 from "../../../assets/images/Forma 1.png";
-import iconFarmacia from "../../../assets/images/Grupo 79.png";
-import lupa from "../../../assets/images/Lupa.png";
+import forma1 from '../../../assets/images/Forma 1.png';
+import iconFarmacia from '../../../assets/images/Grupo 79.png';
+import lupa from '../../../assets/images/Lupa.png';
 
-import { NavCentral } from "./components/NavCentral";
+import { NavCentral } from './components/NavCentral';
 
-import Login from "../modales/Login";
-import Registro from "../modales/Registro";
-import SeleccionarUbicacion from "../modales/SeleccionarUbicacion";
-import { GET_AUTH } from "../../../redux/actions/UsuarioActions";
-import Carrito from "../compras/Carrito";
+import Login from '../modales/Login';
+import Registro from '../modales/Registro';
+import SeleccionarUbicacion from '../modales/SeleccionarUbicacion';
+import { GET_AUTH } from '../../../redux/actions/UsuarioActions';
+import Carrito from '../compras/Carrito';
 //import { apiFarmageo } from "../../../config";
 //import axios from "axios";
 
@@ -29,14 +29,14 @@ class NavHome extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      categoria: "all",
+      categoria: 'all',
       farmacia: null,
-      ubicacion_default: "",
+      ubicacion_default: '',
       showCarrito: false,
-      search: "producto",
-      txtbusqueda: "",
+      search: 'producto',
+      txtbusqueda: '',
       showcategorias: false,
-      scolled: "d-none",
+      scolled: 'd-none',
     };
     this.handleCategoria = this.handleCategoria.bind(this);
     this.handleSeccionCategorias = this.handleSeccionCategorias.bind(this);
@@ -57,14 +57,14 @@ class NavHome extends Component {
 
   async componentDidMount() {
     this.props.GET_CATEGORIAS();
-    window.addEventListener("scroll", () => {
+    window.addEventListener('scroll', () => {
       if (window.scrollY > 0) {
         this.setState({
-          scolled: " ",
+          scolled: ' ',
         });
       } else {
         this.setState({
-          scolled: "d-none",
+          scolled: 'd-none',
         });
       }
     });
@@ -125,11 +125,11 @@ class NavHome extends Component {
         {/*<!-- nav cuando scrollea-->*/}
         <div className="row hide-mobile">
           <div
-            className={"col-md-12 " + this.state.scolled}
+            className={'col-md-12 ' + this.state.scolled}
             style={{
-              position: "fixed",
+              position: 'fixed',
               zIndex: 100,
-              backgroundColor: "rgb(43 52 85)",
+              backgroundColor: 'rgb(43 52 85)',
             }}
           >
             <div className="container-fluid">
@@ -141,18 +141,18 @@ class NavHome extends Component {
                     }
                     className="nav-farmageo-back"
                     key={new Date()}
-                    href={process.env.PUBLIC_URL + "/#/"}
+                    href={process.env.PUBLIC_URL + '/#/'}
                   >
                     {this.state.ubicacion_default}
-                    <img alt="" src={logoFarmageo} style={{ width: "130px" }} />
+                    <img alt="" src={logoFarmageo} style={{ width: '130px' }} />
                   </a>
                 </div>
                 <div className="col-4 pt-3">
                   <a
                     className="nav-farmageo-back"
-                    href={process.env.PUBLIC_URL + "/#/"}
+                    href={process.env.PUBLIC_URL + '/#/'}
                   >
-                    {farms_cerca_cant + " Farmacias cerca"}
+                    {farms_cerca_cant + ' Farmacias cerca'}
                   </a>
                 </div>
                 <div className="col-4 py-1">
@@ -175,7 +175,7 @@ class NavHome extends Component {
         <div className="row">
           <div
             className="col-md-12"
-            style={{ zIndex: 20, backgroundColor: "rgb(43 52 85)" }}
+            style={{ zIndex: 20, backgroundColor: 'rgb(43 52 85)' }}
           >
             <nav className="navbar navbar-expand-lg navbar-dark navbar-fixed-top m-0">
               <div className="container-fluid">
@@ -185,7 +185,7 @@ class NavHome extends Component {
                     this.props.setmodalState(!this.props.modalState)
                   }
                 >
-                  <img alt="" src={iconMaps} style={{ width: "1em" }} />{" "}
+                  <img alt="" src={iconMaps} style={{ width: '1em' }} />{' '}
                   {this.state.ubicacion_default}
                 </a>
                 <button
@@ -213,15 +213,15 @@ class NavHome extends Component {
                             value={categoriaFiltro}
                             onChange={this.handleCategoria}
                             style={{
-                              backgroundColor: "transparent",
-                              color: "#ababa1",
+                              backgroundColor: 'transparent',
+                              color: '#ababa1',
                             }}
                           >
                             <option
                               value="all"
                               style={{
-                                backgroundColor: "transparent",
-                                color: "#ababa1",
+                                backgroundColor: 'transparent',
+                                color: '#ababa1',
                                 fontSize: 11,
                               }}
                             >
@@ -234,8 +234,8 @@ class NavHome extends Component {
                                       value={cat._id}
                                       key={i}
                                       style={{
-                                        backgroundColor: "transparent",
-                                        color: "#ababa1",
+                                        backgroundColor: 'transparent',
+                                        color: '#ababa1',
                                         fontSize: 11,
                                       }}
                                     >
@@ -256,7 +256,7 @@ class NavHome extends Component {
                                       this.handleSeccionCategorias(cat._id)
                                     }
                                     key={i}
-                                    style={{ color: "#ababa1", fontSize: 11 }}
+                                    style={{ color: '#ababa1', fontSize: 11 }}
                                   >
                                     {cat.nombre}
                                   </a>
@@ -271,9 +271,9 @@ class NavHome extends Component {
                       <li className="nav-item">
                         <a
                           className="nav-link nav-farmageo-item"
-                          href={process.env.PUBLIC_URL + "/#/usuarioconfig"}
+                          href={process.env.PUBLIC_URL + '/#/usuarioconfig'}
                         >
-                          {user_farmageo.usuario.split("@")[0]}
+                          {user_farmageo.usuario.split('@')[0]}
                         </a>
                       </li>
                     ) : (
@@ -312,7 +312,7 @@ class NavHome extends Component {
                     <li className="nav-item">
                       <a
                         className="nav-link nav-farmageo-item"
-                        href={"http://admin.farmageo.com.ar"}
+                        href={'http://admin.farmageo.com.ar'}
                         target="_blank"
                         rel="noopener"
                       >
@@ -323,7 +323,7 @@ class NavHome extends Component {
                 </div>
               </div>
             </nav>
-            <a href={process.env.PUBLIC_URL + "/#/"} id="logo-mobile">
+            <a href={process.env.PUBLIC_URL + '/#/'} id="logo-mobile">
               <img alt="" src={logo} className="w-75" />
             </a>
             <button onClick={this.handleCarrito} className="btn-carrito-mob">
@@ -374,12 +374,12 @@ class NavHome extends Component {
               </select>
             </div>
             <div
-              style={{ borderLeft: "solid 1px #4f9cb5" }}
+              style={{ borderLeft: 'solid 1px #4f9cb5' }}
               className="col-md-2 px-0 hide-mobile hover-bg-4f9cb5"
               align="center"
             >
               <button
-                style={{ width: "100%", height: "100%" }}
+                style={{ width: '100%', height: '100%' }}
                 className="nav-inferior-link"
               >
                 Pedí tus recetas
@@ -388,7 +388,7 @@ class NavHome extends Component {
             {categorias
               ? categorias.map((cat, i) => {
                   let styleMenu = {
-                    borderLeft: "solid 1px #4f9cb5",
+                    borderLeft: 'solid 1px #4f9cb5',
                   };
                   return cat.destacada ? (
                     <div
@@ -397,7 +397,7 @@ class NavHome extends Component {
                       align="center"
                     >
                       <button
-                        style={{ width: "100%", height: "100%" }}
+                        style={{ width: '100%', height: '100%' }}
                         className="nav-inferior-link"
                         onClick={() => this.handleSeccionCategorias(cat._id)}
                         key={i}
