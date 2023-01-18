@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { image_path_server } from "../../../config";
+import React, { Component } from 'react';
+import { image_path_server } from '../../../config';
 
-import "../../../css/farmacias.css";
+import '../../../css/farmacias.css';
 import {
   AGREGAR_ITEM_CARRITO,
   BORRAR_ITEM_CARRITO,
   UPDATE_ITEM_CARRITO,
-} from "../../../redux/actions/PedidosActions";
-import { connect } from "react-redux";
-import imgBorrar from "../../../assets/images/Grupo 115.png";
+} from '../../../redux/actions/PedidosActions';
+import { connect } from 'react-redux';
+import imgBorrar from '../../../assets/images/Grupo 115.png';
 
 class Carrito extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class Carrito extends Component {
 
   handleCantidad = async (i, producto) => {
     const cant = producto.cantidad;
-    if (i === "+") {
+    if (i === '+') {
       this.props.UPDATE_ITEM_CARRITO(producto, cant + 1);
     } else if (cant > 0) {
       this.props.UPDATE_ITEM_CARRITO(producto, cant - 1);
@@ -55,8 +55,8 @@ class Carrito extends Component {
       return (subtotal += linea.precio * linea.cantidad);
     });
     this.setState({ subtotal: subtotal.toFixed(2) });
-    await localStorage.setItem("carrito", JSON.stringify(carrito));
-    await localStorage.setItem("pedido", JSON.stringify(pedido));
+    await localStorage.setItem('carrito', JSON.stringify(carrito));
+    await localStorage.setItem('pedido', JSON.stringify(pedido));
   };
 
   handleShow = async () => {
@@ -70,24 +70,24 @@ class Carrito extends Component {
     return (
       <div
         style={{
-          width: "50vh",
-          position: "fixed",
-          right: "5%",
-          backgroundColor: "#ffffff",
-          top: "15%",
+          width: '50vh',
+          position: 'fixed',
+          right: '5%',
+          backgroundColor: '#ffffff',
+          top: '15%',
           zIndex: 99,
           borderRadius: 13,
           boxShadow:
-            "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-          display: this.state.show && carrito.length > 0 ? "block" : "none",
-          overflowY: "scroll",
-          height: "60vh",
+            '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+          display: this.state.show && carrito.length > 0 ? 'block' : 'none',
+          overflowY: 'scroll',
+          height: '60vh',
         }}
       >
         <div className="container-fluid pr-4">
           <div className="row">
             <div className="col p-3">
-              <div style={{ float: "right" }}>
+              <div style={{ float: 'right' }}>
                 <button
                   type="button"
                   className="close"
@@ -102,7 +102,7 @@ class Carrito extends Component {
           <div className="row">
             <div className="col" align="right">
               <p className="text-info">
-                Farmacia {pedido ? pedido.nombrefarmacia : ""}
+                Farmacia {pedido ? pedido.nombrefarmacia : ''}
               </p>
             </div>
           </div>
@@ -122,19 +122,19 @@ class Carrito extends Component {
                     <img
                       src={image_path_server + linea.imagen}
                       alt=""
-                      style={{ width: "100%" }}
+                      style={{ width: '100%' }}
                     />
                   </div>
                   <div className="col-md-4 col-4 detalle-producto-sm">
                     <p id="nombre">{linea.nombre}</p>
                     <div className="cantidades-control-sm btn" align="center">
-                      <button onClick={() => this.handleCantidad("-", linea)}>
+                      <button onClick={() => this.handleCantidad('-', linea)}>
                         -
                       </button>
-                      <span style={{ width: "40px", padding: 5 }}>
+                      <span style={{ width: '40px', padding: 5 }}>
                         {linea.cantidad}
                       </span>
-                      <button onClick={() => this.handleCantidad("+", linea)}>
+                      <button onClick={() => this.handleCantidad('+', linea)}>
                         +
                       </button>
                     </div>
@@ -162,8 +162,8 @@ class Carrito extends Component {
             <div className="col" align="right">
               <a
                 className="btn btn-add-to-car"
-                style={{ color: "#ffffff" }}
-                href={process.env.PUBLIC_URL + "/#/revisarpedido"}
+                style={{ color: '#ffffff' }}
+                href={process.env.PUBLIC_URL + '/#/revisarpedido'}
                 onClick={this.handleShow}
               >
                 Revisar pedido

@@ -1,0 +1,25 @@
+.header-style {
+  background-color: #22577a;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2em;
+}
+
+.imagen-logo {
+  width: 150px;
+  margin: 0 35px;
+  padding: 0 15px;
+}
+
+.title {
+  text-align: center;
+}
+
+.body-text {
+  max-width: 50rem;
+  padding: 0 2rem;
+  margin: 0 auto;
+}
