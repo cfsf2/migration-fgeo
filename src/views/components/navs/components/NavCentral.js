@@ -13,6 +13,7 @@ export function NavCentral(props) {
     logo,
   } = props;
 
+  
   return (
     <div className="row pt-4 pb-2 nav-central navcentral">
       <div className="col-md-3 hide-mobile navcentral_logo">
