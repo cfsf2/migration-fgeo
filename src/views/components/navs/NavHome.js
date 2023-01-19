@@ -9,7 +9,7 @@ import logoFarmageo from '../../../assets/images/Grupo 57.png';
 import iconCarrito from '../../../assets/images/carrito.png';
 import iconCarritoWhite from '../../../assets/images/carritoWhite.png';
 import iconMaps from '../../../assets/images/Icono.png';
-import logo from '../../../assets/images/Nuevo-Logo-Positivo.png';
+import logo from '../../../assets/images/logo.png';
 
 import forma1 from '../../../assets/images/Forma 1.png';
 import iconFarmacia from '../../../assets/images/Grupo 79.png';
@@ -144,7 +144,7 @@ class NavHome extends Component {
                     href={process.env.PUBLIC_URL + '/#/'}
                   >
                     {this.state.ubicacion_default}
-                    <img alt="" src={logoFarmageo} style={{ width: '130px' }} />
+                    <img alt="" src={logoFarmageo} style={{ width: '40px' }} />
                   </a>
                 </div>
                 <div className="col-4 pt-3">
