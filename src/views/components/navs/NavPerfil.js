@@ -1,40 +1,40 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   GET_CATEGORIAS,
   SET_CATEGORIA,
-} from "../../../redux/actions/ProductosActions";
+} from '../../../redux/actions/ProductosActions';
 
-import { connect } from "react-redux";
-import logoFarmageo from "../../../assets/images/Grupo 57.png";
-import iconCarrito from "../../../assets/images/carrito.png";
-import iconCarritoWhite from "../../../assets/images/carritoWhite.png";
-import iconMaps from "../../../assets/images/Icono.png";
-import logo from "../../../assets/images/logo.png";
+import { connect } from 'react-redux';
+import logoFarmageo from '../../../assets/images/Grupo 57.png';
+import iconCarrito from '../../../assets/images/carrito.png';
+import iconCarritoWhite from '../../../assets/images/carritoWhite.png';
+import iconMaps from '../../../assets/images/Icono.png';
+import logo from '../../../assets/images/logo.png';
 
-import forma1 from "../../../assets/images/Forma 1.png";
-import iconFarmacia from "../../../assets/images/Grupo 79.png";
+import forma1 from '../../../assets/images/Forma 1.png';
+import iconFarmacia from '../../../assets/images/Grupo 79.png';
 
-import Trazado230 from "../../../assets/images/Trazado 230.png";
-import lupa from "../../../assets/images/Lupa.png";
+import Trazado230 from '../../../assets/images/Trazado 230.png';
+import lupa from '../../../assets/images/Lupa.png';
 
-import Login from "../modales/Login";
-import Registro from "../modales/Registro";
-import { GET_AUTH } from "../../../redux/actions/UsuarioActions";
-import Carrito from "../compras/Carrito";
-import { NavCentral } from "./components/NavCentral";
+import Login from '../modales/Login';
+import Registro from '../modales/Registro';
+import { GET_AUTH } from '../../../redux/actions/UsuarioActions';
+import Carrito from '../compras/Carrito';
+import { NavCentral } from './components/NavCentral';
 
-import axios from "axios";
-import { apiFarmageo } from "../../../config";
+import axios from 'axios';
+import { apiFarmageo } from '../../../config';
 
 class NavPerfil extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      categoria: "all",
+      categoria: 'all',
       farmacia: null,
-      ubicacion_default: "",
+      ubicacion_default: '',
       showCarrito: false,
-      search: "producto",
+      search: 'producto',
       txtbusqueda: this.props.txtbusqueda,
     };
     this.handleCategoria = this.handleCategoria.bind(this);
@@ -47,15 +47,15 @@ class NavPerfil extends Component {
   }
 
   handlequery = () => {
-    return new URLSearchParams(window.location.hash.split("?")[1]);
+    return new URLSearchParams(window.location.hash.split('?')[1]);
   };
 
   handleSearch() {
     const { search, txtbusqueda } = this.state;
-    if (search === "farmacia") {
+    if (search === 'farmacia') {
       window.location.href =
         `${process.env.PUBLIC_URL}/#/buscarfarmacia?f=` + txtbusqueda;
-    } else if (search === "producto") {
+    } else if (search === 'producto') {
       window.location.href =
         `${process.env.PUBLIC_URL}/#/buscarproductos?p=` + txtbusqueda;
     }
@@ -71,19 +71,19 @@ class NavPerfil extends Component {
   }
 
   async componentDidMount() {
-    var farmacia = this.handlequery().get("u");
+    var farmacia = this.handlequery().get('u');
     this.props.GET_CATEGORIAS();
-    var ubicacion_default = await sessionStorage.getItem("ubicacion_default");
+    var ubicacion_default = await sessionStorage.getItem('ubicacion_default');
     if (ubicacion_default) {
       this.setState({
         ubicacion_default: ubicacion_default,
         farmacia,
       });
     }
-    var farmacia = this.handlequery().get("u");
+    var farmacia = this.handlequery().get('u');
     if (farmacia) {
       try {
-        const result = await axios.get(apiFarmageo + "/farmacias/" + farmacia);
+        const result = await axios.get(apiFarmageo + '/farmacias/' + farmacia);
         if (result.data) {
           this.setState({ farmaciaSelected: result.data });
         }
@@ -129,30 +129,30 @@ class NavPerfil extends Component {
           <div
             className="col-md-12"
             style={{
-              position: "fixed",
+              position: 'fixed',
               zIndex: 100,
-              backgroundColor: "rgb(43 52 85)",
+              backgroundColor: 'rgb(43 52 85)',
             }}
           >
             <div className="container-fluid">
               <div className="row " align="center">
                 <div className="col-4 py-1">
-                  <a href={process.env.PUBLIC_URL + "/#/"}>
-                    <img alt="" src={logoFarmageo} style={{ width: "130px" }} />
+                  <a href={process.env.PUBLIC_URL + '/#/'}>
+                    <img alt="" src={logoFarmageo} style={{ width: '40px' }} />
                   </a>
                 </div>
                 <div className="col-4 pt-3">
                   <a
                     className="nav-farmageo-back"
-                    href={process.env.PUBLIC_URL + "/#/"}
+                    href={process.env.PUBLIC_URL + '/#/'}
                   >
                     {farmaciaSelected
-                      ? "Farmacia " +
+                      ? 'Farmacia ' +
                         farmaciaSelected.nombre +
-                        ", " +
+                        ', ' +
                         farmaciaSelected.localidad +
-                        ", Santa Fe"
-                      : ""}
+                        ', Santa Fe'
+                      : ''}
                   </a>
                 </div>
                 <div className="col-4 py-1">
@@ -175,12 +175,12 @@ class NavPerfil extends Component {
         <div className="row">
           <div
             className="col-md-12"
-            style={{ zIndex: 20, backgroundColor: "rgb(43 52 85)" }}
+            style={{ zIndex: 20, backgroundColor: 'rgb(43 52 85)' }}
           >
             <nav className="navbar navbar-expand-lg navbar-dark navbar-fixed-top m-0">
               <div className="container-fluid">
                 <a className="nav-farmageo-back" href="#">
-                  <img alt="" src={iconMaps} style={{ width: "1em" }} />{" "}
+                  <img alt="" src={iconMaps} style={{ width: '1em' }} />{' '}
                   {this.state.ubicacion_default}
                 </a>
                 <button
@@ -199,7 +199,7 @@ class NavPerfil extends Component {
                   <ul className="navbar-nav ml-auto">
                     {farmaciaSelected ? (
                       farmaciaSelected.perfil_farmageo !==
-                      "vender_online" ? null : this.state.showcategorias ? (
+                      'vender_online' ? null : this.state.showcategorias ? (
                         <>
                           <li
                             className="nav-item hide-desktop"
@@ -209,15 +209,15 @@ class NavPerfil extends Component {
                               value={categoriaFiltro}
                               onChange={this.handleCategoria}
                               style={{
-                                backgroundColor: "transparent",
-                                color: "#ababa1",
+                                backgroundColor: 'transparent',
+                                color: '#ababa1',
                               }}
                             >
                               <option
                                 value="all"
                                 style={{
-                                  backgroundColor: "transparent",
-                                  color: "#ababa1",
+                                  backgroundColor: 'transparent',
+                                  color: '#ababa1',
                                   fontSize: 11,
                                 }}
                               >
@@ -228,10 +228,10 @@ class NavPerfil extends Component {
                                     return (
                                       <option
                                         value={cat._id}
-                                        key={"a" + i}
+                                        key={'a' + i}
                                         style={{
-                                          backgroundColor: "transparent",
-                                          color: "#ababa1",
+                                          backgroundColor: 'transparent',
+                                          color: '#ababa1',
                                           fontSize: 11,
                                         }}
                                       >
@@ -251,8 +251,8 @@ class NavPerfil extends Component {
                                       onClick={() =>
                                         this.handleSeccionCategorias(cat._id)
                                       }
-                                      key={"b" + i}
-                                      style={{ color: "#ababa1", fontSize: 11 }}
+                                      key={'b' + i}
+                                      style={{ color: '#ababa1', fontSize: 11 }}
                                     >
                                       {cat.nombre}
                                     </a>
@@ -268,9 +268,9 @@ class NavPerfil extends Component {
                       <li className="nav-item">
                         <a
                           className="nav-link nav-farmageo-item"
-                          href={process.env.PUBLIC_URL + "/#/usuarioconfig"}
+                          href={process.env.PUBLIC_URL + '/#/usuarioconfig'}
                         >
-                          {user_farmageo.usuario.split("@")[0]}
+                          {user_farmageo.usuario.split('@')[0]}
                         </a>
                       </li>
                     ) : (
@@ -319,7 +319,7 @@ class NavPerfil extends Component {
                     <li className="nav-item">
                       <a
                         className="nav-link nav-farmageo-item"
-                        href={process.env.PUBLIC_URL + "/mi-farmacia"}
+                        href={process.env.PUBLIC_URL + '/mi-farmacia'}
                         target="_blank"
                         rel="noopener"
                       >
@@ -330,7 +330,7 @@ class NavPerfil extends Component {
                 </div>
               </div>
             </nav>
-            <a href={process.env.PUBLIC_URL + "/#/"} id="logo-mobile">
+            <a href={process.env.PUBLIC_URL + '/#/'} id="logo-mobile">
               <img alt="" src={logo} className="w-75" />
             </a>
             <button onClick={this.handleCarrito} className="btn-carrito-mob">
@@ -354,7 +354,7 @@ class NavPerfil extends Component {
         {/*<!-- FIN nav central -->*/}
 
         {farmaciaSelected ? (
-          farmaciaSelected.perfil_farmageo !== "vender_online" ? null : (
+          farmaciaSelected.perfil_farmageo !== 'vender_online' ? null : (
             <div className="row d-flex   py-0 nav-inferior">
               <div className="col-md-2   hide-mobile" align="center">
                 <select
@@ -385,12 +385,12 @@ class NavPerfil extends Component {
                 </select>
               </div>
               <div
-                style={{ borderLeft: "solid 1px #4f9cb5" }}
+                style={{ borderLeft: 'solid 1px #4f9cb5' }}
                 className="col-md-2 px-0 hide-mobile hover-bg-4f9cb5"
                 align="center"
               >
                 <button
-                  style={{ width: "100%", height: "100%" }}
+                  style={{ width: '100%', height: '100%' }}
                   className="nav-inferior-link"
                 >
                   Pedí tus recetas
@@ -399,7 +399,7 @@ class NavPerfil extends Component {
               {categorias
                 ? categorias.map((cat, i) => {
                     let styleMenu = {
-                      borderLeft: "solid 1px #4f9cb5",
+                      borderLeft: 'solid 1px #4f9cb5',
                     };
                     return cat.destacada ? (
                       <div
@@ -408,7 +408,7 @@ class NavPerfil extends Component {
                         align="center"
                       >
                         <button
-                          style={{ width: "100%", height: "100%" }}
+                          style={{ width: '100%', height: '100%' }}
                           className="nav-inferior-link"
                           onClick={() => this.handleSeccionCategorias(cat._id)}
                           key={i}
