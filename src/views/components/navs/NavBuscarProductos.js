@@ -259,7 +259,7 @@ function NavBuscarProductos(props) {
                       Descargar App
                     </a>
                   </li>
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <a
                       className="nav-link nav-farmageo-item"
                       href="https://www.farmageo.com.ar/novedades/"
@@ -268,7 +268,7 @@ function NavBuscarProductos(props) {
                     >
                       Blog{" "}
                     </a>
-                  </li>
+                  </li> */}
 
                   <li className="nav-item">
                     <a
@@ -333,7 +333,7 @@ function NavBuscarProductos(props) {
               : null}
           </select>
         </div>
-        <div
+        {/* <div
           style={{ borderLeft: "solid 1px #4f9cb5" }}
           className="col-md-2 px-0 hide-mobile hover-bg-4f9cb5"
           align="center"
@@ -344,7 +344,7 @@ function NavBuscarProductos(props) {
           >
             Pedí tus recetas
           </button>
-        </div>
+        </div> */}
         {categorias
           ? categorias.map((cat, i) => {
               let styleMenu = {

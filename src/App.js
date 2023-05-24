@@ -71,6 +71,26 @@ const TerminosCondiciones = React.lazy(() =>
   import('./views/helpers/TerminosCondiciones')
 );
 
+const QuienesSomos = React.lazy(() =>
+  import('./views/helpers/QuienesSomos')
+);
+
+const MediosPago = React.lazy(() =>
+  import('./views/helpers/MediosPago')
+);
+
+const MediosEnvio = React.lazy(() =>
+  import('./views/helpers/MediosEnvio')
+);
+
+const CambiosDevoluciones = React.lazy(() =>
+  import('./views/helpers/CambiosDevoluciones')
+);
+
+const PreguntasFrecuentes = React.lazy(() =>
+  import('./views/helpers/PreguntasFrecuentes')
+);
+
 function usePageViews() {
   let location = useLocation();
   React.useEffect(() => {
@@ -144,6 +164,36 @@ function App() {
             path="/novedades/terminos-y-condiciones/"
             name="Términos y condiciones"
             render={(props) => <TerminosCondiciones {...props} />}
+          />
+          <Route
+            exact
+            path="/quienes-somos"
+            name="Quienes somos"
+            render={() => <QuienesSomos/>}
+          />
+           <Route
+            exact
+            path="/medios-pago"
+            name="Medios de pago"
+            render={() => <MediosPago/>}
+          />
+          <Route
+            exact
+            path="/medios-envio"
+            name="Medios de envio"
+            render={() => <MediosEnvio/>}
+          />
+          <Route
+            exact
+            path="/cambios-devoluciones"
+            name="Cambios y devoluciones"
+            render={() => <CambiosDevoluciones/>}
+          />
+          <Route
+            exact
+            path="/preguntas-frecuentes"
+            name="Preguntas frecuentes"
+            render={() => <PreguntasFrecuentes/>}
           />
           <Route
             path="/farmaciaperfil"

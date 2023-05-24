@@ -26,10 +26,8 @@ function Suscribite() {
         <button
           type="button"
           className="btn-sm btn-info w-100"
-          data-toggle="modal"
-          data-target="#newsletter-modal"
         >
-          Suscribirse
+          Suscripción (próximamente)
         </button>
         <div
           className="modal fade"

@@ -299,7 +299,7 @@ class NavHome extends Component {
                       </>
                     )}
 
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                       <a
                         className="nav-link nav-farmageo-item"
                         href="https://www.farmageo.com.ar/novedades/"
@@ -308,7 +308,7 @@ class NavHome extends Component {
                       >
                         Blog
                       </a>
-                    </li>
+                    </li> */}
                     <li className="nav-item">
                       <a
                         className="nav-link nav-farmageo-item"
@@ -373,7 +373,7 @@ class NavHome extends Component {
                   : null}
               </select>
             </div>
-            <div
+            {/* <div
               style={{ borderLeft: 'solid 1px #4f9cb5' }}
               className="col-md-2 px-0 hide-mobile hover-bg-4f9cb5"
               align="center"
@@ -384,7 +384,7 @@ class NavHome extends Component {
               >
                 Pedí tus recetas
               </button>
-            </div>
+            </div> */}
             {categorias
               ? categorias.map((cat, i) => {
                   let styleMenu = {
