@@ -261,7 +261,6 @@ export const localidades = [
   "FRAY LUIS BELTR",
   "FUENTES",
   "FUNES",
-  "Firmat",
   "GENERAL GELLY",
   "GENERAL LAGOS",
   "GODEKEN",
