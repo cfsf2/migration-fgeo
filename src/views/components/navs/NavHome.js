@@ -345,7 +345,7 @@ class NavHome extends Component {
           logo={logo}
         />
         {/*<!-- FIN nav central -->*/}
-
+{/* 
         {this.props.hideCategorias ? null : (
           <div className="row d-flex   py-0 nav-inferior">
             <div className="col-md-2   hide-mobile" align="center">
@@ -384,7 +384,7 @@ class NavHome extends Component {
               >
                 Pedí tus recetas
               </button>
-            </div> */}
+            </div>
             {categorias
               ? categorias.map((cat, i) => {
                   let styleMenu = {
@@ -409,7 +409,7 @@ class NavHome extends Component {
                 })
               : null}
           </div>
-        )}
+        )} */}
         <Carrito show={showCarrito} />
         <Login />
         <Registro />

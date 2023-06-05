@@ -306,7 +306,7 @@ function NavBuscarProductos(props) {
         logo={logo}
       />
       {/*<!-- FIN nav central -->*/}
-
+{/* 
       <div className="row d-flex   py-0 nav-inferior">
         <div className="col-md-2   hide-mobile" align="center">
           <select
@@ -344,7 +344,7 @@ function NavBuscarProductos(props) {
           >
             Pedí tus recetas
           </button>
-        </div> */}
+        </div>
         {categorias
           ? categorias.map((cat, i) => {
               let styleMenu = {
@@ -368,7 +368,7 @@ function NavBuscarProductos(props) {
               ) : null;
             })
           : null}
-      </div>
+      </div> */}
       <Carrito show={showCarrito} />
       <Login />
       <Registro />

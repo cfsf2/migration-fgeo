@@ -352,7 +352,7 @@ class NavPerfil extends Component {
           logo={logo}
         />
         {/*<!-- FIN nav central -->*/}
-
+{/* 
         {farmaciaSelected ? (
           farmaciaSelected.perfil_farmageo !== 'vender_online' ? null : (
             <div className="row d-flex   py-0 nav-inferior">
@@ -395,7 +395,7 @@ class NavPerfil extends Component {
                 >
                   Pedí tus recetas
                 </button>
-              </div> */}
+              </div>
               {categorias
                 ? categorias.map((cat, i) => {
                     let styleMenu = {
@@ -421,7 +421,7 @@ class NavPerfil extends Component {
                 : null}
             </div>
           )
-        ) : null}
+        ) : null} */}
         <Carrito show={showCarrito} />
         <Login />
         <Registro />
