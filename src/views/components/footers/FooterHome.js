@@ -72,6 +72,12 @@ function FooterHome() {
           <div className="col-md-3 col-6 pt-5">
             <b>Compra 100% segura</b>
             <p>Farmageo garantiza la seguridad transaccional de sus clientes</p>
+            <a
+              href={`${process.env.PUBLIC_URL}/#/arrepentimientocompra`}
+              className="btn btn-arrepentimiento"
+            >
+              Botón de Arrepentimiento
+            </a>
           </div>
         </div>
         <div className="row centrado-2" align="left">

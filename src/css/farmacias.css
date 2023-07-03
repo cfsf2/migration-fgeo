@@ -448,6 +448,12 @@ footer a {
   color: #ffffff;
 }
 
+.btn-arrepentimiento {
+  background-color: #acacacef;
+  color: #000000dc;
+  border: #000000 1px solid;
+}
+
 .listado h1 {
   font-weight: lighter;
   line-height: 1em;

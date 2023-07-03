@@ -63,6 +63,10 @@ const RegistrarFarmacia = React.lazy(() =>
   import('./views/components/RegistrarFarmacia')
 );
 
+const ArrepentimientoCompra = React.lazy(() =>
+  import('./views/components/ArrepentimientoCompra')
+);
+
 const GestorCampanas = React.lazy(() =>
   import('./views/components/gestorCampanas/GestorCampanas')
 );
@@ -396,6 +400,20 @@ function App() {
                   setmodalState={setmodalState}
                 />
                 <RegistrarFarmacia {...props} />
+              </>
+            )}
+          />
+
+<Route
+            path="/arrepentimientocompra"
+            name="arrepentimientocompra"
+            render={(props) => (
+              <>
+                <NavHome
+                  modalState={modalState}
+                  setmodalState={setmodalState}
+                />
+                <ArrepentimientoCompra {...props} />
               </>
             )}
           />

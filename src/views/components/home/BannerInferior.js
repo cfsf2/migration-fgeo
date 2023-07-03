@@ -59,7 +59,7 @@ class BannerInferior extends Component {
           </div>
         </div>
 
-        {/* <div className="row centrado-2 mt-5 mb-5">
+        <div className="row centrado-2 mt-5 mb-5">
           <div className="col-md-6 pl-0" align="right">
             <img alt="" src={grupo504} className="w-75" />
           </div>
@@ -82,9 +82,9 @@ class BannerInferior extends Component {
               </div>
             </div>
           </div>
-        </div> */}
-        {/* 
-        <div className="row centrado-2 mt-5 descarga-app">
+        </div>
+        
+        {/* <div className="row centrado-2 mt-5 descarga-app">
           <div className="col-sm-8 pl-0" align="left">
             <p>Descargate la App</p>
             <h3>Tu farmacia digital al alcance de tu mano</h3>
