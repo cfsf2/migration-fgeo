@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../../css/farmacias.css";
 import FooterHome from "./footers/FooterHome";
+import { ARREPENTIMIENTO_COMPRA } from '../../redux/actions/FarmaciasActions'
 
 
 
@@ -11,9 +12,24 @@ class ArrepentimientoCompra extends Component {
           finalizado: false,
           error:''
       }
+      this.handleSubmit = this.handleSubmit.bind(this)
+      this.handleInputChange = this.handleInputChange.bind(this)
     }
     
-    
+    async handleSubmit(event){
+        event.preventDefault()
+        var result = await ARREPENTIMIENTO_COMPRA(this.state)
+        if(result){
+            this.setState((state)=> { return  {...state, finalizado: true}})
+        }
+      }
+
+    async handleInputChange(event) {
+        const target = event.nativeEvent.target;
+        const value = target.value;
+        const name = target.name;
+        this.setState((state)=> { return  {...state, [name]: value}});
+      }
   
     
     render() {
@@ -28,7 +44,7 @@ class ArrepentimientoCompra extends Component {
               </div>
           </div>
         :
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div className="container">
               <div className="row my-5">
                   <div className="col-md-12">
@@ -40,28 +56,28 @@ class ArrepentimientoCompra extends Component {
                   
                       <div className="col-md-8">
                           <div className="form-group">
-                              <label for="correo">Correo electrónico</label>
-                              <input type="text" className="form-control"name="correo" required/>
+                              <label for="email">Correo electrónico</label>
+                              <input type="text" className="form-control"name="email" required onChange={this.handleInputChange}/>
                           </div>
                       </div>
                         <div className="form-group col-md-6">
                             <label for="nombre">Nombre</label>
-                            <input type="text" className="form-control" name="nombre" required/>
+                            <input type="text" className="form-control" name="nombre" required onChange={this.handleInputChange}/>
                         </div>
                         <div className="form-group col-md-6">
                             <label for="apellido">Apellido</label>
-                            <input type="text" className="form-control" name="apellido" required/>
+                            <input type="text" className="form-control" name="apellido" required onChange={this.handleInputChange}/>
                         </div>
                       <div className="col-md-8">
                           <div className="form-group">
                               <label for="pedido">Número de pedido</label>
-                              <input type="text" className="form-control" name="pedido" required/>
+                              <input type="text" className="form-control" name="pedido" required onChange={this.handleInputChange}/>
                           </div>
                       </div>
                       <div className="col-md-12">
                             <div className="form-group">
-                                <label htmlFor="razon">Razón de arrepentimiento</label>
-                                <textarea className="form-control" name="razon" required></textarea>
+                                <label htmlFor="razonarrepentimiento">Razón de arrepentimiento</label>
+                                <textarea className="form-control" name="razonarrepentimiento" required onChange={this.handleInputChange}></textarea>
                             </div>
                       </div>
                      

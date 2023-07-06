@@ -39,6 +39,37 @@ export const SOLICITUD_REGISTRO_FARMACIA = (solicitud) => {
         ";comercial@farmageo.com.ar;coordinador@farmageo.com.ar",
       asunto: "Solicitud de registro Farmageo",
       html: html,
+      titulo: "Nueva solicitud de registro de farmacia"
+    })
+    .then(function (response) {
+      console.log(response);
+      return true;
+    })
+    .catch(function (error) {
+      console.log(error);
+      alert("Ha ocurrido un error, intente por favor más tarde.");
+      return false;
+    });
+};
+
+export const ARREPENTIMIENTO_COMPRA = (solicitud) => {
+  var emailFarmacia = solicitud.email;
+  var html = `
+      <p>Email: <b> ${solicitud.email}</b></p>
+      <p>Nombre: <b> ${solicitud.nombre}</b></p>
+      <p>Apellido: <b> ${solicitud.apellido}</b></p>
+      <p>N° pedido: <b> ${solicitud.pedido}</b></p>
+      <p>CP: <b> ${solicitud.razonarrepentimiento}</b></p>
+      `;
+
+  return axios
+    .post(apiFarmageoSql + "/pedidos/email", {
+      destinatario:
+        emailFarmacia +
+        ";comercial@farmageo.com.ar;coordinador@farmageo.com.ar",
+      asunto: "Arrepentimiento de compra",
+      html: html,
+      titulo: 'Arrepentimiento de compra',
     })
     .then(function (response) {
       console.log(response);
