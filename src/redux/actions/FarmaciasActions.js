@@ -35,8 +35,9 @@ export const SOLICITUD_REGISTRO_FARMACIA = (solicitud) => {
   return axios
     .post(apiFarmageoSql + "/pedidos/email", {
       destinatario:
-        emailFarmacia +
-        ";comercial@farmageo.com.ar;coordinador@farmageo.com.ar",
+        emailFarmacia + ";" +
+        process.env.REACT_APP_EMAIL_COORDINADOR + ";" +
+        process.env.REACT_APP_EMAIL_COMERCIAL,
       asunto: "Solicitud de registro Farmageo",
       html: html,
       titulo: "Nueva solicitud de registro de farmacia"
@@ -65,8 +66,9 @@ export const ARREPENTIMIENTO_COMPRA = (solicitud) => {
   return axios
     .post(apiFarmageoSql + "/pedidos/email", {
       destinatario:
-        emailFarmacia +
-        ";comercial@farmageo.com.ar;coordinador@farmageo.com.ar",
+        emailFarmacia + ";" +
+        process.env.REACT_APP_EMAIL_COORDINADOR + ";" +
+        process.env.REACT_APP_EMAIL_COMERCIAL,
       asunto: "Arrepentimiento de compra",
       html: html,
       titulo: 'Arrepentimiento de compra',
