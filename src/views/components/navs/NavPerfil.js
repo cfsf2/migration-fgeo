@@ -156,14 +156,14 @@ class NavPerfil extends Component {
                   </a>
                 </div>
                 <div className="col-4 py-1">
-                  <a
+                  {/* <a
                     className="nav-link nav-farmageo-item"
                     onClick={this.handleCarrito}
                   >
                     <p className="only-desktop">Mi carrito </p>
                     <img alt="" src={iconCarritoWhite} className="icon" />
                     <p className="d-inline">{carrito.length}</p>
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>

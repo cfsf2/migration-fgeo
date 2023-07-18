@@ -45,7 +45,7 @@ function SeleccionarUbicacion(props) {
   return (
     <div
       className={
-        "modal fade" + (props.modalState ? " show d-block" : " d-none")
+        "modal fade" + (props.modalState ? "" /* " show d-block" */ : " d-none")   
       }
       tabIndex="1"
       role="dialog"

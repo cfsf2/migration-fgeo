@@ -155,7 +155,7 @@ class NavHome extends Component {
                     {farms_cerca_cant + ' Farmacias cerca'}
                   </a>
                 </div>
-                <div className="col-4 py-1">
+                {/* <div className="col-4 py-1">
                   <a
                     className="nav-link nav-farmageo-item"
                     onClick={this.handleCarrito}
@@ -164,7 +164,7 @@ class NavHome extends Component {
                     <img alt="" src={iconCarritoWhite} className="icon mr-2" />
                     <p className="d-inline">{carrito.length}</p>
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

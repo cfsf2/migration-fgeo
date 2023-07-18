@@ -86,6 +86,7 @@
 
 .nav-central {
   border-bottom: solid 2px #d3d3d3;
+  justify-content: space-around;
 }
 
 .nav-inferior {
