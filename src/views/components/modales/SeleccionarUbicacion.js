@@ -53,11 +53,11 @@ function SeleccionarUbicacion(props) {
       tabIndex="0"
       onKeyDown={(e) => (e.which === 27 ? props.setmodalState(false) : "")}
     >
-      <div className="modal-dialog modal-md">
+      {/*<div className="modal-dialog modal-md">
         <div className="modal-content">
           <div style={{ float: "right" }}></div>
           <div className="modal-body" align="left">
-            <div className="alerta">
+             <div className="alerta">
               <h4>
                 <b>Elegí tu localidad para obtener una mejor experiencia</b>
               </h4>
@@ -107,10 +107,10 @@ function SeleccionarUbicacion(props) {
               >
                 Confirmar
               </button>
-            </div>
+            </div> 
           </div>
         </div>
-      </div>
+      </div>*/}
     </div>
   );
 }

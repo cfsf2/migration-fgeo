@@ -111,13 +111,13 @@ function NavBuscarProductos(props) {
                 </a>
               </div>
               <div className="col-4 py-1">
-                <a
+                {/* <a
                   className="nav-link nav-farmageo-item"
                   onClick={handleCarrito}
                 >
                   <p className="only-desktop">Mi carrito </p>
                   <img alt="" src={iconCarritoWhite} className="icon" />
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
