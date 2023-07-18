@@ -121,7 +121,7 @@ function App() {
   usePageViews();
   return (
     <>
-      {testing !== base ? (
+      {false ? (
         <div
           className="leyendatesting"
           style={{
@@ -142,7 +142,7 @@ function App() {
               letterSpacing: '10px',
             }}
           >
-            ENTORNO DE TESTING
+            ENTORNO DE TESTING SQL
           </h1>
         </div>
       ) : null}
