@@ -12,7 +12,7 @@ class BannerInferior extends Component {
     return (
       <>
         <div className="row centrado-2 mt-5">
-          <div className="col-md-6 pl-0 my-1">
+          {/* <div className="col-md-6 pl-0 my-1">
             <a
               //href={process.env.PUBLIC_URL + "/#/mutual"}
               href="https://mfarmaceutica.com.ar/"
@@ -36,6 +36,26 @@ class BannerInferior extends Component {
                     })
                 : null}
             </a>
+          </div> */}
+          <div className="col-md-6 pl-0 my-1">
+            {publicidades
+              ? publicidades
+                  .filter((p) => {
+                    return p.tipo === "banners_ecommerce_home_mut";
+                  })
+                  .map((p, i) => {
+                    return (
+                      <a href={p.link} target="_blank" rel="noopener">
+                        <img
+                          alt=""
+                          src={image_path_server + p.imagen}
+                          className="w-100"
+                          key={i}
+                        />
+                      </a>
+                    );
+                  })
+              : null}
           </div>
           <div className="col-md-6 pl-0 my-1">
             {publicidades
