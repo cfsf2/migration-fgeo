@@ -20,7 +20,7 @@ const CambiosDevoluciones = () => {
         POLÍTICA DE CAMBIO Y DEVOLUCIÓN DE MERCADERÍA
         </p>
         <p>
-        El reemplazo o cambio de la mercadería será motivada por fallas o defectos de fabricación, clasificación, empaque o por falta de identidad entre lo adquirido y lo recibido. El Usuario dispondrá de un plazo máximo de diez (10) días para efectuar el cambio. Este plazo comenzará a computarse desde el momento de la entrega al destinatario final en su domicilio o desde el retiro en sucursal, según corresponda.
+        El reemplazo o cambio de la mercadería será motivada por fallas o defectos de fabricación, clasificación, empaque o por falta de identidad entre lo adquirido y lo recibido. El Usuario dispondrá de un plazo máximo de diez (10) días para efectuar el cambio. Este plazo comenzará a computarse desde el momento de la entrega al destinatario final en su domicilio o desde el retiro en la farmacia, según corresponda.
         </p>
         <p>
         PARA REALIZAR UN CAMBIO LOS PRODUCTOS DEBERÁN CUMPLIR LAS SIGUIENTES CONDICIONES:
