@@ -46,6 +46,7 @@ function Servicios(props) {
               }
             >
               <img src={grupo287} className="icons-lg" alt="" />
+              <p>Farmacia violeta</p>
             </div>
             <div
               className="col-sm col-6 pt-4"

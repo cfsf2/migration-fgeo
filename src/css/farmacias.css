@@ -181,6 +181,8 @@ h3 {
 
 .nuestros-servicios {
   margin-top: -210px;
+  flex: 0 0 60%;
+  max-width: 60%;
 }
 
 .icons-lg {
