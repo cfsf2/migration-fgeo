@@ -173,6 +173,7 @@ class FarmaciasCercanas extends Component {
               <option value="presion">Toma de presión</option>
               <option value="pañalespami">Pañales PAMI</option>
               <option value="whatsapp">Whatsapp</option>
+              <option value="farmaciasolidaria">Farmacia Solidaria</option>
             </select>
           </div>
 

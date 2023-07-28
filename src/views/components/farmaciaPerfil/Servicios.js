@@ -6,6 +6,7 @@ import whatsapp from '../../../assets/images/whatsapp.png';
 import magistrales from '../../../assets/images/recetas-magistrales.png';
 import testcovid from '../../../assets/images/covidtest.png';
 import panales_pami from '../../../assets/images/panales_pami.png';
+import corazon from '../../../assets/images/corazon.jpg';
 
 import _ from 'lodash';
 import { checkServicio } from '../../helpers/FarmaciaHelpers';
@@ -105,6 +106,22 @@ function Servicios(props) {
                 style={{ width: '60px', height: '30px' }}
               />
               <p>Pañales PAMI</p>
+            </div>
+            <div
+              className="col-sm col-6 pt-4"
+              style={
+                checkServicio('farmaciasolidaria', servicios)
+                  ? { filter: 'none', opacity: 1 }
+                  : { filter: 'grayscale(100%)', opacity: 0.3 }
+              }
+            >
+              <img
+                src={corazon}
+                className="icons-md"
+                alt=""
+                style={{ width: '60px', height: '30px' }}
+              />
+              <p>Farmacia Solidaria</p>
             </div>
             <div
               className="col-sm col-6 bg-verde p-3 pt-4"
