@@ -120,7 +120,7 @@ function Servicios(props) {
                 src={corazon}
                 className="icons-md"
                 alt=""
-                style={{ width: '60px', height: '30px' }}
+                style={{ width: '40px'}}
               />
               <p>Farmacia Solidaria</p>
             </div>
