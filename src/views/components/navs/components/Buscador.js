@@ -22,13 +22,13 @@ export const Buscador = (props) => {
         lupa={lupa}
         handleSearch={handleSearch}
         farmacia
-      />
+      />{/* 
       <InputBuscador
         forma1={forma1}
         lupa={lupa}
         handleSearch={handleSearch}
         producto
-      />
+      /> */}
     </div>
   );
 };

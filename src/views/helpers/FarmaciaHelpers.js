@@ -5,6 +5,7 @@ import amarillos from "../../assets/images/amarillos.png";
 import whatsapp from "../../assets/images/whatsapp.png";
 import testcovid from "../../assets/images/covidtest.png";
 import antigripal from "../../assets/images/vacuna.jpg";
+import corazon from '../../assets/images/corazon.jpg';
 
 export const checkServicio = (serv, servicios) => {
   if (serv === "all") {
@@ -207,6 +208,14 @@ export const getServicio = (servicio, index) => {
       x = (
         <div className="col-sm pt-4" key={index}>
           <img src={antigripal} className="icons-md" alt="" />
+        </div>
+      );
+      break;
+    case "farmaciasolidaria":
+      x = (
+        <div className="col-sm pt-4" key={index}>
+          <img src={corazon} className="icons-md" alt="" />
+          <p>Farmacia Solidaria</p>
         </div>
       );
       break;

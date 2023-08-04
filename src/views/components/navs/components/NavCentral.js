@@ -27,13 +27,13 @@ export function NavCentral(props) {
         lupa={lupa}
         className="d-flex col-md-6"
       />
-      <div classNAme="col-md-1"></div>
-      <div className="col-md-2 hide-mobile" align="center">
-        <button className="carrito" onClick={handleCarrito}>
+      {/* <div classNAme="col-md-1"></div> */}
+      {/* <div className="col-md-2 hide-mobile" align="center">
+         <button className="carrito" onClick={handleCarrito}>
           Mi Carrito <img alt="" src={iconCarrito} id="icon-carrito" />{" "}
           {carrito.length}
-        </button>
-      </div>
+        </button> 
+      </div> */}
     </div>
   );
 }

@@ -86,6 +86,7 @@
 
 .nav-central {
   border-bottom: solid 2px #d3d3d3;
+  justify-content: space-around;
 }
 
 .nav-inferior {
@@ -179,7 +180,10 @@ h3 {
 }
 
 .nuestros-servicios {
-  margin-top: -210px;
+  flex: 0 0 60%;
+  margin: -210px 220px;
+  max-width: 70%;
+  position: absolute;
 }
 
 .icons-lg {

@@ -57,7 +57,7 @@ class ArrepentimientoCompra extends Component {
                       <div className="col-md-8">
                           <div className="form-group">
                               <label for="email">Correo electrónico</label>
-                              <input type="text" className="form-control"name="email" required onChange={this.handleInputChange}/>
+                              <input type="email" className="form-control"name="email" required onChange={this.handleInputChange}/>
                           </div>
                       </div>
                         <div className="form-group col-md-6">

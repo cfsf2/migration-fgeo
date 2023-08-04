@@ -36,7 +36,7 @@ export const InputBuscador = (props) => {
         <form className="input_container_center_input">
           <input
             type="text"
-            placeholder={`Busca tu ${farmacia ? "farmacia" : "producto"} aqui`}
+            placeholder={`Busca tu ${farmacia ? "farmacia" : "producto"} aquí`}
             className="input_container_center_input"
             onChange={(e) => setTexto(e.target.value)}
             //name="txtbusqueda"
