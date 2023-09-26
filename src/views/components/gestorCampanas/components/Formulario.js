@@ -79,15 +79,14 @@ const Formulario = (props) => {
         setError(true);
         return false;
       }
-    } else {
-      setError(false);
-      return true;
     }
+    setError(false);
+    return true;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log(state, validacion());
     if (validacion()) {
       props
         .NUEVO_REQUERIMIENTO({
@@ -124,8 +123,6 @@ const Formulario = (props) => {
   React.useEffect(() => {
     setMostrar(true);
   }, [props.UsuarioReducer.auth]);
-
-  console.log(campana);
 
   return (
     <Modal
