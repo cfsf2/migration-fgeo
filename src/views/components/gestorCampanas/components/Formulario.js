@@ -61,6 +61,10 @@ const Formulario = (props) => {
   };
 
   const validacion = () => {
+    if (!/^\d{10}$/.test(unirTelefono())) {
+      setError(true);
+      return false;
+    }
     if (
       state.caracteristica.trim() === "" ||
       state.telefono.trim() === "" ||
@@ -114,9 +118,9 @@ const Formulario = (props) => {
   };
 
   const unirTelefono = () => {
+    if (!state.caracteristica || !state.telefono) return "";
     const inputSeparado = [state.caracteristica, state.telefono];
     const inputUnico = inputSeparado.join("");
-
     return inputUnico;
   };
 
@@ -196,17 +200,17 @@ const Formulario = (props) => {
                         />
                       )}
                     </div>
-                    {error || (state.telefono && unirTelefono().length < 10) ? (
+                    {error && !/^\d{10}$/.test(unirTelefono()) ? (
                       <p className="registro-alert">
-                        Revise los datos ingresados &#128070;
+                        Su numero de celular debe tener 10 digitos &#128070;
                       </p>
                     ) : null}
-                    {!state.nombre || state.nombre === "" ? (
+                    {error && (!state.nombre || state.nombre === "") ? (
                       <p className="registro-alert">
                         El nombre es obligatorio &#128070;
                       </p>
                     ) : null}{" "}
-                    {!state.documento || state.documento === "" ? (
+                    {error && (!state.documento || state.documento === "") ? (
                       <p className="registro-alert">
                         El documento es obligatorio &#128070;
                       </p>
