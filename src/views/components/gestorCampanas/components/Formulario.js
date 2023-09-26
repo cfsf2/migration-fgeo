@@ -86,7 +86,6 @@ const Formulario = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(state, validacion());
     if (validacion()) {
       props
         .NUEVO_REQUERIMIENTO({
