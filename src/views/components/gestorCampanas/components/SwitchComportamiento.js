@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CapturaWs from './CapturaWs';
+import Formulario from './Formulario';
 
 export function SwitchComportamiento(
   { codigo, campana, UsuarioReducer, CampanaReducer },
@@ -17,9 +18,9 @@ export function SwitchComportamiento(
       }
       return null;
 
-    case codigo === 'captura_ws' &&
+    case codigo === 'formulario' &&
       orientados.includes('usuario_farmageo_noreg'):
-      return <CapturaWs campana={campana} />;
+      return <Formulario campana={campana} />;
 
     case 'nada':
       return null;
