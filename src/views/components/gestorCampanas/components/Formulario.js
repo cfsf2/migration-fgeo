@@ -57,6 +57,7 @@ const Formulario = (props) => {
       ...state,
       [name]: value,
     });
+    setError(false);
   };
 
   const validacion = () => {
@@ -195,9 +196,19 @@ const Formulario = (props) => {
                         />
                       )}
                     </div>
-                    {error || (state.telefono && state.telefono !== "") ? (
+                    {error || (state.telefono && unirTelefono().length < 10) ? (
                       <p className="registro-alert">
                         Revise los datos ingresados &#128070;
+                      </p>
+                    ) : null}
+                    {!state.nombre || state.nombre === "" ? (
+                      <p className="registro-alert">
+                        El nombre es obligatorio &#128070;
+                      </p>
+                    ) : null}{" "}
+                    {!state.documento || state.documento === "" ? (
+                      <p className="registro-alert">
+                        El documento es obligatorio &#128070;
                       </p>
                     ) : null}
                     <div className="form-row justify-content-center pt-3">
