@@ -1,79 +1,104 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import Modal from '../../modales/Modal';
-import './capturaws.css';
+import React from "react";
+import { connect } from "react-redux";
+import Modal from "../../modales/Modal";
+import "./capturaws.css";
 
-import { NUEVO_REQUERIMIENTO } from '../../../../redux/actions/CampanaActions';
+import { NUEVO_REQUERIMIENTO } from "../../../../redux/actions/CampanaActions";
 import {
   UPDATE_USER,
   UPDATE_LOCAL_USER,
-} from '../../../../redux/actions/UsuarioActions';
+} from "../../../../redux/actions/UsuarioActions";
 
-const CapturaWs = (props) => {
+const Formulario = (props) => {
   const [mostrar, setMostrar] = React.useState(false);
   const [state, setState] = React.useState({
-    caracteristica: '',
-    telefono: '',
+    caracteristica: "",
+    telefono: "",
+    documento: null,
+    nombre: null,
   });
 
   const [error, setError] = React.useState(false);
   const campana = props.campana;
-  const usuario = props.UsuarioReducer.user_farmageo;
   const farmacia = props.farmacia;
 
   const [capturaExitosa, setCapturaExitosa] = React.useState(false);
 
+  const pideDocumento =
+    campana.atributos.find((a) => a.codigo === "solicitar_documento")?.valor ===
+    "s";
+
+  const pideNombre =
+    campana.atributos.find((a) => a.codigo === "solicitar_nombre")?.valor ===
+    "s";
+
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (name === "caracteristica" || name === "telefono") {
+      const rexExp = new RegExp(
+        /[a-z]|\s|\.|\+|\*|\?|\^|\$|\(|\)|\[|\]|\{|\}|\|\\|,|=|;|'|:|-|\/|\\|\||!|@|#|%|&|_|"/,
+        "gi"
+      );
+      const esNumero = rexExp.test(value);
+      if (esNumero) {
+        return;
+      }
 
-    const rexExp = new RegExp(
-      /[a-z]|\s|\.|\+|\*|\?|\^|\$|\(|\)|\[|\]|\{|\}|\|\\|,|=|;|'|:|-|\/|\\|\||!|@|#|%|&|_|"/,
-      'gi'
-    );
-    const esNumero = rexExp.test(value);
-    if (esNumero) {
-      return;
+      if (
+        state.caracteristica.length + value.length > 10 &&
+        name !== "caracteristica"
+      )
+        return;
+
+      if (state.telefono.length + value.length > 10 && name !== "telefono")
+        return;
     }
-
-    if (
-      state.caracteristica.length + value.length > 10 &&
-      name !== 'caracteristica'
-    )
-      return;
-
-    if (state.telefono.length + value.length > 10 && name !== 'telefono')
-      return;
-
     setState({
       ...state,
       [name]: value,
     });
+    setError(false);
   };
 
   const validacion = () => {
+    if (!/^\d{10}$/.test(unirTelefono())) {
+      setError(true);
+      return false;
+    }
     if (
-      state.caracteristica.trim() === '' ||
-      state.telefono.trim() === '' ||
+      state.caracteristica.trim() === "" ||
+      state.telefono.trim() === "" ||
       state.caracteristica.length + state.telefono.length !== 10
     ) {
       setError(true);
       return false;
-    } else {
-      setError(false);
-      return true;
     }
+    if (pideNombre) {
+      if (!state.nombre || state.nombre.trim() === "") {
+        setError(true);
+        return false;
+      }
+    }
+    if (pideDocumento) {
+      if (!state.documento || state.documento.trim() === "") {
+        setError(true);
+        return false;
+      }
+    }
+    setError(false);
+    return true;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (validacion()) {
       props
         .NUEVO_REQUERIMIENTO({
           id_campana: campana._id ?? campana.id ?? campana.$extras._id,
-          id_usuario: usuario ? usuario._id : null,
           id_farmacia: farmacia ? farmacia._id : null,
           celular: unirTelefono(),
+          documento: state.documento,
+          nombre: state.nombre,
         })
         .then((res) => {
           setCapturaExitosa(true);
@@ -82,62 +107,42 @@ const CapturaWs = (props) => {
             setMostrar(false);
           }, 2000);
 
-          props.UPDATE_LOCAL_USER({
-            telephone: unirTelefono(),
-          });
-
           if (campana.funcion_callback) {
             props[campana.funcion_callback]();
           }
         })
         .catch((err) => {
-          alert('Ha ocurrido un error viejo, proba de nuevo cuando te pinte');
+          alert("Ha ocurrido un error viejo, proba de nuevo cuando te pinte");
         });
     }
   };
 
   const unirTelefono = () => {
+    if (!state.caracteristica || !state.telefono) return "";
     const inputSeparado = [state.caracteristica, state.telefono];
-    const inputUnico = inputSeparado.join('');
-
+    const inputUnico = inputSeparado.join("");
     return inputUnico;
   };
 
   React.useEffect(() => {
-    props.UsuarioReducer.auth && setMostrar(true);
+    setMostrar(true);
   }, [props.UsuarioReducer.auth]);
-
-  React.useEffect(() => {
-    if (
-      props.UsuarioReducer.user_farmageo &&
-      props.UsuarioReducer.user_farmageo.telephone
-    ) {
-      setState({
-        caracteristica: props.UsuarioReducer.user_farmageo.telephone
-          ?.toString()
-          .slice(0, 3),
-        telefono: props.UsuarioReducer.user_farmageo.telephone
-          ?.toString()
-          .slice(3, 10),
-      });
-    }
-  }, [props.UsuarioReducer, props.UsuarioReducer.user_farmageo]);
 
   return (
     <Modal
       open={mostrar}
       handleClose={setMostrar}
-      style={{ position: 'fixed', left: '50%', minwidth: '500px' }}
+      style={{ position: "fixed", left: "50%", minwidth: "500px" }}
     >
       <div className="modal-dialog modal-md ">
         <div className="modal-content">
-          <div style={{ float: 'right' }}></div>
+          <div style={{ float: "right" }}></div>
           <div className="modal-body" align="left">
             {capturaExitosa ? (
               <div> En Breve nos comunicaremos con usted</div>
             ) : (
               <div className="alerta">
-                <h3 style={{ textAlign: 'center' }}>
+                <h3 style={{ textAlign: "center" }}>
                   <b>{campana.titulo}</b>
                 </h3>
                 <div className="div-imagen">
@@ -145,12 +150,13 @@ const CapturaWs = (props) => {
                     <img
                       className="style-imagen"
                       src={campana.url_imagen_principal}
+                      alt="imagen_promocional"
                     />
                   )}
                 </div>
                 <div className="form-row mt-1 pr-3 pl-3 form-position">
                   <div className="col-md-12 mb-1 pr-3">
-                    <p style={{ textAlign: 'center' }}>{campana.descripcion}</p>
+                    <p style={{ textAlign: "center" }}>{campana.descripcion}</p>
                   </div>
                   <form onSubmit={handleSubmit}>
                     <div className="form-row col-md-12 mb-1 pr-3 input-position">
@@ -170,11 +176,43 @@ const CapturaWs = (props) => {
                         value={state.telefono}
                         onChange={handleChange}
                       />
+                      {campana.atributos.find(
+                        (a) => a.codigo === "solicitar_nombre"
+                      )?.valor === "s" && (
+                        <input
+                          className="col-7 h-100 registro"
+                          name="nombre"
+                          placeholder="Nombre y Apellido"
+                          value={state.nombre}
+                          onChange={handleChange}
+                        />
+                      )}
+                      {campana.atributos.find(
+                        (a) => a.codigo === "solicitar_documento"
+                      )?.valor === "s" && (
+                        <input
+                          className="col-7 h-100 registro"
+                          type="number"
+                          name="documento"
+                          placeholder="Documento sin puntos"
+                          value={state.documento}
+                          onChange={handleChange}
+                        />
+                      )}
                     </div>
-                    {error ||
-                    (usuario.telephone && usuario.telephone !== '') ? (
+                    {error && !/^\d{10}$/.test(unirTelefono()) ? (
                       <p className="registro-alert">
-                        Revise los datos ingresados &#128070;
+                        Su numero de celular debe tener 10 digitos &#128070;
+                      </p>
+                    ) : null}
+                    {error && (!state.nombre || state.nombre === "") ? (
+                      <p className="registro-alert">
+                        El nombre es obligatorio &#128070;
+                      </p>
+                    ) : null}{" "}
+                    {error && (!state.documento || state.documento === "") ? (
+                      <p className="registro-alert">
+                        El documento es obligatorio &#128070;
                       </p>
                     ) : null}
                     <div className="form-row justify-content-center pt-3">
@@ -211,4 +249,4 @@ const mapDispatchToProps = {
   UPDATE_LOCAL_USER,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CapturaWs);
+export default connect(mapStateToProps, mapDispatchToProps)(Formulario);
