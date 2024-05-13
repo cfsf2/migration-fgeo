@@ -156,7 +156,7 @@ class FarmaciasCercanas extends Component {
               <option value="all" selected>
                 Servicios...
               </option>
-              {serviciosList.map((s) => {
+              {serviciosList.sort((a, b) => a.orden_web - b.orden_web).map((s) => {
                 //   <option
                 //   style={{ color: "#CD0A0A", fontWeight: "bold" }}
                 //   value="campanaantigripal"
