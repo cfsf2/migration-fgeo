@@ -1,28 +1,28 @@
 /* global google */
-import React, { Component, useEffect, useState } from 'react';
-import { Map, Marker, GoogleApiWrapper, InfoWindow } from 'google-maps-react';
-import icon from '../../../../assets/images/Nuevo-Logo-pointer.png';
-import grupo41 from '../../../../assets/images/Trazado 41.png';
+import React, { Component, useEffect, useState } from "react";
+import { Map, Marker, GoogleApiWrapper, InfoWindow } from "google-maps-react";
+import icon from "../../../../assets/images/Nuevo-Logo-pointer.png";
+import grupo41 from "../../../../assets/images/Trazado 41.png";
 
-import alarmaRoja from '../../../../assets/images/Grupo 294.png';
-import alarmaVerde from '../../../../assets/images/Grupo 293.png';
-import { checkServicio, checkIsOpen } from '../../../helpers/FarmaciaHelpers';
+import alarmaRoja from "../../../../assets/images/Grupo 294.png";
+import alarmaVerde from "../../../../assets/images/Grupo 293.png";
+import { checkServicio, checkIsOpen } from "../../../helpers/FarmaciaHelpers";
 
 function ItemInfoMarker(props) {
   return (
     <div className="container-fluid">
       <div className="row">
         <div className="col-2" align="left">
-          {checkServicio('deturno', props.info.servicios) ? (
-            <img src={alarmaVerde} style={{ width: '20px' }} alt="de turno" />
+          {checkServicio("deturno", props.info.servicios) ? (
+            <img src={alarmaVerde} style={{ width: "20px" }} alt="de turno" />
           ) : (
-            <img src={alarmaRoja} style={{ width: '20px' }} />
+            <img src={alarmaRoja} style={{ width: "20px" }} />
           )}
         </div>
         <div className="col" align="right">
-          <p className="d-inline">{props.isOpen.msg + ' '}</p>
+          <p className="d-inline">{props.isOpen.msg + " "}</p>
           {props.isOpen.status ? (
-            <img src={grupo41} style={{ width: '20px' }} />
+            <img src={grupo41} style={{ width: "20px" }} />
           ) : (
             <div className="isclosed"></div>
           )}
@@ -30,10 +30,10 @@ function ItemInfoMarker(props) {
       </div>
       <div className="row">
         <div className="col" align="left">
-          <p style={{ color: '#51a8c4', fontSize: 20, marginTop: 20 }}>
+          <p style={{ color: "#51a8c4", fontSize: 20, marginTop: 20 }}>
             Farmacia {props.info.nombre}
           </p>
-          <p>{props.info.calle + ' ' + props.info.numero}</p>
+          <p>{props.info.calle + " " + props.info.numero}</p>
         </div>
       </div>
 
@@ -43,11 +43,21 @@ function ItemInfoMarker(props) {
             className="btn btn-info"
             href={
               process.env.PUBLIC_URL +
-              '/#/farmaciaperfil?u=' +
+              "/#/farmaciaperfil?u=" +
               props.info.usuario
             }
           >
             Ver farmacia
+          </a>
+        </div>
+        <div className="col px-0">
+          <a
+            className="btn btn-info"
+            target="_blank"
+            rel="noreferrer"
+            href={`https://www.google.com/maps/dir/?api=1&destination=${props.info.lat},${props.info.log}`}
+          >
+            Ir
           </a>
         </div>
       </div>
@@ -61,7 +71,7 @@ export function MapContainer(props) {
   const [activeMarker, setactiveMarker] = useState({});
   const [selectedPlace, setselectedPlace] = useState({});
   const [showingInfoWindow, setshowingInfoWindow] = useState({});
-  const [isOpen, setisOpen] = useState({ msg: '...', status: false });
+  const [isOpen, setisOpen] = useState({ msg: "...", status: false });
 
   useEffect(() => {
     setFarmacias(props.farmacias);
@@ -91,7 +101,7 @@ export function MapContainer(props) {
   return (
     <Map
       google={props.google}
-      className={'map'}
+      className={"map"}
       zoom={15}
       // centerAroundCurrentLocation={true}
       initialCenter={centerMap}
@@ -141,5 +151,5 @@ export function MapContainer(props) {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyBZ7-k763QmTCxIQR_GiiMD0HmnaYPWvvo',
+  apiKey: process.env.REACT_APP_GOOGLE_MAP_API_KEY,
 })(MapContainer);
