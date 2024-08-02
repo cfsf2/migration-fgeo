@@ -35,7 +35,7 @@ function Servicios(props) {
               }
             >
               <img src={magistrales} className="icons-md" alt="" />{' '}
-              <p>Putitas Magistrales</p>
+              <p>Recetas Magistrales</p>
             </div>
             <div
               className="col-sm col-6 pt-4"
