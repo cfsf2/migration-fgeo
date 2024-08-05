@@ -6,7 +6,7 @@ import { apiFarmageoSql } from "../../../config";
 import BotonWhatsapp from "../BotonWhatsapp";
 
 function Servicios(props) {
-  const { servicios, wapp } = props;
+  const { servicios, farmacia } = props;
   const [todosServicios, setTodosServicios] = useState([]);
   const [whatsapp, setWhatsapp] = useState(null);
 
@@ -65,129 +65,11 @@ function Servicios(props) {
                 </div>
               );
             })}
-            {/* <div
-              className="col-sm col-6 pt-4"
-              style={
-                checkServicio("recetas-magistrales", servicios)
-                  ? { filter: "none", opacity: 1 }
-                  : { filter: "grayscale(100%)", opacity: 0.3 }
-              }
-            >
-              <img src={magistrales} className="icons-md" alt="" />{" "}
-              <p>Recetas Magistrales</p>
-            </div>
-            <div
-              className="col-sm col-6 pt-4"
-              style={
-                checkServicio("violeta", servicios)
-                  ? { filter: "none", opacity: 1 }
-                  : { filter: "grayscale(100%)", opacity: 0.3 }
-              }
-            >
-              <img src={grupo287} className="icons-lg" alt="" />
-              <p>Farmacia violeta</p>
-            </div>
-            <div
-              className="col-sm col-6 pt-4"
-              style={
-                checkServicio("presion", servicios)
-                  ? { filter: "none", opacity: 1 }
-                  : { filter: "grayscale(100%)", opacity: 0.3 }
-              }
-            >
-              <img src={presion} className="icons-md" alt="" />{" "}
-              <p>Toma de presión</p>
-            </div>
-            <div
-              className="col-sm col-6 pt-4"
-              style={
-                checkServicio("amarillos", servicios)
-                  ? { filter: "none", opacity: 1 }
-                  : { filter: "grayscale(100%)", opacity: 0.3 }
-              }
-            >
-              <img src={amarillos} className="icons-md" alt="" />
-              <p>Puntos amarillos</p>
-            </div>
-            <div
-              className="col-sm col-6 pt-4"
-              style={
-                checkServicio("inyectables", servicios)
-                  ? { filter: "none", opacity: 1 }
-                  : { filter: "grayscale(100%)", opacity: 0.3 }
-              }
-            >
-              <img src={inyeccion} className="icons-md" alt="" />
-              <p>Inyectables</p>
-            </div>
-            <div
-              className="col-sm col-6 pt-4"
-              style={
-                checkServicio("testcovid", servicios)
-                  ? { filter: "none", opacity: 1 }
-                  : { filter: "grayscale(100%)", opacity: 0.3 }
-              }
-            >
-              <img src={testcovid} className="icons-md" alt="" />
-              <p>Test de Covid</p>
-            </div>
-            <div
-              className="col-sm col-6 pt-4"
-              style={
-                checkServicio("pañalespami", servicios)
-                  ? { filter: "none", opacity: 1 }
-                  : { filter: "grayscale(100%)", opacity: 0.3 }
-              }
-            >
-              <img
-                src={panales_pami}
-                className="icons-md"
-                alt=""
-                style={{ width: "60px", height: "30px" }}
-              />
-              <p>Pañales PAMI</p>
-            </div>
-            <div
-              className="col-sm col-6 pt-4"
-              style={
-                checkServicio("farmaciasolidaria", servicios)
-                  ? { filter: "none", opacity: 1 }
-                  : { filter: "grayscale(100%)", opacity: 0.3 }
-              }
-            >
-              <img
-                src={corazon}
-                className="icons-md"
-                alt=""
-                style={{ width: "40px" }}
-              />
-              <p>Farmacia Solidaria</p>
-            </div>
-            <div
-              className="col-sm col-6 bg-verde p-3 pt-4"
-              style={
-                checkServicio("whatsapp", servicios)
-                  ? { filter: "none", opacity: 1 }
-                  : { filter: "grayscale(100%)", opacity: 0.3 }
-              }
-            >
-              <a
-                href={
-                  checkServicio("whatsapp", servicios)
-                    ? `https://api.whatsapp.com/send?phone=+549${wapp}`
-                    : null
-                }
-                target="_blank"
-                rel="noopener"
-              >
-                <img src={whatsapp} className="icons-md" alt="" />
-              </a>
-            </div> */}
           </div>
         </div>
       </div>
       <div className="col-md-3"></div>
-      <BotonWhatsapp />
+      {whatsapp ? <BotonWhatsapp nroContacto={farmacia.whatsapp} /> : <></>}
     </div>
   );
 }

@@ -67,6 +67,7 @@ function FarmaciaPerfil(props) {
         <Servicios
           servicios={farmaciaSelected.servicios}
           wapp={farmaciaSelected.whatsapp}
+          farmacia={farmaciaSelected}
         />
 
         <div className="row centrado mt-4 que-necesitas pr-5" align="left">

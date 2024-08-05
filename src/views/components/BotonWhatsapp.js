@@ -1,5 +1,6 @@
 import React from "react";
 import "index.css"
+import 'font-awesome/css/font-awesome.min.css';
 
 const BotonWhatsapp = ({ nroContacto, sms, textTitle, imagen }) => {
   const nroValidado =
