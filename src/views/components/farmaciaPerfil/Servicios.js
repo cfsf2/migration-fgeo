@@ -19,9 +19,19 @@ function Servicios(props) {
 
   if (servicios.length === 0) return <></>;
   return (
-    <div className="row" align="center">
+    <div //className="row"
+      align="center"
+      style={{ display: "grid" }}
+    >
       <div className="col-md-3"></div>
-      <div className="col-md-6 nuestros-servicios">
+      <div
+        className="col-md-6 nuestros-servicios"
+        style={{
+          width: "fit-content",
+          justifySelf: "center",
+          maxWidth: "unset",
+        }}
+      >
         <h4>Nuestros servicios</h4>
         <div className="container-fluid mt-2" id="servicios-nav">
           <div className="row nuestros-servicios-icons " align="center">
