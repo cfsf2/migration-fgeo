@@ -1,8 +1,8 @@
 import React from "react";
-import "index.css"
-import 'font-awesome/css/font-awesome.min.css';
+import "index.css";
+import "font-awesome/css/font-awesome.min.css";
 
-const BotonWhatsapp = ({ nroContacto, sms, textTitle, imagen }) => {
+const BotonWhatsapp = ({ nroContacto, sms, textTitle, imagen, className }) => {
   const nroValidado =
     nroContacto?.toString().length === 10
       ? nroContacto
@@ -11,9 +11,13 @@ const BotonWhatsapp = ({ nroContacto, sms, textTitle, imagen }) => {
         );
 
   const hayTexto = sms ?? "";
-  
+
   return (
-    <div className={imagen ? "style-background-alt-img" : "ca-whatsapp"}>
+    <div
+      className={
+        imagen ? "style-background-alt-img" : className ?? "ca-whatsapp"
+      }
+    >
       <a
         href={`https://wa.me/54${nroValidado}?text=${hayTexto}`}
         target="_blank"

@@ -7,8 +7,10 @@ import grupo41 from "../../../../assets/images/Trazado 41.png";
 import alarmaRoja from "../../../../assets/images/Grupo 294.png";
 import alarmaVerde from "../../../../assets/images/Grupo 293.png";
 import { checkServicio, checkIsOpen } from "../../../helpers/FarmaciaHelpers";
+import BotonWhatsapp from "views/components/BotonWhatsapp";
 
 function ItemInfoMarker(props) {
+  console.log(props);
   return (
     <div className="container-fluid">
       <div className="row">
@@ -50,6 +52,13 @@ function ItemInfoMarker(props) {
             Ver farmacia
           </a>
         </div>
+        {props.info.whatsapp ? (
+          <div className={`col `}>
+            <BotonWhatsapp className="iteminfomarkerwhatsapp" nroContacto={props.info.whatsapp} />
+          </div>
+        ) : (
+          <></>
+        )}
         <div className="col px-0">
           <a
             className="btn btn-info"
