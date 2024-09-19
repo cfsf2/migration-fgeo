@@ -70,6 +70,15 @@ code {
 
 }
 
+.whatsappDisabled{
+  width: 40px;
+  height: 40px;
+  background-color: #d4d4d4b3;
+  color: #ffffff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 25px;
+}
 .iteminfomarkerwhatsapp > a {
   color: white;
 }
