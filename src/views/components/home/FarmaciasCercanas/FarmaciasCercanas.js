@@ -50,16 +50,17 @@ class FarmaciasCercanas extends Component {
       [name]: value,
     });
     if (name == "localidad") {
+      console.log(value)
       this.props.ELEGIR_LOCALIDAD(value);
     }
   }
 
   handleSelect = (e, geo) => {
     this.setState({
-      localidad: e.target.value,
+      localidad: geo.nombre,
       geo: {
-        lat: geo.lat,
-        lng: geo.lon,
+        lat: Number(geo.lat),
+        lng: Number(geo.lon),
       },
       statusActualUbication: false,
     });
