@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import {
   getAllCitys,
-  getLatLong,
 } from "../../../../DataFetcher/DFUbicationMap";
 
 const SelectFarm = ({ state, handleSelect }) => {
-  const [valueSlect, setValueSelect] = useState();
   const [citys, setCitys] = useState([]);
   useEffect(() => {
     getAllCitys().then((data) => {
