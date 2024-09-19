@@ -199,8 +199,8 @@ function MapaFarmacias(props) {
           return (
             checkServicio(filtroServicio, f.servicios) &&
             checkFranjaHoraria(filtroHorario, f.horarios) &&
-            f.localidad.includes(localidad) &&
-            f.nombre.toLowerCase().includes(search_farmacia) &&
+            f.localidad?.includes(localidad) &&
+            f.nombre.toLowerCase()?.includes(search_farmacia) &&
             f.perfil_farmageo?.includes(filtroPerfilFarmageo)
           );
         })

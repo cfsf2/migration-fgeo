@@ -1,12 +1,14 @@
 import axios from "axios";
 
+import { apiFarmageoSql } from "../config";
+
 const apiClientInstance = axios.create({
-    baseURL: 'https://apis.datos.gob.ar/georef/api/',
+    baseURL: apiFarmageoSql,
     timeout: 10000,
 })
 
 export const getAllCitys = () =>
-    apiClientInstance.get('localidades?provincia=82&campos=id,nombre&max=600&orden=nombre').then((r) => {
+    apiClientInstance.post('farmacia/localidades').then((r) => {
         return r.data
     })
 
