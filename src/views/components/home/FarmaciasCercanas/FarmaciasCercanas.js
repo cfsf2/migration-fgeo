@@ -141,11 +141,11 @@ class FarmaciasCercanas extends Component {
     return (
       <>
         <div className="row centrado-2 mt-3">
-          <div className="form-group col-md-3 pl-0" align="left">
+          <div className="form-group col-md-4 pl-0" align="left">
             <SelectFarm state={this.state} handleSelect={this.handleSelect} />
           </div>
 
-          <div className="form-group col-md-2 pl-0" align="left">
+          <div className="form-group col-md-4 pl-0" align="left">
             <select
               id="inputState"
               className="form-control"
@@ -173,9 +173,9 @@ class FarmaciasCercanas extends Component {
             </select>
           </div>
 
-          <div className="col pt-4 pr-0" align="right"></div>
+          
 
-          <div className="form-group col-md-3 pl-0" align="right">
+          <div className="form-group col-md-4 pl-0" align="right">
             Ver{" "}
             <div
               className="d-inline p-2 rounded ml-3"
