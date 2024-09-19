@@ -81,4 +81,9 @@ code {
 }
 .iteminfomarkerwhatsapp > a {
   color: white;
+  margin-left:-2px
+}
+.whatsappDisabled > a {
+  color: white;
+  margin-left:-2px
 }
