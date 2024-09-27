@@ -248,7 +248,7 @@ function MapaFarmacias(props) {
   }, [props, currentLatLng.lat, currentLatLng.lng]);
 
   return (
-    <div className="row centrado-2" style={{ position: "relative" }}>
+    <div id={"listado_lateral_de_farmacias"} className="row centrado-2" style={{ position: "relative" }}>
       {listado ? (
         <div
           className="col-sm-4 p-0 mb-3"
@@ -257,6 +257,7 @@ function MapaFarmacias(props) {
             overflowY: "scroll",
             border: "solid 1px #bbb4b4",
             borderRadius: "13px",
+            overflowX:'hidden'
           }}
         >
           <div className="container">

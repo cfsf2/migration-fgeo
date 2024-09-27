@@ -88,7 +88,7 @@ class ItemFarmacia extends Component {
             </div>
           </div>
 
-          <div className="row centrado-2">
+          <div id="listado_lateral_de_farmacias" className="row centrado-2">
             <div className="col"></div>
             <div className="col">
               <img

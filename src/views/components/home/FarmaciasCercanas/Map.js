@@ -53,14 +53,6 @@ function ItemInfoMarker(props) {
           </a>
         </div>
 
-        <div className={`col `}>
-          <BotonWhatsapp
-            disabled={!props.info.whatsapp}
-            className="iteminfomarkerwhatsapp"
-            nroContacto={props.info.whatsapp}
-          />
-        </div>
-
         <div className="col px-0">
           <a
             className="btn btn-info"
@@ -70,6 +62,14 @@ function ItemInfoMarker(props) {
           >
             Ir
           </a>
+        </div>
+
+        <div className={`col `}>
+          <BotonWhatsapp
+            disabled={!props.info.whatsapp}
+            className="iteminfomarkerwhatsapp"
+            nroContacto={props.info.whatsapp}
+          />
         </div>
       </div>
     </div>
