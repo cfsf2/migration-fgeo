@@ -39,8 +39,16 @@ function ItemInfoMarker(props) {
         </div>
       </div>
 
-      <div className="row mt-3 py-2" align="center">
-        <div className="col px-0">
+      <div
+        className="row mt-3 py-2"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "2fr 1fr 1fr",
+          columnGap: "1px",
+        }}
+        align="center"
+      >
+        <div className="col px-0" >
           <a
             className="btn btn-info"
             href={
@@ -53,7 +61,7 @@ function ItemInfoMarker(props) {
           </a>
         </div>
 
-        <div className="col px-0">
+        <div className="col px-0" style={{width:"50px"}}>
           <a
             className="btn btn-info"
             target="_blank"
@@ -64,7 +72,7 @@ function ItemInfoMarker(props) {
           </a>
         </div>
 
-        <div className={`col `}>
+        <div className={`col `} style={{width:"50px"}}>
           <BotonWhatsapp
             disabled={!props.info.whatsapp}
             className="iteminfomarkerwhatsapp"
