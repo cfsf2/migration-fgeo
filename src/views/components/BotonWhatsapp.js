@@ -17,6 +17,10 @@ const BotonWhatsapp = ({
           "Debe ingresar número de Whatsapp sin 0, sin 15, ni simbolos. Ej: 341 + 1234567 "
         );
 
+  if (!nroValidado) {
+    disabled = true;
+  }
+
   const hayTexto = sms ?? "";
 
   return (
