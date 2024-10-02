@@ -36,7 +36,6 @@ export const f = (state = defaultState, action) => {
         usar_mapa: action.payload,
       };
     case "GET_USER_API_FARMAGEO":
-      console.log(action.payload);
       return {
         ...state,
         user_farmageo: action.payload.user,
