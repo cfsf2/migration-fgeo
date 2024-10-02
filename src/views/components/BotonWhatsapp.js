@@ -11,11 +11,7 @@ const BotonWhatsapp = ({
   disabled,
 }) => {
   const nroValidado =
-    nroContacto?.toString().length === 10
-      ? nroContacto
-      : console.log(
-          "Debe ingresar número de Whatsapp sin 0, sin 15, ni simbolos. Ej: 341 + 1234567 "
-        );
+    nroContacto?.toString().length === 10 ? nroContacto : undefined;
 
   if (!nroValidado) {
     disabled = true;

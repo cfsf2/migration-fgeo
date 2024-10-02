@@ -10,7 +10,7 @@ import { checkServicio, checkIsOpen } from "../../../helpers/FarmaciaHelpers";
 import BotonWhatsapp from "views/components/BotonWhatsapp";
 
 function ItemInfoMarker(props) {
-  console.log(props);
+ 
   return (
     <div className="container-fluid">
       <div className="row">
