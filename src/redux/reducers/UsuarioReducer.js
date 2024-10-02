@@ -7,7 +7,7 @@ const defaultState = {
   reverseGeo: null,
 };
 
-export default (state = defaultState, action) => {
+export const f = (state = defaultState, action) => {
   switch (action.type) {
     case "LOGIN":
       return {
@@ -36,6 +36,7 @@ export default (state = defaultState, action) => {
         usar_mapa: action.payload,
       };
     case "GET_USER_API_FARMAGEO":
+      console.log(action.payload);
       return {
         ...state,
         user_farmageo: action.payload.user,
@@ -65,3 +66,5 @@ export default (state = defaultState, action) => {
       return state;
   }
 };
+
+export default f;
