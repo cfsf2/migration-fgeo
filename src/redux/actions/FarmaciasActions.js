@@ -7,7 +7,7 @@ import "../../helpers/requestParser";
 export const GET_FARMACIAS = (token) => {
   return (dispatch) => {
     axios
-      .get(apiFarmageo + "/farmacias", {})
+      .get(apiFarmageo + "/farmaciasPlenas", {})
       .then(function (response) {
         dispatch({
           type: "GET_FARMACIAS",
