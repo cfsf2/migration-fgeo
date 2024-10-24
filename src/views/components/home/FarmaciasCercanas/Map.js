@@ -1,7 +1,7 @@
 /* global google */
 import React, { Component, useEffect, useState } from "react";
 import { Map, Marker, GoogleApiWrapper, InfoWindow } from "google-maps-react";
-import icon from "../../../../assets/images/Nuevo-Logo-pointer.png";
+import icon from "../../../../assets/images/Logo-farmageo-borde.png";
 import grupo41 from "../../../../assets/images/Trazado 41.png";
 
 import alarmaRoja from "../../../../assets/images/Grupo 294.png";
