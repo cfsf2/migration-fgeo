@@ -111,6 +111,8 @@ axios.interceptors.request.use((request) => {
   request.headers.authorization = `Bearer ${window.localStorage.getItem(
     'token'
   )}`;
+  request.headers["x-frontend-origin"] = "farmageo_web";
+  request.headers["x-connection"] = "farmageo";
   return request;
 });
 //axios.defaults.withCredentials = true;
