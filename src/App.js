@@ -119,11 +119,12 @@ axios.interceptors.request.use((request) => {
 
 function App() {
   const [modalState, setmodalState] = useState(true);
-  const testing = window.location.origin;
+  const entorno = process.env.REACT_APP_ENTORNO;
+  console.log(entorno)
   usePageViews();
   return (
     <>
-      {false ? (
+      {entorno !== "produccion" ? (
         <div
           className="leyendatesting"
           style={{
