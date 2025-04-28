@@ -5,7 +5,7 @@ import "../../../css/farmacias.css";
 import FooterHome from "../footers/FooterHome";
 import Suscribite from "../home/Suscribite";
 import imgBorrar from "../../../assets/images/Grupo 115.png";
-import { BORRAR_ITEM_CARRITO } from "../../../redux/actions/PedidosActions";
+// import { BORRAR_ITEM_CARRITO } from "../../../redux/actions/PedidosActions";
 import { connect } from "react-redux";
 
 class RevisarPedido extends Component {
@@ -72,7 +72,7 @@ class RevisarPedido extends Component {
                             src={imgBorrar}
                             alt=""
                             style={{ width: 20, margin: 5 }}
-                            onClick={() => this.props.BORRAR_ITEM_CARRITO(i)}
+                            // onClick={() => this.props.BORRAR_ITEM_CARRITO(i)}
                           />
                           <img
                             src={image_path_server + linea.imagen}
@@ -175,8 +175,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {
-  BORRAR_ITEM_CARRITO,
-};
+// const mapDispatchToProps = {
+//   BORRAR_ITEM_CARRITO,
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(RevisarPedido);
+export default connect(mapStateToProps)(RevisarPedido);

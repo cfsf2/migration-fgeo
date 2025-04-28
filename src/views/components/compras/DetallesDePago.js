@@ -4,7 +4,7 @@ import { apiFarmageo } from "../../../config";
 import "../../../css/farmacias.css";
 import FooterHome from "../footers/FooterHome";
 import Suscribite from "../home/Suscribite";
-import { CONFIRMAR_PEDIDO } from "../../../redux/actions/PedidosActions";
+// import { CONFIRMAR_PEDIDO } from "../../../redux/actions/PedidosActions";
 import { connect } from "react-redux";
 import naranja from "../../../assets/images/naranja.png";
 import american from "../../../assets/images/american.png";
@@ -143,42 +143,42 @@ class DetallesDePago extends Component {
     const { farmaciaSelected, user, subtotal } = this.state;
     const { carrito } = this.props.PedidosReducer;
 
-    this.props.CONFIRMAR_PEDIDO({
-      username: user.username,
-      descripcion: "productos",
-      comentarios: "",
-      idfarmacia: farmaciaSelected.farmaciaid,
-      idsocio: user._id,
-      envio: user.envio,
-      costoenvio: 0,
-      pago_online: false,
-      gruposproductos: [
-        {
-          productos: carrito,
-          precio: subtotal,
-        },
-      ],
-      domicilioenvio:
-        user.direccion +
-        " " +
-        user.piso +
-        ", " +
-        user.localidad +
-        ", " +
-        user.provincia,
-      nombrefarmacia: farmaciaSelected.nombre,
-      whatsapp: user.telephone,
-      emailFarmacia: farmaciaSelected.email,
-      es_invitado: auth ? false : true,
-      datos_cliente: [
-        {
-          nombre: user.name,
-          apellido: user.apellido,
-          email: user.email,
-        },
-      ],
-      ufarmacia: farmaciaSelected.usuario,
-    });
+    // this.props.CONFIRMAR_PEDIDO({
+    //   username: user.username,
+    //   descripcion: "productos",
+    //   comentarios: "",
+    //   idfarmacia: farmaciaSelected.farmaciaid,
+    //   idsocio: user._id,
+    //   envio: user.envio,
+    //   costoenvio: 0,
+    //   pago_online: false,
+    //   gruposproductos: [
+    //     {
+    //       productos: carrito,
+    //       precio: subtotal,
+    //     },
+    //   ],
+    //   domicilioenvio:
+    //     user.direccion +
+    //     " " +
+    //     user.piso +
+    //     ", " +
+    //     user.localidad +
+    //     ", " +
+    //     user.provincia,
+    //   nombrefarmacia: farmaciaSelected.nombre,
+    //   whatsapp: user.telephone,
+    //   emailFarmacia: farmaciaSelected.email,
+    //   es_invitado: auth ? false : true,
+    //   datos_cliente: [
+    //     {
+    //       nombre: user.name,
+    //       apellido: user.apellido,
+    //       email: user.email,
+    //     },
+    //   ],
+    //   ufarmacia: farmaciaSelected.usuario,
+    // });
   }
 
   getIconTarjeta(tarjeta) {
@@ -601,8 +601,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {
-  CONFIRMAR_PEDIDO,
-};
+// const mapDispatchToProps = {
+//   CONFIRMAR_PEDIDO,
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetallesDePago);
+export default connect(mapStateToProps)(DetallesDePago);

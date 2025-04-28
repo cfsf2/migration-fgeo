@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { image_path_server } from '../../../config';
 
 import '../../../css/farmacias.css';
-import {
-  AGREGAR_ITEM_CARRITO,
-  BORRAR_ITEM_CARRITO,
-  UPDATE_ITEM_CARRITO,
-} from '../../../redux/actions/PedidosActions';
+// import {
+//   AGREGAR_ITEM_CARRITO,
+//   BORRAR_ITEM_CARRITO,
+//   UPDATE_ITEM_CARRITO,
+// } from '../../../redux/actions/PedidosActions';
 import { connect } from 'react-redux';
 import imgBorrar from '../../../assets/images/Grupo 115.png';
 
@@ -19,14 +19,14 @@ class Carrito extends Component {
     };
   }
 
-  handleCantidad = async (i, producto) => {
-    const cant = producto.cantidad;
-    if (i === '+') {
-      this.props.UPDATE_ITEM_CARRITO(producto, cant + 1);
-    } else if (cant > 0) {
-      this.props.UPDATE_ITEM_CARRITO(producto, cant - 1);
-    }
-  };
+  // handleCantidad = async (i, producto) => {
+  //   const cant = producto.cantidad;
+  //   if (i === '+') {
+  //     this.props.UPDATE_ITEM_CARRITO(producto, cant + 1);
+  //   } else if (cant > 0) {
+  //     this.props.UPDATE_ITEM_CARRITO(producto, cant - 1);
+  //   }
+  // };
 
   componentDidUpdate(prevProps, prevState) {
     const { carrito, showcarrito } = this.props.PedidosReducer;
@@ -115,7 +115,7 @@ class Carrito extends Component {
                       src={imgBorrar}
                       alt=""
                       style={{ width: 20, marginTop: 30 }}
-                      onClick={() => this.props.BORRAR_ITEM_CARRITO(i)}
+                      // onClick={() => this.props.BORRAR_ITEM_CARRITO(i)}
                     />
                   </div>
                   <div className="col-md-4 col-4" align="center">
@@ -128,13 +128,17 @@ class Carrito extends Component {
                   <div className="col-md-4 col-4 detalle-producto-sm">
                     <p id="nombre">{linea.nombre}</p>
                     <div className="cantidades-control-sm btn" align="center">
-                      <button onClick={() => this.handleCantidad('-', linea)}>
+                      <button 
+                      // onClick={() => this.handleCantidad('-', linea)}
+                      >
                         -
                       </button>
                       <span style={{ width: '40px', padding: 5 }}>
                         {linea.cantidad}
                       </span>
-                      <button onClick={() => this.handleCantidad('+', linea)}>
+                      <button 
+                      // onClick={() => this.handleCantidad('+', linea)}
+                      >
                         +
                       </button>
                     </div>
@@ -181,10 +185,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {
-  AGREGAR_ITEM_CARRITO,
-  BORRAR_ITEM_CARRITO,
-  UPDATE_ITEM_CARRITO,
-};
+// const mapDispatchToProps = {
+//   AGREGAR_ITEM_CARRITO,
+//   BORRAR_ITEM_CARRITO,
+//   UPDATE_ITEM_CARRITO,
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Carrito);
+export default connect(mapStateToProps)(Carrito);

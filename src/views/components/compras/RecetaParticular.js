@@ -5,7 +5,7 @@ import { apiFarmageo, image_path_server } from "../../../config";
 import "../../../css/farmacias.css";
 import FooterHome from "../footers/FooterHome";
 import Suscribite from "../home/Suscribite";
-import { CONFIRMAR_PEDIDO } from "../../../redux/actions/PedidosActions";
+// import { CONFIRMAR_PEDIDO } from "../../../redux/actions/PedidosActions";
 import { connect } from "react-redux";
 import ImgUploader from "./ImgUploader";
 class RecetaParticular extends Component {
@@ -55,25 +55,25 @@ class RecetaParticular extends Component {
     const { user_farmageo } = this.props.UsuarioReducer;
     const { farmaciaSelected, frente, dorso, receta, comentarios } = this.state;
 
-    this.props.CONFIRMAR_PEDIDO({
-      username: user_farmageo.usuario,
-      descripcion: "recetaParticular",
-      comentarios: comentarios,
-      idfarmacia: farmaciaSelected.farmaciaid,
-      idsocio: user_farmageo._id,
-      envio: false,
-      costoenvio: 0,
-      pago_online: false,
-      gruposproductos: [
-        {
-          receta: image_path_server + receta.img,
-        },
-      ],
-      domicilioenvio: "",
-      nombrefarmacia: farmaciaSelected.nombre,
-      whatsapp: user_farmageo.telephone,
-      emailFarmacia: farmaciaSelected.email,
-    });
+    // this.props.CONFIRMAR_PEDIDO({
+    //   username: user_farmageo.usuario,
+    //   descripcion: "recetaParticular",
+    //   comentarios: comentarios,
+    //   idfarmacia: farmaciaSelected.farmaciaid,
+    //   idsocio: user_farmageo._id,
+    //   envio: false,
+    //   costoenvio: 0,
+    //   pago_online: false,
+    //   gruposproductos: [
+    //     {
+    //       receta: image_path_server + receta.img,
+    //     },
+    //   ],
+    //   domicilioenvio: "",
+    //   nombrefarmacia: farmaciaSelected.nombre,
+    //   whatsapp: user_farmageo.telephone,
+    //   emailFarmacia: farmaciaSelected.email,
+    // });
   };
 
   render() {
@@ -170,8 +170,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {
-  CONFIRMAR_PEDIDO,
-};
+// const mapDispatchToProps = {
+//   CONFIRMAR_PEDIDO,
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(RecetaParticular);
+export default connect(mapStateToProps)(RecetaParticular);
