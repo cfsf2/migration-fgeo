@@ -3,16 +3,16 @@ import {
   GET_PRODUCTOS_PACK,
   GET_ENTIDADES,
 } from "../../../redux/actions/ProductosActions";
-import {
-  AGREGAR_ITEM_CARRITO,
-  CREATE_PEDIDO,
-} from "../../../redux/actions/PedidosActions";
+// import {
+//   AGREGAR_ITEM_CARRITO,
+//   CREATE_PEDIDO,
+// } from "../../../redux/actions/PedidosActions";
 import { connect } from "react-redux";
 import { image_path_server } from "../../../config";
 import Pagination from "react-js-pagination";
 
 function Producto(props) {
-  const { prod, farmacia, handleAddItem } = props;
+  const { prod, farmacia/* , handleAddItem */ } = props;
   return (
     <div className="col-md-3 mb-5" align="center">
       <div className="container px-5 py-2">
@@ -61,7 +61,7 @@ function Producto(props) {
           prod._id
         }*/
           class="btn btn-add-to-car"
-          onClick={() => handleAddItem(prod, farmacia, 1)}
+          // onClick={() => handleAddItem(prod, farmacia, 1)}
         >
           Agregar al carrito
         </a>
@@ -112,7 +112,7 @@ class TabsProductosRelacionados extends Component {
           prod={prod}
           key={i}
           farmacia={this.props.farmacia}
-          handleAddItem={this.handleAddItem}
+          // handleAddItem={this.handleAddItem}
         />
       );
     });
@@ -133,17 +133,17 @@ class TabsProductosRelacionados extends Component {
     return filtrado;
   };
 
-  handleAddItem = async (producto, farmacia, cantidad) => {
-    const { pedido } = this.props.PedidosReducer;
-    if (farmacia && producto) {
-      if (pedido === null || pedido.idfarmacia !== farmacia.matricula) {
-        await this.props.CREATE_PEDIDO(farmacia, "productos");
-        this.props.AGREGAR_ITEM_CARRITO(producto, cantidad);
-      } else {
-        this.props.AGREGAR_ITEM_CARRITO(producto, cantidad);
-      }
-    }
-  };
+  // handleAddItem = async (producto, farmacia, cantidad) => {
+  //   const { pedido } = this.props.PedidosReducer;
+  //   if (farmacia && producto) {
+  //     if (pedido === null || pedido.idfarmacia !== farmacia.matricula) {
+  //       await this.props.CREATE_PEDIDO(farmacia, "productos");
+  //       this.props.AGREGAR_ITEM_CARRITO(producto, cantidad);
+  //     } else {
+  //       this.props.AGREGAR_ITEM_CARRITO(producto, cantidad);
+  //     }
+  //   }
+  // };
 
   render() {
     const { productos, entidades } = this.props.ProductosReducer;
@@ -186,8 +186,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   GET_PRODUCTOS_PACK,
   GET_ENTIDADES,
-  AGREGAR_ITEM_CARRITO,
-  CREATE_PEDIDO,
+  // AGREGAR_ITEM_CARRITO,
+  // CREATE_PEDIDO,
 };
 export default connect(
   mapStateToProps,

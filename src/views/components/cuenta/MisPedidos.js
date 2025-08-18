@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../../../css/farmacias.css";
 import { connect } from "react-redux";
 import { Col, Row, Container } from "reactstrap";
-import { GET_PEDIDOS } from "../../../redux/actions/PedidosActions";
+// import { GET_PEDIDOS } from "../../../redux/actions/PedidosActions";
 import { DescripcionFormat, FechaFormat } from "../../helpers/parserHelpers";
 import Pagination from "react-js-pagination";
 
@@ -15,16 +15,17 @@ class MisPedidos extends Component {
       activePage: 1,
     };
   }
+
   componentDidMount() {
-    const { user_farmageo } = this.props.UsuarioReducer;
-    this.props.GET_PEDIDOS(user_farmageo.usuario);
+    // const { user_farmageo } = this.props.UsuarioReducer;
+    // this.props.GET_PEDIDOS(user_farmageo.usuario);
   }
 
   componentDidUpdate(prevProps) {
-    const { user_farmageo } = this.props.UsuarioReducer;
-    if (prevProps.UsuarioReducer.user_farmageo != user_farmageo) {
-      this.props.GET_PEDIDOS(user_farmageo.usuario);
-    }
+    // const { user_farmageo } = this.props.UsuarioReducer;
+    // if (prevProps.UsuarioReducer.user_farmageo != user_farmageo) {
+    //   this.props.GET_PEDIDOS(user_farmageo.usuario);
+    // }
   }
 
   handlePageChange(pageNumber) {
@@ -97,8 +98,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {
-  GET_PEDIDOS,
-};
+// const mapDispatchToProps = {
+//   GET_PEDIDOS,
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MisPedidos);
+export default connect(mapStateToProps)(MisPedidos);

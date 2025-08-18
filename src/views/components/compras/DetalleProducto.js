@@ -7,8 +7,8 @@ import FooterHome from '../footers/FooterHome';
 import Suscribite from '../home/Suscribite';
 import TabsProductosRelacionados from '../farmaciaPerfil/TabsProductosRelacionados';
 import {
-  AGREGAR_ITEM_CARRITO,
-  CREATE_PEDIDO,
+  // AGREGAR_ITEM_CARRITO,
+  // CREATE_PEDIDO,
 } from '../../../redux/actions/PedidosActions';
 import { connect } from 'react-redux';
 import FarmaciasCercanas from '../home/FarmaciasCercanas/FarmaciasCercanas';
@@ -123,18 +123,18 @@ class DetalleProducto extends Component {
     }
   };
 
-  handleAddItem = async () => {
-    const { cantidad, productoSelected, farmaciaSelected } = this.state;
-    const { pedido } = this.props.PedidosReducer;
-    if (farmaciaSelected && productoSelected) {
-      if (pedido === null || pedido.idfarmacia !== farmaciaSelected.matricula) {
-        await this.props.CREATE_PEDIDO(farmaciaSelected, 'productos');
-        this.props.AGREGAR_ITEM_CARRITO(productoSelected[0], cantidad);
-      } else {
-        this.props.AGREGAR_ITEM_CARRITO(productoSelected[0], cantidad);
-      }
-    }
-  };
+  // handleAddItem = async () => {
+  //   const { cantidad, productoSelected, farmaciaSelected } = this.state;
+  //   const { pedido } = this.props.PedidosReducer;
+  //   if (farmaciaSelected && productoSelected) {
+  //     if (pedido === null || pedido.idfarmacia !== farmaciaSelected.matricula) {
+  //       await this.props.CREATE_PEDIDO(farmaciaSelected, 'productos');
+  //       this.props.AGREGAR_ITEM_CARRITO(productoSelected[0], cantidad);
+  //     } else {
+  //       this.props.AGREGAR_ITEM_CARRITO(productoSelected[0], cantidad);
+  //     }
+  //   }
+  // };
 
   parseDescripcion(txt) {
     if (txt) {
@@ -221,11 +221,15 @@ class DetalleProducto extends Component {
                             className="cantidades-control btn"
                             align="center"
                           >
-                            <button onClick={() => this.handleCantidad('-')}>
+                            <button 
+                            // onClick={() => this.handleCantidad('-')}
+                              >
                               -
                             </button>
                             <span style={{ width: '50px' }}>{cantidad}</span>
-                            <button onClick={() => this.handleCantidad('+')}>
+                            <button 
+                            // onClick={() => this.handleCantidad('+')}
+                            >
                               {' '}
                               +{' '}
                             </button>
@@ -234,7 +238,7 @@ class DetalleProducto extends Component {
                         <div className="col-lg-6">
                           <button
                             className="d-inline btn btn-add-to-car "
-                            onClick={this.handleAddItem}
+                            // onClick={this.handleAddItem}
                           >
                             Agregar al carrito
                           </button>
@@ -277,9 +281,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {
-  AGREGAR_ITEM_CARRITO,
-  CREATE_PEDIDO,
-};
+// const mapDispatchToProps = {
+//   AGREGAR_ITEM_CARRITO,
+//   CREATE_PEDIDO,
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetalleProducto);
+export default connect(mapStateToProps)(DetalleProducto);

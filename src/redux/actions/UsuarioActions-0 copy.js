@@ -1,6 +1,6 @@
 import axios from "axios";
 import { apiFarmageo, authFarmageo } from "../../config";
-import { RECUPERAR_PEDIDO } from "./PedidosActions";
+// import { RECUPERAR_PEDIDO } from "./PedidosActions";
 var geocoder = require("geocoder-fr");
 
 export const LOGIN = (username, password) => {
@@ -110,7 +110,7 @@ export const GET_AUTH = () => {
 
       if (data !== null) {
         dispatch(LOGIN(data.username, data.password));
-        dispatch(RECUPERAR_PEDIDO());
+        // dispatch(RECUPERAR_PEDIDO());
         return true;
       } else {
         //dispatch(LOGOUT(navigation));

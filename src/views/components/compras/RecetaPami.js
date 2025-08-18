@@ -6,9 +6,9 @@ import "../../../css/farmacias.css";
 import FooterHome from "../footers/FooterHome";
 import Suscribite from "../home/Suscribite";
 import {
-  AGREGAR_ITEM_CARRITO,
-  CREATE_PEDIDO,
-  CONFIRMAR_PEDIDO,
+  // AGREGAR_ITEM_CARRITO,
+  // CREATE_PEDIDO,
+  // CONFIRMAR_PEDIDO,
 } from "../../../redux/actions/PedidosActions";
 import { connect } from "react-redux";
 import ImgUploader from "./ImgUploader";
@@ -56,30 +56,30 @@ class RecetaPami extends Component {
     });
   };
 
-  handleSiguiente = async () => {
-    const { user_farmageo } = this.props.UsuarioReducer;
-    const { farmaciaSelected, frente, dorso, receta, comentarios } = this.state;
+  // handleSiguiente = async () => {
+  //   const { user_farmageo } = this.props.UsuarioReducer;
+  //   const { farmaciaSelected, frente, dorso, receta, comentarios } = this.state;
 
-    this.props.CONFIRMAR_PEDIDO({
-      username: user_farmageo.usuario,
-      descripcion: "recetaPami",
-      comentarios: comentarios,
-      idfarmacia: farmaciaSelected.farmaciaid,
-      idsocio: user_farmageo._id,
-      envio: false,
-      costoenvio: 0,
-      pago_online: false,
-      gruposproductos: [
-        {
-          receta: image_path_server + receta.img,
-        },
-      ],
-      domicilioenvio: "",
-      nombrefarmacia: farmaciaSelected.nombre,
-      whatsapp: user_farmageo.telephone,
-      emailFarmacia: farmaciaSelected.email,
-    });
-  };
+  //   this.props.CONFIRMAR_PEDIDO({
+  //     username: user_farmageo.usuario,
+  //     descripcion: "recetaPami",
+  //     comentarios: comentarios,
+  //     idfarmacia: farmaciaSelected.farmaciaid,
+  //     idsocio: user_farmageo._id,
+  //     envio: false,
+  //     costoenvio: 0,
+  //     pago_online: false,
+  //     gruposproductos: [
+  //       {
+  //         receta: image_path_server + receta.img,
+  //       },
+  //     ],
+  //     domicilioenvio: "",
+  //     nombrefarmacia: farmaciaSelected.nombre,
+  //     whatsapp: user_farmageo.telephone,
+  //     emailFarmacia: farmaciaSelected.email,
+  //   });
+  // };
 
   render() {
     const { farmaciaSelected, uFarmacia, receta } = this.state;
@@ -128,7 +128,7 @@ class RecetaPami extends Component {
                           type="text"
                           className="form-control"
                           name="comentarios"
-                          onChange={this.handleInputChange}
+                          // onChange={this.handleInputChange}
                         />
                       </div>
                     </div>
@@ -148,7 +148,7 @@ class RecetaPami extends Component {
                         <button
                           className="btn btn-add-to-car mx-2"
                           style={{ color: "white" }}
-                          onClick={this.handleSiguiente}
+                          // onClick={this.handleSiguiente}
                           disabled={!receta}
                         >
                           Siguiente
@@ -175,10 +175,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {
-  AGREGAR_ITEM_CARRITO,
-  CREATE_PEDIDO,
-  CONFIRMAR_PEDIDO,
-};
+// const mapDispatchToProps = {
+//   AGREGAR_ITEM_CARRITO,
+//   CREATE_PEDIDO,
+//   CONFIRMAR_PEDIDO,
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(RecetaPami);
+export default connect(mapStateToProps)(RecetaPami);
