@@ -11,7 +11,7 @@ function Home() {
       <BannerSuperior />
       <BannerFarmaciasCercanas />
       <FarmaciasCercanas home nextPage="farmaciaperfil?u=" />
-      {/* <BannerInferior /> */}
+      <BannerInferior />
 
       <Suscribite />
       <FooterHome />
