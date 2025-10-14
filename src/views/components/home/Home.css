@@ -89,3 +89,64 @@
     margin-top: .5rem;
   }
 }
+
+/* ===== Redes sociales CTA ===== */
+.cta-presion__social {
+  border-top: 2px solid #fff;
+  background: #fff;
+  padding: 1.2rem 0;
+}
+
+.cta-presion__social-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;      /* cambiá a flex-end si lo querés a la derecha */
+  gap: 14px;
+}
+
+.cta-presion__social-label {
+  font-weight: 600;
+  color: #2c3550;
+  opacity: .9;
+  margin-right: 6px;
+}
+
+.cta-presion__social-icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Botón circular azul por icono */
+.cta-presion__social .social-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #2c3550e0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(23,162,184,.25);
+  transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+}
+
+.cta-presion__social .social-btn:hover {
+  background: #2c3550f7;
+  transform: translateY(-1px);
+  box-shadow: 1px 5px 15px rgba(44, 53, 80, 0.718);
+}
+
+/* Tamaño del SVG dentro del botón */
+.cta-presion__social .social-icon {
+  width: 22px;
+  height: 22px;
+}
+
+@media (max-width: 680px) {
+  .cta-presion__social-inner { justify-content: center; }
+  .cta-presion__social-label { display: none; } /* opcional para simplificar en móvil */
+}
