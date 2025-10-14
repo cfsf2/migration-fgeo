@@ -1,0 +1,91 @@
+/* ===== CTA (Flexbox) ===== */
+.cta-presion {
+  background: linear-gradient(135deg, #2c3550 0%, #1f263d 100%);
+  color: #fff;
+  padding: 1.75rem 0;           /* altura más baja y elegante */
+}
+
+/* Contenedor centrado con Flex */
+.cta-presion__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  /* que se pueda romper en móviles */
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+/* Icono fijo */
+.cta-presion__icon {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  opacity: 0.9;
+}
+
+/* Texto elástico */
+.cta-presion__text {
+  min-width: 260px;
+}
+
+.cta-presion__title {
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  margin: 0 0 .25rem 0;
+}
+
+.cta-presion__subtitle {
+  margin: 0;
+  font-size: .95rem;
+  opacity: .9;
+}
+
+/* Botón verde institucional con texto blanco */
+.btn-cta {
+  flex: 0 0 auto;
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  font-weight: 600;
+  font-size: .95rem;
+  border-radius: 10px;
+  padding: .6rem 1.2rem;
+  box-shadow: 0 4px 12px rgba(138,226,163,.35);
+  text-decoration: none;
+  white-space: nowrap;          /* que no corte el texto si entra */
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+.btn-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(109, 211, 224, 0.35);
+  color: #fff;
+  background-color: #138496;
+  border-color: #117a8b;
+  text-decoration: none;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .cta-presion__title { font-size: 1.1rem; }
+}
+
+@media (max-width: 680px) {
+  .cta-presion__container {
+    flex-direction: column;     /* apila: icono, texto, botón */
+    align-items: flex-start;
+  }
+  .btn-cta {
+    width: 100%;                /* botón full width en móvil */
+    text-align: center;
+    margin-top: .5rem;
+  }
+}

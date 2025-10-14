@@ -2,8 +2,9 @@ import FooterHome from '../footers/FooterHome';
 import BannerInferior from './BannerInferior';
 import BannerSuperior from './BannerSuperior';
 import FarmaciasCercanas from './FarmaciasCercanas/FarmaciasCercanas';
-import Suscribite from './Suscribite';
+import RedFarmaciasTA from './RedFarmaciasTA';
 import BannerFarmaciasCercanas from './FarmaciasCercanas/BannerFarmaciasCercanas';
+import './Home.css';
 
 function Home() {
   return (
@@ -13,7 +14,7 @@ function Home() {
       <FarmaciasCercanas home nextPage="farmaciaperfil?u=" />
       <BannerInferior />
 
-      <Suscribite />
+      <RedFarmaciasTA />
       <FooterHome />
     </>
   );
