@@ -62,7 +62,7 @@ class BannerSuperior extends Component {
                 </div>
               </div>
             </div>
-            <InfoProcesos />
+            {/* <InfoProcesos /> */}
           </div>
         </div>
       </div>

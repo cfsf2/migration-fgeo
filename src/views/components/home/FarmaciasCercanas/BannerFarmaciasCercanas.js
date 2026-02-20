@@ -17,7 +17,7 @@ function BannerFarmaciasCercanas() {
         <h1>
           Farmacias <b>cercanas</b>
         </h1>
-        <p>Elegí tu farmacia para acceder a su tienda online</p>
+        {/* <p>Elegí tu farmacia para acceder a su tienda online</p> */}
       </div>
       <div
         className="col-md rounded-right"

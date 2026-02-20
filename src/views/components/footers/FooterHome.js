@@ -22,21 +22,21 @@ function FooterHome() {
             {/* <a href="https://www.farmageo.com.ar/novedades/medios-de-pago/">
               Medios de pago
             </a> */}
-            <Link to="/medios-pago" target="_self" rel="noopener noreferrer">
-                        Medios de pago</Link>
+            {/* <Link to="/medios-pago" target="_self" rel="noopener noreferrer">
+                        Medios de pago</Link> */}
             {/* <a href="https://www.farmageo.com.ar/novedades/medios-de-envio/">
               Medios de envio
             </a> */}
-            <Link to="/medios-envio" target="_self" rel="noopener noreferrer">
-                        Medios de envio</Link>
+            {/* <Link to="/medios-envio" target="_self" rel="noopener noreferrer">
+                        Medios de envio</Link> */}
           </div>
           <div className="col-md-3 col-6 pt-5">
           <b>Ayuda</b>
             {/* <a href="https://www.farmageo.com.ar/novedades/preguntas-frecuentes/">
               Preguntas frecuentes
             </a> */}
-              <Link to="/cambios-devoluciones" target="_self" rel="noopener noreferrer">
-                         Cambios y devoluciones</Link>
+              {/* <Link to="/cambios-devoluciones" target="_self" rel="noopener noreferrer">
+                         Cambios y devoluciones</Link> */}
             {/* <a href="https://www.farmageo.com.ar/novedades/cambios-y-devoluciones/">
               Cambios y devoluciones
             </a> */}
@@ -69,7 +69,7 @@ function FooterHome() {
                 <p>341 2104056</p>
                 </a>
           </div>
-          <div className="col-md-3 col-6 pt-5">
+          {/* <div className="col-md-3 col-6 pt-5">
             <b>Compra 100% segura</b>
             <p>Farmageo garantiza la seguridad transaccional de sus clientes</p>
             <a
@@ -78,7 +78,7 @@ function FooterHome() {
             >
               Botón de Arrepentimiento
             </a>
-          </div>
+          </div> */}
         </div>
         <div className="row centrado-2" align="left">
           <div

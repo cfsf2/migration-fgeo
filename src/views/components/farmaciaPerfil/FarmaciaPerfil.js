@@ -4,28 +4,28 @@ import { apiFarmageo } from "../../../config";
 import { connect } from "react-redux";
 import "../../../css/farmacias.css";
 
-import carnet from "../../../assets/images/icon-carnet.png";
-import iconparticular from "../../../assets/images/icon-particular.png";
-import iconproductos from "../../../assets/images/icon-productos.png";
-import iconpami from "../../../assets/images/icon-pami.png";
+// import carnet from "../../../assets/images/icon-carnet.png";
+// import iconparticular from "../../../assets/images/icon-particular.png";
+// import iconproductos from "../../../assets/images/icon-productos.png";
+// import iconpami from "../../../assets/images/icon-pami.png";
 import FooterHome from "../footers/FooterHome";
 import HeaderFarmacia from "./HeaderFarmacia";
 import Servicios from "./Servicios";
-import BuscadorCentral from "./BuscadorCentral";
-import Suscribite from "../home/Suscribite";
-import BannersFinal from "./BannersFinal";
-import TabsProductos from "./TabsProductos";
-import { ModalBasico } from "../modales/ModalBasico";
-import SliderBannersPromocionesFarmacia from "./components/SliderBannersPromocionesFarmacia";
-import SliderPromocionesFarmacia from "./components/SliderPromocionesFarmacia";
+// import BuscadorCentral from "./BuscadorCentral";
+// import Suscribite from "../home/Suscribite";
+// import BannersFinal from "./BannersFinal";
+// import TabsProductos from "./TabsProductos";
+// import { ModalBasico } from "../modales/ModalBasico";
+// import SliderBannersPromocionesFarmacia from "./components/SliderBannersPromocionesFarmacia";
+// import SliderPromocionesFarmacia from "./components/SliderPromocionesFarmacia";
 
 function FarmaciaPerfil(props) {
   // const [data, setData] = useState(null);
   const [farmaciaSelected, setfarmaciaSelected] = useState(null);
   // const [modalMsj, setmodalMsj] = useState("");
   // const [farmacia, setfarmacia] = useState("");
-  const [textbuscador, settextbuscador] = useState("");
-  const [uFarmacia, setuFarmacia] = useState(null);
+  // const [textbuscador, settextbuscador] = useState("");
+  // const [uFarmacia, setuFarmacia] = useState(null);
 
   const handlequery = () => {
     return new URLSearchParams(window.location.hash.split("?")[1]);
@@ -42,26 +42,26 @@ function FarmaciaPerfil(props) {
         const result = await axios.get(apiFarmageo + "/farmacias/" + farmacia);
         if (result.data) {
           setfarmaciaSelected(result.data);
-          setuFarmacia(farmacia);
+          // setuFarmacia(farmacia);
         }
       } catch (error) {
         setfarmaciaSelected(null);
-        setuFarmacia(farmacia);
+        // setuFarmacia(farmacia);
       }
     }
   };
-  const handleCompras = tipoCompra => {
-    window.location.href = `${process.env.PUBLIC_URL}/#/${tipoCompra}?u=${uFarmacia}`;
-  };
+  // const handleCompras = tipoCompra => {
+  //   window.location.href = `${process.env.PUBLIC_URL}/#/${tipoCompra}?u=${uFarmacia}`;
+  // };
 
-  const handleTextBuscador = txt => {
-    settextbuscador(txt);
-  };
+  // const handleTextBuscador = txt => {
+  //   settextbuscador(txt);
+  // };
 
-  const { auth } = props.UsuarioReducer;
+  // const { auth } = props.UsuarioReducer;
   return farmaciaSelected === null ? null : (
     <>
-      <ModalBasico />
+      {/* <ModalBasico /> */}
       <div>
         <HeaderFarmacia farmaciaSelected={farmaciaSelected} />
         <Servicios
@@ -70,7 +70,7 @@ function FarmaciaPerfil(props) {
           farmacia={farmaciaSelected}
         />
 
-        <div className="row centrado mt-4 que-necesitas pr-5" align="left">
+        {/* <div className="row centrado mt-4 que-necesitas pr-5" align="left">
           {farmaciaSelected.perfil_farmageo !== "vender_online" ? (
             <div className="col-md-12" align="center">
               <b className="text-danger">
@@ -142,8 +142,8 @@ function FarmaciaPerfil(props) {
               </div>
             </>
           )}
-        </div>
-        {farmaciaSelected !== null &&
+        </div> */}
+        {/* {farmaciaSelected !== null &&
         farmaciaSelected.perfil_farmageo !== "vender_online" ? null : (
           <>
             <BuscadorCentral handleTextBuscador={handleTextBuscador} />
@@ -157,9 +157,9 @@ function FarmaciaPerfil(props) {
               productos_propios={farmaciaSelected.productos}
             />
           </>
-        )}
-        <BannersFinal />
-        <Suscribite />
+        )} */}
+        {/* <BannersFinal /> */}
+        {/* <Suscribite /> */}
       </div>
       <FooterHome />
     </>

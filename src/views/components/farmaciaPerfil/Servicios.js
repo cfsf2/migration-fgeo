@@ -17,7 +17,7 @@ function Servicios(props) {
     });
   }, []);
 
-  if (servicios.length === 0) return <></>;
+  if (!servicios ||servicios.length === 0) return <></>;
   return (
     <div //className="row"
       align="center"
