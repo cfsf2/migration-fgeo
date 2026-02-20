@@ -1,98 +1,92 @@
-import React, { useState } from 'react';
-import ReactGA from 'react-ga';
+import React, { useState } from "react";
+import ReactGA from "react-ga";
 //import { HashRouter, Route, Switch } from 'react-router-dom';
-import './css/farmacias.css';
-import './css/switch.css';
-import { base } from './config';
+import "./css/farmacias.css";
+import "./css/switch.css";
+import { base } from "./config";
 
 // import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-import { Route, Switch, useLocation } from 'react-router-dom';
-import FooterHome from './views/components/footers/FooterHome';
-import axios from 'axios';
+import { Route, Switch, useLocation } from "react-router-dom";
+import FooterHome from "./views/components/footers/FooterHome";
+import axios from "axios";
 
 const loading = () => (
   <div className="animated fadeIn pt-3 text-center">Cargando...</div>
 );
 
 // Pages
-const Home = React.lazy(() => import('./views/components/home/Home'));
-const Mutual = React.lazy(() => import('./views/components/mutual/Mutual'));
-const FarmaciaPerfil = React.lazy(() =>
-  import('./views/components/farmaciaPerfil/FarmaciaPerfil')
+const Home = React.lazy(() => import("./views/components/home/Home"));
+const Mutual = React.lazy(() => import("./views/components/mutual/Mutual"));
+const FarmaciaPerfil = React.lazy(
+  () => import("./views/components/farmaciaPerfil/FarmaciaPerfil"),
 );
-const FarmaciaProductosCat = React.lazy(() =>
-  import('./views/components/farmaciaPerfil/FarmaciaProductosCat')
+const FarmaciaProductosCat = React.lazy(
+  () => import("./views/components/farmaciaPerfil/FarmaciaProductosCat"),
 );
-const NavHome = React.lazy(() => import('./views/components/navs/NavHome'));
-const NavPerfil = React.lazy(() => import('./views/components/navs/NavPerfil'));
-const FarmaciasCercanas = React.lazy(() =>
-  import('./views/components/home/FarmaciasCercanas/FarmaciasCercanas')
+const NavHome = React.lazy(() => import("./views/components/navs/NavHome"));
+const NavPerfil = React.lazy(() => import("./views/components/navs/NavPerfil"));
+const FarmaciasCercanas = React.lazy(
+  () => import("./views/components/home/FarmaciasCercanas/FarmaciasCercanas"),
 );
-const RevisarPedido = React.lazy(() =>
-  import('./views/components/compras/RevisarPedido')
+const RevisarPedido = React.lazy(
+  () => import("./views/components/compras/RevisarPedido"),
 );
-const DetalleProducto = React.lazy(() =>
-  import('./views/components/compras/DetalleProducto')
+const DetalleProducto = React.lazy(
+  () => import("./views/components/compras/DetalleProducto"),
 );
-const DetallesDePago = React.lazy(() =>
-  import('./views/components/compras/DetallesDePago')
+const DetallesDePago = React.lazy(
+  () => import("./views/components/compras/DetallesDePago"),
 );
-const RecetaConObraSocial = React.lazy(() =>
-  import('./views/components/compras/RecetaConObraSocial')
+const RecetaConObraSocial = React.lazy(
+  () => import("./views/components/compras/RecetaConObraSocial"),
 );
-const RecetaParticular = React.lazy(() =>
-  import('./views/components/compras/RecetaParticular')
+const RecetaParticular = React.lazy(
+  () => import("./views/components/compras/RecetaParticular"),
 );
-const RecetaPami = React.lazy(() =>
-  import('./views/components/compras/RecetaPami')
+const RecetaPami = React.lazy(
+  () => import("./views/components/compras/RecetaPami"),
 );
-const ConfirmacionPedido = React.lazy(() =>
-  import('./views/components/compras/ConfirmacionPedido')
+const ConfirmacionPedido = React.lazy(
+  () => import("./views/components/compras/ConfirmacionPedido"),
 );
-const UsuarioConfig = React.lazy(() =>
-  import('./views/components/cuenta/UsuarioConfig')
+const UsuarioConfig = React.lazy(
+  () => import("./views/components/cuenta/UsuarioConfig"),
 );
-const BuscarProductos = React.lazy(() =>
-  import('./views/components/buscarProductos/BuscarProductos')
+const BuscarProductos = React.lazy(
+  () => import("./views/components/buscarProductos/BuscarProductos"),
 );
 /*const NavBuscarProductos = React.lazy(() =>
   import("./views/components/navs/NavBuscarProductos")
 );*/
 
-const RegistrarFarmacia = React.lazy(() =>
-  import('./views/components/RegistrarFarmacia')
+const RegistrarFarmacia = React.lazy(
+  () => import("./views/components/RegistrarFarmacia"),
 );
 
-const ArrepentimientoCompra = React.lazy(() =>
-  import('./views/components/ArrepentimientoCompra')
+const ArrepentimientoCompra = React.lazy(
+  () => import("./views/components/ArrepentimientoCompra"),
 );
 
-const GestorCampanas = React.lazy(() =>
-  import('./views/components/gestorCampanas/GestorCampanas')
+const GestorCampanas = React.lazy(
+  () => import("./views/components/gestorCampanas/GestorCampanas"),
 );
 
-const TerminosCondiciones = React.lazy(() =>
-  import('./views/helpers/TerminosCondiciones')
+const TerminosCondiciones = React.lazy(
+  () => import("./views/helpers/TerminosCondiciones"),
 );
 
-const QuienesSomos = React.lazy(() =>
-  import('./views/helpers/QuienesSomos')
+const QuienesSomos = React.lazy(() => import("./views/helpers/QuienesSomos"));
+
+const MediosPago = React.lazy(() => import("./views/helpers/MediosPago"));
+
+const MediosEnvio = React.lazy(() => import("./views/helpers/MediosEnvio"));
+
+const CambiosDevoluciones = React.lazy(
+  () => import("./views/helpers/CambiosDevoluciones"),
 );
 
-const MediosPago = React.lazy(() =>
-  import('./views/helpers/MediosPago')
-);
-
-const MediosEnvio = React.lazy(() =>
-  import('./views/helpers/MediosEnvio')
-);
-
-const CambiosDevoluciones = React.lazy(() =>
-  import('./views/helpers/CambiosDevoluciones')
-);
-
-const PreguntasFrecuentes = React.lazy(() =>
-  import('./views/helpers/PreguntasFrecuentes')
+const PreguntasFrecuentes = React.lazy(
+  () => import("./views/helpers/PreguntasFrecuentes"),
 );
 
 function usePageViews() {
@@ -109,7 +103,7 @@ function usePageViews() {
 
 axios.interceptors.request.use((request) => {
   request.headers.authorization = `Bearer ${window.localStorage.getItem(
-    'token'
+    "token",
   )}`;
   request.headers["x-frontend-origin"] = "farmageo_web";
   request.headers["x-connection"] = "farmageo";
@@ -120,7 +114,7 @@ axios.interceptors.request.use((request) => {
 function App() {
   const [modalState, setmodalState] = useState(true);
   const entorno = process.env.REACT_APP_ENTORNO;
-  console.log(entorno)
+  console.log(entorno);
   usePageViews();
   return (
     <>
@@ -128,21 +122,21 @@ function App() {
         <div
           className="leyendatesting"
           style={{
-            display: 'flex',
-            left: '20%',
-            justifyContent: 'center',
-            position: 'fixed',
+            display: "flex",
+            left: "20%",
+            justifyContent: "center",
+            position: "fixed",
             zIndex: 900000,
           }}
         >
           <h1
             style={{
-              fontSize: '2rem',
-              textAlign: 'center',
-              color: 'yellow',
-              backgroundColor: 'blue',
-              fontWeight: 'bold',
-              letterSpacing: '10px',
+              fontSize: "2rem",
+              textAlign: "center",
+              color: "yellow",
+              backgroundColor: "blue",
+              fontWeight: "bold",
+              letterSpacing: "10px",
             }}
           >
             ENTORNO DE TESTING SQL
@@ -176,31 +170,31 @@ function App() {
             exact
             path="/quienes-somos"
             name="Quienes somos"
-            render={() => <QuienesSomos/>}
+            render={() => <QuienesSomos />}
           />
-           <Route
+          {/* <Route
             exact
             path="/medios-pago"
             name="Medios de pago"
-            render={() => <MediosPago/>}
+            render={() => <MediosPago />}
           />
           <Route
             exact
             path="/medios-envio"
             name="Medios de envio"
-            render={() => <MediosEnvio/>}
+            render={() => <MediosEnvio />}
           />
           <Route
             exact
             path="/cambios-devoluciones"
             name="Cambios y devoluciones"
-            render={() => <CambiosDevoluciones/>}
-          />
+            render={() => <CambiosDevoluciones />}
+          /> */}
           <Route
             exact
             path="/preguntas-frecuentes"
             name="Preguntas frecuentes"
-            render={() => <PreguntasFrecuentes/>}
+            render={() => <PreguntasFrecuentes />}
           />
           <Route
             path="/farmaciaperfil"
@@ -216,7 +210,7 @@ function App() {
             )}
           />
 
-          <Route
+          {/* <Route
             path="/farmprodcat"
             name="farmprodcat"
             render={(props) => (
@@ -228,9 +222,9 @@ function App() {
                 <FarmaciaProductosCat {...props} />
               </>
             )}
-          />
+          /> */}
 
-          <Route
+          {/* <Route
             path="/revisarpedido"
             name="revisarpedido"
             render={(props) => (
@@ -242,9 +236,9 @@ function App() {
                 <RevisarPedido {...props} />
               </>
             )}
-          />
+          /> */}
 
-          <Route
+          {/* <Route
             path="/detallespago"
             name="detallespago"
             render={(props) => (
@@ -256,9 +250,9 @@ function App() {
                 <DetallesDePago {...props} />
               </>
             )}
-          />
+          /> */}
 
-          <Route
+          {/* <Route
             path="/recetaObraSocial"
             name="recetaObraSocial"
             render={(props) => (
@@ -270,9 +264,9 @@ function App() {
                 <RecetaConObraSocial {...props} />
               </>
             )}
-          />
+          /> */}
 
-          <Route
+          {/* <Route
             path="/recetaParticular"
             name="recetaParticular"
             render={(props) => (
@@ -284,9 +278,9 @@ function App() {
                 <RecetaParticular {...props} />
               </>
             )}
-          />
+          /> */}
 
-          <Route
+          {/* <Route
             path="/recetaPami"
             name="recetaPami"
             render={(props) => (
@@ -298,9 +292,9 @@ function App() {
                 <RecetaPami {...props} />
               </>
             )}
-          />
+          /> */}
 
-          <Route
+          {/* <Route
             path="/confirmacionPedido"
             name="confirmacionPedido"
             render={(props) => (
@@ -312,8 +306,8 @@ function App() {
                 <ConfirmacionPedido {...props} />
               </>
             )}
-          />
-          <Route
+          /> */}
+          {/* <Route
             path="/detalleprod"
             name="detalleprod"
             render={(props) => (
@@ -325,7 +319,7 @@ function App() {
                 <DetalleProducto {...props} />
               </>
             )}
-          />
+          /> */}
           <Route
             path="/seleccionarfarmacia"
             name="seleccionarfarmacia"
@@ -339,7 +333,7 @@ function App() {
                 <FarmaciasCercanas
                   {...props}
                   nextPage="farmprodcat?u="
-                  filtroPerfilFarmageo={'vender_online'}
+                  filtroPerfilFarmageo={"vender_online"}
                 />
                 <FooterHome />
               </>
@@ -378,7 +372,7 @@ function App() {
             )}
           />
 
-          <Route
+          {false ? <Route
             path="/buscarproductos"
             name="buscarproductos"
             render={(props) => (
@@ -391,7 +385,7 @@ function App() {
                 />
               </>
             )}
-          />
+          /> : <Route path="fw4g5" render={() => <h1>404 - Página no encontrada</h1>} />}
 
           <Route
             path="/registrarfarmacia"
@@ -407,7 +401,7 @@ function App() {
             )}
           />
 
-<Route
+          <Route
             path="/arrepentimientocompra"
             name="arrepentimientocompra"
             render={(props) => (
