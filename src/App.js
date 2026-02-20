@@ -146,7 +146,7 @@ function App() {
       <React.Suspense fallback={loading()}>
         <GestorCampanas />
         <Switch>
-          <Route
+          {/* <Route
             exact
             path="/mutual"
             name="Mutual"
@@ -159,7 +159,7 @@ function App() {
                 <Mutual {...props} />
               </>
             )}
-          />
+          /> */}
           <Route
             exact
             path="/novedades/terminos-y-condiciones/"
