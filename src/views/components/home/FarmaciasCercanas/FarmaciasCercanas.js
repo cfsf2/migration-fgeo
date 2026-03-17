@@ -16,6 +16,10 @@ import {
 } from "../../../../redux/actions/UsuarioActions";
 import SelectFarm from "./SelectFarm";
 import axios from "axios";
+import { Buscador } from "../../navs/components/Buscador";
+import forma1 from '../../../../assets/images/Forma 1.png';
+import iconFarmacia from '../../../../assets/images/Grupo 79.png';
+import lupa from '../../../../assets/images/Lupa.png';
 
 class FarmaciasCercanas extends Component {
   constructor(props) {
@@ -155,7 +159,7 @@ class FarmaciasCercanas extends Component {
               name="servicio"
             >
               <option value="all" selected>
-                Servicios...
+                Servicios profesionales...
               </option>
               {serviciosList.sort((a, b) => a.orden_web - b.orden_web).map((s) => {
                 //   <option
@@ -173,9 +177,17 @@ class FarmaciasCercanas extends Component {
             </select>
           </div>
 
-          
+          <div className="form-group col-md-4 pl-0">
+            <div style={{ width: "100%" }}>
+              <Buscador
+                iconFarmacia={iconFarmacia}
+                forma1={forma1}
+                lupa={lupa}
+              />
+            </div>
+          </div>
 
-          <div className="form-group col-md-4 pl-0" align="right">
+          {/* <div className="form-group col-md-4 pl-0" align="right">
             Ver{" "}
             <div
               className="d-inline p-2 rounded ml-3"
@@ -203,7 +215,7 @@ class FarmaciasCercanas extends Component {
                 style={{ opacity: ver === "mapa" ? 1 : 0.4 }}
               />
             </div>
-          </div>
+          </div> */}
 
           <div className="col-12 pt-4 pr-0" align="right">
             {ver === "mapa" ? (

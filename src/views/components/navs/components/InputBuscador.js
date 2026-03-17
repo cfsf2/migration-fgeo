@@ -24,7 +24,7 @@ export const InputBuscador = (props) => {
     return;
   };
   return (
-    <div className="home_input_container">
+    <div className="home_input_container w-100">
       <div className=" input_container_left">
         <img
           alt=""

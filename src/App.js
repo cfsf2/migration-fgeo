@@ -172,7 +172,7 @@ function App() {
             name="Quienes somos"
             render={() => <QuienesSomos />}
           />
-          {/* <Route
+          <Route
             exact
             path="/medios-pago"
             name="Medios de pago"
@@ -189,7 +189,7 @@ function App() {
             path="/cambios-devoluciones"
             name="Cambios y devoluciones"
             render={() => <CambiosDevoluciones />}
-          /> */}
+          />
           <Route
             exact
             path="/preguntas-frecuentes"

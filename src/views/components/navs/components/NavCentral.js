@@ -21,12 +21,12 @@ export function NavCentral(props) {
           <img alt="farmageo_logo" src={logo} className="logo-farmageo" />
         </a>
       </div>
-      <Buscador
+      {/* <Buscador
         iconFarmacia={iconFarmacia}
         forma1={forma1}
         lupa={lupa}
         className="d-flex col-md-6"
-      />
+      /> */}
       {/* <div classNAme="col-md-1"></div> */}
       {/* <div className="col-md-2 hide-mobile" align="center">
          <button className="carrito" onClick={handleCarrito}>

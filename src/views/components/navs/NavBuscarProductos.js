@@ -229,7 +229,7 @@ function NavBuscarProductos(props) {
                     </li>
                   ) : (
                     <>
-                      <li className="nav-item">
+                      {/* <li className="nav-item">
                         <a
                           className="nav-link nav-farmageo-item"
                           data-toggle="modal"
@@ -246,7 +246,7 @@ function NavBuscarProductos(props) {
                         >
                           Ingresar
                         </a>
-                      </li>
+                      </li> */}
                     </>
                   )}
                   <li className="nav-item">

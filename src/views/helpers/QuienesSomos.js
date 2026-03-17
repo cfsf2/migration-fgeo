@@ -35,19 +35,17 @@ const QuienesSomos = () => {
         Desde sus orígenes, el propósito de fue crear un mostrador virtual que permita a las farmacias captar nuevos pacientes/clientes y fidelizar los que ya tienen. Se trata de una herramienta que llegó en el momento oportuno, posibilitando a cada farmacia administrar su mostrador virtual y así brindar una solución.
         </p>
         <p>
-          <strong>FARMAGEO, </strong>tiene como finalidad que el paciente/cliente pueda localizar la farmacia más cercana a su ubicación (Geolocalización), establecer un contacto directo y coordinar la compra. Se trata de un desarrollo exclusivo para las farmacias de la segunda circunscripción, en la cual no existen intermediarios en las compras que realice el paciente/cliente ni en las ofertas que se publiquen a través de su panel de herramientas.
+          <strong>FARMAGEO, </strong>tiene como finalidad que el paciente/cliente pueda localizar la farmacia más cercana a su ubicación (Geolocalización), establecer un contacto directo y coordinar la compra. Se trata de un desarrollo exclusivo para las farmacias de la segunda circunscripción, en la cual no existen intermediarios en las compras que realice el paciente/cliente.
         </p>
         <p>
-        Brinda excelentes ventajas económicas, ya que las farmacias podrán promocionar los rubros de perfumería, dermocosmética, suplementos nutricionales, marroquinería, regalería, accesorios y otros, estando prohibido la publicidad y venta a medicamentos de todo tipo (Venta Libre y Venta Bajo Receta), y se presenta como un medio de comunicación directo entre las farmacias y el colegio, manteniendo información actualizada, vínculos y un nexo informativo, fortaleciendo de este modo el trabajo que realizamos los farmacéuticos a diario.
+        Se presenta como un medio de comunicación directo entre las farmacias y el colegio, manteniendo información actualizada, vínculos y un nexo informativo, fortaleciendo de este modo el trabajo que realizamos los farmacéuticos a diario.
         </p>
         <p>
         Concentramos en una plataforma digital distintas herramientas para ayudar al mostrador de nuestras farmacias:
         </p>
         <p>
         - Micrositio web para cada farmacia, con todos los datos de la misma para su geolocalización.<br></br>
-        - E-commerce opcional y gratuito para cada farmacia.<br></br>
         - Panel de administración.<br></br>
-        - Módulo de Proveeduría, para ofertas de las Droguerías asociadas al sistema.<br></br>
         - Módulo de Transfers, para nivelar las ofertas de los laboratorios hacia todas nuestras farmacias, sin discriminar tamaño, localidad ni ubicación.<br></br>
         - Panel de control de débitos de Pami y del cronograma de pagos de Pami.<br></br>
         - Y otras funciones más.

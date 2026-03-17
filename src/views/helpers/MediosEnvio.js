@@ -16,7 +16,7 @@ const MediosEnvio = () => {
       <div className="body-text">
         <br></br>
         <p>
-        Podes optar por elegir el <strong>retiro</strong> del producto seleccionado en el e-commerce de la FARMACIA o bien el <strong>envío a un domicilio</strong> seleccionado, que puede coincidir o no con el propio o con el que hayas registrado. <strong>Cada farmacia dispondrá de sus formas de entrega.</strong>
+        Podes optar por elegir el <strong>retiro</strong> del producto en la FARMACIA o bien el <strong>envío a un domicilio</strong> seleccionado, que puede coincidir o no con el propio o con el que hayas registrado. <strong>Cada farmacia dispondrá de sus formas de entrega.</strong>
         </p>
         <h4>RETIRO EN FARMACIAS</h4>
         <p>

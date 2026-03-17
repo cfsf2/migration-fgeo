@@ -278,7 +278,7 @@ class NavHome extends Component {
                       </li>
                     ) : (
                       <>
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                           <a
                             className="nav-link nav-farmageo-item"
                             data-toggle="modal"
@@ -295,7 +295,7 @@ class NavHome extends Component {
                           >
                             Ingresar
                           </a>
-                        </li>
+                        </li> */}
                       </>
                     )}
 
