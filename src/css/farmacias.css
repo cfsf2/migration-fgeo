@@ -904,3 +904,78 @@ div.descarga-app {
 .hover-bg-4f9cb5 :hover {
   background-color: #4f9cb5;
 }
+
+.cta-presion__social {
+  width: 100%;
+  margin: 24px 0 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.cta-presion__social-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cta-presion__social-icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.social-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  background: #27aae1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+  text-decoration: none;
+}
+
+.social-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+
+/* Botón circular azul por icono */
+.cta-presion__social .social-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #2c3550;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(23,162,184,.25);
+  transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+}
+
+.cta-presion__social .social-btn:hover {
+  background: #2c3550f7;
+  transform: translateY(-1px);
+  box-shadow: 1px 5px 15px rgba(44, 53, 80, 0.718);
+}
+
+/* Tamaño del SVG dentro del botón */
+.cta-presion__social .social-icon {
+  width: 22px;
+  height: 22px;
+}
+
+@media (max-width: 680px) {
+  .cta-presion__social-inner { justify-content: center; }
+  .cta-presion__social-label { display: none; } /* opcional para simplificar en móvil */
+}
